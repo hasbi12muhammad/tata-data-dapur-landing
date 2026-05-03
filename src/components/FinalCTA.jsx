@@ -16,8 +16,10 @@ export default function FinalCTA() {
         y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
         scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
-      gsap.from(sectionRef.current.querySelectorAll('.cta-illus'), {
-        scale: 0.7, opacity: 0, duration: 1, stagger: 0.1, ease: 'back.out(1.4)',
+      // Opacity-only for illustrations — CSS rotation on inner divs must not be overwritten
+      gsap.set(sectionRef.current.querySelectorAll('.cta-illus'), { opacity: 0 })
+      gsap.to(sectionRef.current.querySelectorAll('.cta-illus'), {
+        opacity: 1, duration: 1, stagger: 0.1, ease: 'power2.out',
         scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
     }, sectionRef)
@@ -40,27 +42,41 @@ export default function FinalCTA() {
       <div style={{ position: 'absolute', bottom: '36px', left: '80px', color: 'rgba(251,246,236,0.12)', zIndex: 1 }}><SparkleIllustration size={16} /></div>
       <div style={{ position: 'absolute', bottom: '36px', right: '80px', color: 'rgba(251,246,236,0.12)', zIndex: 1 }}><SparkleIllustration size={20} /></div>
 
-      {/* PNG illustrations on terracotta bg */}
-      <div className="cta-illus" style={{ position: 'absolute', top: '24px', left: '150px', zIndex: 1, transform: 'rotate(-12deg)' }}>
-        <SpiceImg src={`${A}1.png`} bg="terracotta" width={72} height={72} />
+      {/* PNG illustrations — outer div is GSAP target (opacity only), inner div carries rotation */}
+      <div className="cta-illus" style={{ position: 'absolute', top: '24px', left: '150px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(-12deg)' }}>
+          <SpiceImg src={`${A}1.png`} bg="terracotta" width={90} height={90} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '16px', left: '110px', zIndex: 1, transform: 'rotate(8deg)' }}>
-        <SpiceImg src={`${A}20.png`} bg="terracotta" width={82} height={72} />
+      <div className="cta-illus" style={{ position: 'absolute', bottom: '16px', left: '100px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(8deg)' }}>
+          <SpiceImg src={`${A}20.png`} bg="terracotta" width={100} height={88} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', top: '16px', right: '140px', zIndex: 1, transform: 'rotate(18deg)' }}>
-        <SpiceImg src={`${A}3.png`} bg="terracotta" width={80} height={62} />
+      <div className="cta-illus" style={{ position: 'absolute', top: '16px', right: '140px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(18deg)' }}>
+          <SpiceImg src={`${A}3.png`} bg="terracotta" width={95} height={75} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '24px', right: '90px', zIndex: 1, transform: 'rotate(-6deg)' }}>
-        <SpiceImg src={`${A}7.png`} bg="terracotta" width={62} height={62} />
+      <div className="cta-illus" style={{ position: 'absolute', bottom: '24px', right: '90px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(-6deg)' }}>
+          <SpiceImg src={`${A}7.png`} bg="terracotta" width={75} height={75} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', top: '50%', left: '55px', zIndex: 1, transform: 'translateY(-50%) rotate(4deg)' }}>
-        <SpiceImg src={`${A}8.png`} bg="terracotta" width={68} height={44} />
+      <div className="cta-illus" style={{ position: 'absolute', top: '50%', left: '55px', zIndex: 1, transform: 'translateY(-50%)' }}>
+        <div style={{ transform: 'rotate(4deg)' }}>
+          <SpiceImg src={`${A}8.png`} bg="terracotta" width={80} height={52} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', top: '50%', right: '50px', zIndex: 1, transform: 'translateY(-50%) rotate(-14deg)' }}>
-        <SpiceImg src={`${A}13.png`} bg="terracotta" width={58} height={52} />
+      <div className="cta-illus" style={{ position: 'absolute', top: '50%', right: '50px', zIndex: 1, transform: 'translateY(-50%)' }}>
+        <div style={{ transform: 'rotate(-14deg)' }}>
+          <SpiceImg src={`${A}13.png`} bg="terracotta" width={72} height={64} />
+        </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '20px', left: '50%', zIndex: 1, transform: 'translateX(-50%) rotate(3deg)' }}>
-        <SpiceImg src={`${A}21.png`} bg="terracotta" width={52} height={52} opacity={0.18} />
+      <div className="cta-illus" style={{ position: 'absolute', bottom: '20px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
+        <div>
+          <SpiceImg src={`${A}21.png`} bg="terracotta" width={60} height={60} opacity={0.2} />
+        </div>
       </div>
 
       {/* Content */}

@@ -1,12 +1,9 @@
 import React from 'react'
 
-/**
- * bg: 'cream' | 'dark' | 'terracotta'
- * Semua PNG asset punya bg cream (#F5EDD8), jadi:
- *  - cream   → mix-blend-mode: multiply  (bg melebur, ilustrasi terlihat bersih)
- *  - dark    → filter invert + opacity rendah (jadi ghost light on dark)
- *  - terracotta → multiply + opacity (bg melebur ke terracotta)
- */
+// Transparent-background PNG illustrations
+// cream  → render directly, dark ink on light bg
+// dark   → invert to light on dark bg
+// terracotta → render directly with reduced opacity
 export default function SpiceImg({
   src, alt = '', width, height, style = {},
   bg = 'cream', opacity, className = '',
@@ -24,12 +21,7 @@ export default function SpiceImg({
     return (
       <img
         src={src} alt={alt} className={className}
-        style={{
-          ...base,
-          mixBlendMode: 'multiply',
-          opacity: opacity ?? 0.92,
-          ...style,
-        }}
+        style={{ ...base, opacity: opacity ?? 0.88, ...style }}
       />
     )
   }
@@ -40,9 +32,8 @@ export default function SpiceImg({
         src={src} alt={alt} className={className}
         style={{
           ...base,
-          filter: 'invert(1) brightness(0.55) sepia(0.15)',
-          mixBlendMode: 'screen',
-          opacity: opacity ?? 0.55,
+          filter: 'invert(1) brightness(0.82) sepia(0.1)',
+          opacity: opacity ?? 0.5,
           ...style,
         }}
       />
@@ -53,12 +44,7 @@ export default function SpiceImg({
   return (
     <img
       src={src} alt={alt} className={className}
-      style={{
-        ...base,
-        mixBlendMode: 'multiply',
-        opacity: opacity ?? 0.28,
-        ...style,
-      }}
+      style={{ ...base, opacity: opacity ?? 0.55, ...style }}
     />
   )
 }

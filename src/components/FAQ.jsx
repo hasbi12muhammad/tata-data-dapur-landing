@@ -50,12 +50,12 @@ export default function FAQ() {
         {/* Left */}
         <div className="faq-animate" style={{ paddingTop: '20px', position: 'relative' }}>
           {/* Herb illustration */}
-          <div style={{ position: 'absolute', top: '-15px', right: '-15px', transform: 'rotate(8deg)' }}>
-            <SpiceImg src={`${A}4.png`} bg="cream" width={58} height={58} opacity={0.55} />
+          <div style={{ position: 'absolute', top: '-20px', right: '-20px', transform: 'rotate(8deg)' }}>
+            <SpiceImg src={`${A}4.png`} bg="cream" width={70} height={70} opacity={0.6} />
           </div>
           {/* Basil bottom */}
-          <div style={{ position: 'absolute', bottom: '0px', right: '-10px', transform: 'rotate(-5deg)' }}>
-            <SpiceImg src={`${A}5.png`} bg="cream" width={48} height={48} opacity={0.45} />
+          <div style={{ position: 'absolute', bottom: '-5px', right: '-15px', transform: 'rotate(-5deg)' }}>
+            <SpiceImg src={`${A}5.png`} bg="cream" width={60} height={60} opacity={0.5} />
           </div>
 
           <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>— FAQ</div>

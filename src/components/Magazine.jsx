@@ -52,14 +52,14 @@ export default function Magazine() {
             <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.05, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
 
             {/* Illustrations inside terracotta card */}
-            <div style={{ position: 'absolute', bottom: '70px', right: '-8px', zIndex: 1 }}>
-              <SpiceImg src={`${A}14.png`} bg="terracotta" width={55} height={80} style={{ transform: 'rotate(-15deg)' }} />
+            <div style={{ position: 'absolute', bottom: '60px', right: '-10px', zIndex: 1, transform: 'rotate(-15deg)' }}>
+              <SpiceImg src={`${A}14.png`} bg="terracotta" width={72} height={100} />
             </div>
-            <div style={{ position: 'absolute', top: '85px', right: '12px', zIndex: 1 }}>
-              <SpiceImg src={`${A}9.png`} bg="terracotta" width={55} height={38} style={{ transform: 'rotate(5deg)' }} />
+            <div style={{ position: 'absolute', top: '80px', right: '8px', zIndex: 1, transform: 'rotate(8deg)' }}>
+              <SpiceImg src={`${A}9.png`} bg="terracotta" width={65} height={46} />
             </div>
-            <div style={{ position: 'absolute', bottom: '12px', left: '12px', zIndex: 1 }}>
-              <SpiceImg src={`${A}11.png`} bg="terracotta" width={75} height={48} />
+            <div style={{ position: 'absolute', bottom: '10px', left: '8px', zIndex: 1, transform: 'rotate(-4deg)' }}>
+              <SpiceImg src={`${A}11.png`} bg="terracotta" width={90} height={58} />
             </div>
 
             <div style={{ position: 'absolute', top: '80px', left: '28px', fontFamily: 'Fraunces, Georgia, serif', fontSize: '8rem', color: 'rgba(251,246,236,0.08)', lineHeight: 1, userSelect: 'none', zIndex: 1 }}>"</div>

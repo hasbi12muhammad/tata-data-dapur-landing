@@ -14,16 +14,22 @@ export default function Footer() {
     <footer style={{ background: '#1B1208', position: 'relative', overflow: 'hidden', paddingTop: '64px', paddingBottom: '64px', paddingLeft: '48px', paddingRight: '48px' }}>
       {/* Corner illustrations on dark bg */}
       <div style={{ position: 'absolute', bottom: '16px', left: '16px', zIndex: 0 }}>
-        <SpiceImg src={`${A}20.png`} bg="dark" width={100} height={88} />
+        <SpiceImg src={`${A}20.png`} bg="dark" width={110} height={96} />
       </div>
-      <div style={{ position: 'absolute', top: '16px', right: '24px', zIndex: 0, transform: 'rotate(12deg)' }}>
-        <SpiceImg src={`${A}1.png`} bg="dark" width={80} height={80} />
+      <div style={{ position: 'absolute', top: '16px', right: '24px', zIndex: 0 }}>
+        <div style={{ transform: 'rotate(12deg)' }}>
+          <SpiceImg src={`${A}1.png`} bg="dark" width={88} height={88} />
+        </div>
       </div>
-      <div style={{ position: 'absolute', bottom: '50px', right: '70px', zIndex: 0, transform: 'rotate(-10deg)' }}>
-        <SpiceImg src={`${A}7.png`} bg="dark" width={62} height={62} />
+      <div style={{ position: 'absolute', bottom: '50px', right: '70px', zIndex: 0 }}>
+        <div style={{ transform: 'rotate(-10deg)' }}>
+          <SpiceImg src={`${A}7.png`} bg="dark" width={70} height={70} />
+        </div>
       </div>
-      <div style={{ position: 'absolute', top: '36px', left: '170px', zIndex: 0, transform: 'rotate(18deg)' }}>
-        <SpiceImg src={`${A}3.png`} bg="dark" width={36} height={56} opacity={0.35} />
+      <div style={{ position: 'absolute', top: '36px', left: '170px', zIndex: 0 }}>
+        <div style={{ transform: 'rotate(18deg)' }}>
+          <SpiceImg src={`${A}3.png`} bg="dark" width={42} height={64} opacity={0.35} />
+        </div>
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>

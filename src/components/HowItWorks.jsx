@@ -45,16 +45,24 @@ export default function HowItWorks() {
 
       {/* Corner PNG illustrations on dark bg */}
       <div style={{ position: 'absolute', bottom: '16px', left: '16px', zIndex: 1 }}>
-        <SpiceImg src={`${A}7.png`} bg="dark" width={72} height={72} />
+        <div style={{ transform: 'rotate(-5deg)' }}>
+          <SpiceImg src={`${A}7.png`} bg="dark" width={88} height={88} />
+        </div>
       </div>
-      <div style={{ position: 'absolute', top: '24px', right: '36px', zIndex: 1, transform: 'rotate(12deg)' }}>
-        <SpiceImg src={`${A}8.png`} bg="dark" width={80} height={52} />
+      <div style={{ position: 'absolute', top: '24px', right: '36px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(12deg)' }}>
+          <SpiceImg src={`${A}8.png`} bg="dark" width={95} height={62} />
+        </div>
       </div>
-      <div style={{ position: 'absolute', bottom: '36px', right: '56px', zIndex: 1, transform: 'rotate(-8deg)' }}>
-        <SpiceImg src={`${A}1.png`} bg="dark" width={65} height={65} />
+      <div style={{ position: 'absolute', bottom: '36px', right: '56px', zIndex: 1 }}>
+        <div style={{ transform: 'rotate(-8deg)' }}>
+          <SpiceImg src={`${A}1.png`} bg="dark" width={78} height={78} />
+        </div>
       </div>
-      <div style={{ position: 'absolute', top: '50%', left: '36px', zIndex: 1, transform: 'translateY(-50%) rotate(5deg)' }}>
-        <SpiceImg src={`${A}12.png`} bg="dark" width={70} height={42} />
+      <div style={{ position: 'absolute', top: '50%', left: '36px', zIndex: 1, transform: 'translateY(-50%)' }}>
+        <div style={{ transform: 'rotate(5deg)' }}>
+          <SpiceImg src={`${A}12.png`} bg="dark" width={82} height={50} />
+        </div>
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
