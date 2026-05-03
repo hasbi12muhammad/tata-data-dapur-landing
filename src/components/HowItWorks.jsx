@@ -43,25 +43,25 @@ export default function HowItWorks() {
     >
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.04, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
 
-      {/* Corner PNG illustrations on dark bg */}
-      <div style={{ position: 'absolute', bottom: '16px', left: '16px', zIndex: 1 }}>
+      {/* Corner PNG illustrations — 1.5× original, spread to 4 corners */}
+      <div style={{ position: 'absolute', bottom: '10px', left: '10px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-5deg)' }}>
-          <SpiceImg src={`${A}7.png`} bg="dark" width={264} height={264} />
+          <SpiceImg src={`${A}7.png`} bg="dark" width={132} height={132} />
         </div>
       </div>
-      <div style={{ position: 'absolute', top: '24px', right: '36px', zIndex: 1 }}>
+      <div style={{ position: 'absolute', top: '16px', right: '20px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(12deg)' }}>
-          <SpiceImg src={`${A}8.png`} bg="dark" width={285} height={186} />
+          <SpiceImg src={`${A}8.png`} bg="dark" width={143} height={93} />
         </div>
       </div>
-      <div style={{ position: 'absolute', bottom: '36px', right: '56px', zIndex: 1 }}>
+      <div style={{ position: 'absolute', bottom: '10px', right: '20px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-8deg)' }}>
-          <SpiceImg src={`${A}1.png`} bg="dark" width={234} height={234} />
+          <SpiceImg src={`${A}1.png`} bg="dark" width={117} height={117} />
         </div>
       </div>
-      <div style={{ position: 'absolute', top: '50%', left: '36px', zIndex: 1, transform: 'translateY(-50%)' }}>
+      <div style={{ position: 'absolute', top: '16px', left: '10px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(5deg)' }}>
-          <SpiceImg src={`${A}12.png`} bg="dark" width={246} height={150} />
+          <SpiceImg src={`${A}12.png`} bg="dark" width={123} height={75} />
         </div>
       </div>
 

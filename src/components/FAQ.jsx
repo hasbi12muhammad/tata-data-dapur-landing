@@ -51,11 +51,11 @@ export default function FAQ() {
         <div className="faq-animate" style={{ paddingTop: '20px', position: 'relative' }}>
           {/* Herb illustration */}
           <div style={{ position: 'absolute', top: '-20px', right: '-20px', transform: 'rotate(8deg)' }}>
-            <SpiceImg src={`${A}4.png`} bg="cream" width={210} height={210} opacity={0.6} />
+            <SpiceImg src={`${A}4.png`} bg="cream" width={105} height={105} opacity={0.6} />
           </div>
           {/* Basil bottom */}
           <div style={{ position: 'absolute', bottom: '-5px', right: '-15px', transform: 'rotate(-5deg)' }}>
-            <SpiceImg src={`${A}5.png`} bg="cream" width={180} height={180} opacity={0.5} />
+            <SpiceImg src={`${A}5.png`} bg="cream" width={90} height={90} opacity={0.5} />
           </div>
 
           <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>— FAQ</div>

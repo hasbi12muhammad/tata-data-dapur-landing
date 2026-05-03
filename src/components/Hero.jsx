@@ -6,7 +6,6 @@ import { SparkleIllustration } from './illustrations/index'
 
 const A = '/assets/components/'
 
-// r = rotation degrees, d = duration, delay = animation delay
 const floatStyle = (r = 0, d = '4s', delay = '0s') => ({
   transform: `rotate(${r}deg)`,
   animation: `float ${d} ease-in-out infinite ${delay}`,
@@ -19,12 +18,11 @@ export default function Hero() {
   const subtextRef = useRef(null)
   const ctasRef = useRef(null)
   const sectionRef = useRef(null)
-  const illusRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set illustrations invisible first — opacity only, no transform manipulation
-      gsap.set(illusRef.current.querySelectorAll('.illus-item'), { opacity: 0 })
+      // Target all .illus-item in the whole section (left + right side)
+      gsap.set(sectionRef.current.querySelectorAll('.illus-item'), { opacity: 0 })
 
       const tl = gsap.timeline({ delay: 0.2 })
       tl.from(eyebrowRef.current, { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' })
@@ -32,11 +30,8 @@ export default function Hero() {
           y: 40, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
         }, '-=0.3')
         .from(subtextRef.current, { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-        .from(ctasRef.current, {
-          y: 20, opacity: 0, duration: 0.5, ease: 'power3.out',
-        }, '-=0.3')
-        // Opacity-only — never touches CSS transform, so rotation + float CSS stay intact
-        .to(illusRef.current.querySelectorAll('.illus-item'), {
+        .from(ctasRef.current, { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.3')
+        .to(sectionRef.current.querySelectorAll('.illus-item'), {
           opacity: 1, duration: 0.9, stagger: 0.08, ease: 'power2.out',
         }, '-=0.5')
     }, sectionRef)
@@ -58,12 +53,36 @@ export default function Hero() {
       <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '700px', height: '700px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(196,154,63,0.07) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'absolute', bottom: '-100px', left: '-100px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(181,83,42,0.05) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 0 }} />
 
+      {/* ── LEFT-SIDE illustrations — section-level absolute, behind grid (zIndex 0) ── */}
+
+      {/* Garlic — top far left */}
+      <div className="illus-item" style={{ position: 'absolute', top: '90px', left: '10px', zIndex: 0 }}>
+        <div style={floatStyle(-10, '4.5s', '0s')}>
+          <SpiceImg src={`${A}1.png`} bg="cream" width={165} height={165} />
+        </div>
+      </div>
+
+      {/* Onions — bottom left */}
+      <div className="illus-item" style={{ position: 'absolute', bottom: '60px', left: '20px', zIndex: 0 }}>
+        <div style={floatStyle(-8, '5s', '1.2s')}>
+          <SpiceImg src={`${A}2.png`} bg="cream" width={145} height={130} />
+        </div>
+      </div>
+
+      {/* Cinnamon — mid-left, vertically centered */}
+      <div className="illus-item" style={{ position: 'absolute', top: '42%', left: '5px', zIndex: 0, transform: 'translateY(-50%)' }}>
+        <div style={floatStyle(6, '4.8s', '0.8s')}>
+          <SpiceImg src={`${A}8.png`} bg="cream" width={125} height={82} />
+        </div>
+      </div>
+
+      {/* ── GRID content ── */}
       <div style={{
         maxWidth: '1200px', margin: '0 auto', width: '100%',
         display: 'grid', gridTemplateColumns: '55% 45%',
         gap: '60px', alignItems: 'center', position: 'relative', zIndex: 1,
       }}>
-        {/* Left */}
+        {/* Left — text */}
         <div>
           <div ref={eyebrowRef} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '28px' }}>
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#B5532A', display: 'inline-block', flexShrink: 0 }} />
@@ -104,69 +123,45 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — receipt + PNG illustrations
-            .illus-item = GSAP opacity target (no transform written here)
-            inner div  = CSS rotation + float animation (--rotate var fed to keyframe) */}
-        <div ref={illusRef} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: '580px' }}>
+        {/* Right — receipt + right-side illustrations */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: '580px' }}>
 
           {/* Receipt card */}
-          <div className="illus-item" style={{ position: 'relative', zIndex: 3 }}>
+          <div style={{ position: 'relative', zIndex: 3 }}>
             <ReceiptCard />
           </div>
 
-          {/* Garlic — large, top left */}
-          <div className="illus-item" style={{ position: 'absolute', top: '0px', left: '-30px', zIndex: 2 }}>
-            <div style={floatStyle(-8, '4.5s', '0s')}>
-              <SpiceImg src={`${A}1.png`} bg="cream" width={330} height={330} />
-            </div>
-          </div>
-
-          {/* Onions — medium, bottom left */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '30px', left: '-10px', zIndex: 2 }}>
-            <div style={floatStyle(-12, '5s', '1.2s')}>
-              <SpiceImg src={`${A}2.png`} bg="cream" width={285} height={255} />
-            </div>
-          </div>
-
-          {/* Chili — tall, right side center */}
-          <div className="illus-item" style={{ position: 'absolute', top: '38%', right: '-35px', zIndex: 2, transform: 'translateY(-50%)' }}>
+          {/* Chili — right edge center */}
+          <div className="illus-item" style={{ position: 'absolute', top: '35%', right: '-50px', zIndex: 2, transform: 'translateY(-50%)' }}>
             <div style={floatStyle(15, '3.8s', '0.6s')}>
-              <SpiceImg src={`${A}3.png`} bg="cream" width={285} height={225} />
+              <SpiceImg src={`${A}3.png`} bg="cream" width={145} height={115} />
             </div>
           </div>
 
           {/* Star anise — top right */}
-          <div className="illus-item" style={{ position: 'absolute', top: '15px', right: '5px', zIndex: 2 }}>
+          <div className="illus-item" style={{ position: 'absolute', top: '10px', right: '-30px', zIndex: 2 }}>
             <div style={floatStyle(18, '4.2s', '2s')}>
-              <SpiceImg src={`${A}7.png`} bg="cream" width={216} height={216} />
+              <SpiceImg src={`${A}7.png`} bg="cream" width={108} height={108} />
             </div>
           </div>
 
-          {/* Bay leaf branch — bottom right */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '40px', right: '-15px', zIndex: 2 }}>
+          {/* Bay leaf — bottom right */}
+          <div className="illus-item" style={{ position: 'absolute', bottom: '30px', right: '-45px', zIndex: 2 }}>
             <div style={floatStyle(-12, '5.5s', '1.5s')}>
-              <SpiceImg src={`${A}6.png`} bg="cream" width={240} height={210} />
+              <SpiceImg src={`${A}6.png`} bg="cream" width={120} height={105} />
             </div>
           </div>
 
-          {/* Cinnamon sticks — upper right area */}
-          <div className="illus-item" style={{ position: 'absolute', top: '130px', right: '-28px', zIndex: 2 }}>
-            <div style={floatStyle(-5, '4.8s', '0.8s')}>
-              <SpiceImg src={`${A}8.png`} bg="cream" width={246} height={162} />
-            </div>
-          </div>
-
-          {/* Peppercorns — subtle bottom scatter */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '10px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
+          {/* Peppercorns — bottom center, very subtle */}
+          <div className="illus-item" style={{ position: 'absolute', bottom: '0px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
             <div>
-              <SpiceImg src={`${A}10.png`} bg="cream" width={195} height={132} opacity={0.3} />
+              <SpiceImg src={`${A}10.png`} bg="cream" width={100} height={66} opacity={0.28} />
             </div>
           </div>
 
-          {/* Sparkle accents */}
-          <SparkleIllustration size={10} style={{ position: 'absolute', top: '85px', left: '26px', color: '#C49A3F', opacity: 0.55 }} />
-          <SparkleIllustration size={7} style={{ position: 'absolute', bottom: '125px', right: '46px', color: '#B5532A', opacity: 0.45 }} />
-          <SparkleIllustration size={6} style={{ position: 'absolute', top: '215px', left: '14px', color: '#5A6B3B', opacity: 0.4 }} />
+          {/* Sparkles */}
+          <SparkleIllustration size={10} style={{ position: 'absolute', top: '80px', left: '10px', color: '#C49A3F', opacity: 0.5 }} />
+          <SparkleIllustration size={7} style={{ position: 'absolute', bottom: '120px', right: '40px', color: '#B5532A', opacity: 0.4 }} />
         </div>
       </div>
     </section>
