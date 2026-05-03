@@ -6,7 +6,12 @@ const A = '/assets/components/'
 const footerLinks = {
   'Produk': ['Fitur', 'Cara Kerja', 'Harga', 'FAQ'],
   'Ekosistem': ['Tata Data Bahari', 'Tata Data Toko', 'Blog', 'Komunitas'],
-  'Kontak': ['WhatsApp', 'Email', 'Instagram', 'LinkedIn'],
+  'Kontak': [
+    { label: 'WhatsApp', href: 'https://wa.me/6287850755050' },
+    { label: 'Email', href: 'mailto:hasbi12.muhammad@gmail.com' },
+    { label: 'Instagram', href: '#' },
+    { label: 'LinkedIn', href: '#' },
+  ],
 }
 
 export default function Footer() {
@@ -57,14 +62,19 @@ export default function Footer() {
             <div key={group}>
               <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.62rem', color: 'rgba(244,237,224,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '18px' }}>{group}</div>
               <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {links.map(link => (
-                  <li key={link}>
-                    <a href="#" style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', color: 'rgba(244,237,224,0.52)', textDecoration: 'none', transition: 'color 0.2s ease' }}
-                      onMouseEnter={e => e.currentTarget.style.color = '#F4EDE0'}
-                      onMouseLeave={e => e.currentTarget.style.color = 'rgba(244,237,224,0.52)'}
-                    >{link}</a>
-                  </li>
-                ))}
+                {links.map(link => {
+                  const label = typeof link === 'string' ? link : link.label
+                  const href = typeof link === 'string' ? '#' : link.href
+                  return (
+                    <li key={label}>
+                      <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', color: 'rgba(244,237,224,0.52)', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#F4EDE0'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'rgba(244,237,224,0.52)'}
+                      >{label}</a>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}
@@ -72,7 +82,13 @@ export default function Footer() {
 
         <div style={{ borderTop: '1px solid rgba(244,237,224,0.07)', paddingTop: '24px', marginTop: '48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <span style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: 'rgba(244,237,224,0.3)', letterSpacing: '0.03em' }}>
-            © 2026 Tata Data — Made with ♥ in Indonesia
+            Made by{' '}
+            <a href="https://hasbi-portfolio.pages.dev/" target="_blank" rel="noopener noreferrer"
+              style={{ color: 'rgba(244,237,224,0.55)', textDecoration: 'underline', textUnderlineOffset: '3px', transition: 'color 0.2s ease' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#F4EDE0'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(244,237,224,0.55)'}
+            >Hasbi</a>
+            {' '}· © 2026 Tata Data
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
             {['Privacy Policy', 'Terms of Service'].map(item => (

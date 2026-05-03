@@ -70,11 +70,11 @@ export default function ReceiptCard() {
         position: 'relative',
       }}
     >
-      {/* Washi Tape PNG */}
+      {/* Washi Tape PNG — zIndex 1 so header text (zIndex 2) sits above it */}
       <div style={{
-        position: 'absolute', top: '-22px', left: '50%',
+        position: 'absolute', top: '-20px', left: '50%',
         transform: 'translateX(-50%) rotate(-2deg)',
-        zIndex: 10, width: '110px',
+        zIndex: 1, width: '110px',
         pointerEvents: 'none',
       }}>
         <img
@@ -89,8 +89,8 @@ export default function ReceiptCard() {
       {/* Main receipt body */}
       <div className="receipt-card px-6 pb-2 pt-4">
 
-        {/* Store header */}
-        <div className="text-center mb-3">
+        {/* Store header — position relative + zIndex 2 so it sits above washi tape */}
+        <div className="text-center mb-3" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{
             fontFamily: 'Fraunces, Georgia, serif',
             fontStyle: 'italic',

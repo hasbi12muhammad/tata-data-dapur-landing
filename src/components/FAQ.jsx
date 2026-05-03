@@ -65,7 +65,7 @@ export default function FAQ() {
           <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem', color: 'rgba(27,18,8,0.52)', lineHeight: 1.7, margin: 0 }}>
             Ada hal lain yang ingin kamu tanyakan? Hubungi kami langsung.
           </p>
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/6287850755050" target="_blank" rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#1B1208', textDecoration: 'none', borderBottom: '1px solid rgba(27,18,8,0.25)', paddingBottom: '2px', transition: 'opacity 0.2s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.62'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}

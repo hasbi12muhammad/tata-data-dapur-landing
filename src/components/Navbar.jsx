@@ -58,7 +58,7 @@ export default function Navbar() {
         }}>
           <img
             src="/assets/td-logo.png" alt="TD"
-            style={{ width: '26px', height: '26px', objectFit: 'contain', mixBlendMode: 'multiply', filter: 'invert(1) brightness(0.85)' }}
+            style={{ width: '26px', height: '26px', objectFit: 'contain', filter: 'invert(1) brightness(0.9)' }}
           />
         </div>
         <span style={{

@@ -13,7 +13,7 @@ export default function FinalCTA() {
     gsap.registerPlugin(ScrollTrigger)
     const ctx = gsap.context(() => {
       gsap.from(sectionRef.current.querySelectorAll('.cta-animate'), {
-        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+        y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
         scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
       // Opacity-only for illustrations — CSS rotation on inner divs must not be overwritten
@@ -48,7 +48,7 @@ export default function FinalCTA() {
           <SpiceImg src={`${A}1.png`} bg="terracotta" width={90} height={90} />
         </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '16px', left: '100px', zIndex: 1 }}>
+      <div className="cta-illus" style={{ position: 'absolute', bottom: '-10px', left: '80px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(8deg)' }}>
           <SpiceImg src={`${A}20.png`} bg="terracotta" width={100} height={88} />
         </div>
@@ -58,7 +58,7 @@ export default function FinalCTA() {
           <SpiceImg src={`${A}3.png`} bg="terracotta" width={95} height={75} />
         </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '24px', right: '90px', zIndex: 1 }}>
+      <div className="cta-illus" style={{ position: 'absolute', bottom: '-10px', right: '70px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-6deg)' }}>
           <SpiceImg src={`${A}7.png`} bg="terracotta" width={75} height={75} />
         </div>
@@ -74,7 +74,7 @@ export default function FinalCTA() {
         </div>
       </div>
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 2 }}>
+      <div style={{ position: 'relative', zIndex: 10 }}>
         <div className="cta-animate" style={{ display: 'inline-block', background: 'rgba(251,246,236,0.12)', border: '1px solid rgba(251,246,236,0.25)', padding: '6px 16px', borderRadius: '100px', marginBottom: '28px', fontFamily: '"DM Mono", monospace', fontSize: '0.62rem', color: 'rgba(251,246,236,0.8)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           Mulai Gratis · 14 Hari
         </div>
@@ -85,7 +85,7 @@ export default function FinalCTA() {
           Bergabung dengan pemilik usaha kuliner yang sudah berhenti tebak-tebakan.
         </p>
         <a className="cta-animate"
-          href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20Tata%20Data%20Dapur"
+          href="https://wa.me/6287850755050?text=Halo%2C%20saya%20tertarik%20dengan%20Tata%20Data%20Dapur"
           target="_blank" rel="noopener noreferrer"
           style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#FBF6EC', color: '#B5532A', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.98rem', fontWeight: 600, padding: '16px 36px', borderRadius: '100px', textDecoration: 'none', boxShadow: '0 8px 32px rgba(27,18,8,0.2)', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
           onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.03)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(27,18,8,0.3)' }}
