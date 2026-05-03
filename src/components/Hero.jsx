@@ -131,6 +131,29 @@ export default function Hero() {
             <ReceiptCard />
           </div>
 
+          {/* ── GAP FILLERS — positioned left of right column, filling the gap ── */}
+
+          {/* Tomato — upper gap */}
+          <div className="illus-item" style={{ position: 'absolute', top: '18%', left: '-105px', zIndex: 2 }}>
+            <div style={floatStyle(-8, '4.3s', '0.4s')}>
+              <SpiceImg src={`${A}15.png`} bg="cream" width={88} height={84} />
+            </div>
+          </div>
+
+          {/* Parsley — mid gap */}
+          <div className="illus-item" style={{ position: 'absolute', top: '50%', left: '-115px', zIndex: 2, transform: 'translateY(-50%)' }}>
+            <div style={floatStyle(6, '5.2s', '1.8s')}>
+              <SpiceImg src={`${A}4.png`} bg="cream" width={78} height={78} />
+            </div>
+          </div>
+
+          {/* Cloves — lower gap */}
+          <div className="illus-item" style={{ position: 'absolute', bottom: '22%', left: '-100px', zIndex: 2 }}>
+            <div style={floatStyle(-12, '4.6s', '0.9s')}>
+              <SpiceImg src={`${A}9.png`} bg="cream" width={92} height={65} />
+            </div>
+          </div>
+
           {/* Chili — right edge center */}
           <div className="illus-item" style={{ position: 'absolute', top: '35%', right: '-50px', zIndex: 2, transform: 'translateY(-50%)' }}>
             <div style={floatStyle(15, '3.8s', '0.6s')}>
