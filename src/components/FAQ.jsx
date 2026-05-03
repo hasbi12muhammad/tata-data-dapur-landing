@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { HerbsIllustration, SparkleIllustration } from './illustrations/index'
 
 const faqs = [
   {
@@ -28,76 +29,43 @@ const faqs = [
 
 function FAQItem({ faq, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen || false)
-  const answerRef = useRef(null)
 
   return (
-    <div style={{
-      borderBottom: '1px dashed rgba(27,18,8,0.2)',
-      paddingTop: '20px',
-      paddingBottom: '20px',
-    }}>
+    <div style={{ borderBottom: '1px dashed rgba(27,18,8,0.18)', paddingTop: '20px', paddingBottom: '20px' }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '16px',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          padding: 0,
-          textAlign: 'left',
+          width: '100%', display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between', gap: '16px',
+          background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left',
         }}
       >
         <span style={{
-          fontFamily: 'Fraunces, Georgia, serif',
-          fontStyle: 'italic',
-          fontSize: '1.05rem',
-          color: '#1B1208',
-          fontWeight: 400,
-          flex: 1,
+          fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic',
+          fontSize: '1.05rem', color: '#1B1208', fontWeight: 400, flex: 1,
         }}>
           {faq.q}
         </span>
         <span style={{
-          width: '32px',
-          height: '32px',
-          borderRadius: '50%',
-          border: '1px solid rgba(27,18,8,0.25)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-          fontSize: '1.1rem',
-          color: open ? '#B5532A' : '#1B1208',
+          width: '30px', height: '30px', borderRadius: '50%',
+          border: `1px solid ${open ? 'rgba(181,83,42,0.4)' : 'rgba(27,18,8,0.2)'}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          fontSize: '1.1rem', color: open ? '#B5532A' : '#1B1208',
           transition: 'transform 0.3s ease, color 0.3s ease, border-color 0.3s ease',
           transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
-          borderColor: open ? 'rgba(181,83,42,0.4)' : 'rgba(27,18,8,0.25)',
-          fontFamily: 'system-ui, sans-serif',
-          fontStyle: 'normal',
-          lineHeight: 1,
+          fontFamily: 'system-ui, sans-serif', lineHeight: 1,
         }}>
           +
         </span>
       </button>
-
-      <div
-        ref={answerRef}
-        style={{
-          overflow: 'hidden',
-          maxHeight: open ? '300px' : '0',
-          transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-        }}
-      >
+      <div style={{
+        overflow: 'hidden',
+        maxHeight: open ? '300px' : '0',
+        transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+      }}>
         <p style={{
-          fontFamily: 'Inter, system-ui, sans-serif',
-          fontSize: '0.9rem',
-          color: 'rgba(27,18,8,0.65)',
-          lineHeight: 1.7,
-          margin: 0,
-          paddingTop: '12px',
+          fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem',
+          color: 'rgba(27,18,8,0.62)', lineHeight: 1.72, margin: 0, paddingTop: '12px',
         }}>
           {faq.a}
         </p>
@@ -110,20 +78,13 @@ export default function FAQ() {
   const sectionRef = useRef(null)
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     const ctx = gsap.context(() => {
       gsap.from(sectionRef.current.querySelectorAll('.faq-animate'), {
-        y: 30,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
@@ -131,68 +92,68 @@ export default function FAQ() {
     <section
       id="faq"
       ref={sectionRef}
-      style={{
-        paddingTop: '96px',
-        paddingBottom: '96px',
-        paddingLeft: '48px',
-        paddingRight: '48px',
-      }}
+      style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
     >
       <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        display: 'grid',
-        gridTemplateColumns: '5fr 7fr',
-        gap: '60px',
-        alignItems: 'start',
+        maxWidth: '1200px', margin: '0 auto',
+        display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'start',
       }}>
         {/* Left */}
-        <div className="faq-animate" style={{ paddingTop: '20px' }}>
+        <div className="faq-animate" style={{ paddingTop: '20px', position: 'relative' }}>
+          {/* Decorative herb illustration */}
+          <div style={{
+            position: 'absolute', top: '-10px', right: '-20px',
+            color: '#5A6B3B', opacity: 0.3,
+            transform: 'rotate(10deg)',
+          }}>
+            <HerbsIllustration style={{ width: 40, height: 62 }} />
+          </div>
+
+          <div style={{
+            fontFamily: '"DM Mono", monospace', fontSize: '0.65rem',
+            color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px',
+          }}>
+            — FAQ
+          </div>
+
           <h2 style={{
             fontFamily: 'Fraunces, Georgia, serif',
             fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-            color: '#1B1208',
-            fontWeight: 400,
-            lineHeight: 1.15,
-            marginBottom: '20px',
+            color: '#1B1208', fontWeight: 400, lineHeight: 1.15, marginBottom: '20px',
           }}>
             Pertanyaan yang sering <em>ditanya.</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, system-ui, sans-serif',
-            fontSize: '0.9rem',
-            color: 'rgba(27,18,8,0.55)',
-            lineHeight: 1.7,
-            margin: 0,
+            fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem',
+            color: 'rgba(27,18,8,0.52)', lineHeight: 1.7, margin: 0,
           }}>
             Ada hal lain yang ingin kamu tanyakan? Hubungi kami langsung.
           </p>
           <a
             href="https://wa.me/6281234567890"
-            target="_blank"
-            rel="noopener noreferrer"
+            target="_blank" rel="noopener noreferrer"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginTop: '24px',
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: '0.85rem',
-              fontWeight: 500,
-              color: '#1B1208',
-              textDecoration: 'none',
-              borderBottom: '1px solid rgba(27,18,8,0.3)',
-              paddingBottom: '2px',
+              display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px',
+              fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', fontWeight: 500,
+              color: '#1B1208', textDecoration: 'none',
+              borderBottom: '1px solid rgba(27,18,8,0.25)', paddingBottom: '2px',
               transition: 'opacity 0.2s ease',
             }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.65'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.62'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Hubungi via WhatsApp →
           </a>
+
+          {/* Sparkle accent */}
+          <div style={{ display: 'flex', gap: '8px', marginTop: '40px', alignItems: 'center' }}>
+            <SparkleIllustration size={8} style={{ color: '#C49A3F', opacity: 0.6 }} />
+            <div style={{ height: '1px', width: '40px', background: 'rgba(27,18,8,0.12)' }} />
+            <SparkleIllustration size={6} style={{ color: '#B5532A', opacity: 0.5 }} />
+          </div>
         </div>
 
-        {/* Right: FAQ items */}
+        {/* Right: FAQ list */}
         <div className="faq-animate">
           {faqs.map((faq, i) => (
             <FAQItem key={i} faq={faq} defaultOpen={faq.defaultOpen} />
