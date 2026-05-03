@@ -70,19 +70,17 @@ export default function ReceiptCard() {
         position: 'relative',
       }}
     >
-      {/* Washi Tape */}
+      {/* Washi Tape PNG */}
       <div style={{
-        position: 'absolute',
-        top: '-8px',
-        left: '50%',
+        position: 'absolute', top: '-14px', left: '50%',
         transform: 'translateX(-50%) rotate(-2deg)',
-        width: '120px',
-        height: '22px',
-        background: 'rgba(196,154,63,0.35)',
-        borderRadius: '2px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-        zIndex: 10,
-      }} />
+        zIndex: 10, width: '130px',
+      }}>
+        <img
+          src="/assets/components/22.png" alt=""
+          style={{ width: '130px', objectFit: 'contain', mixBlendMode: 'multiply', opacity: 0.9, display: 'block' }}
+        />
+      </div>
 
       {/* Tear edge top */}
       <div className="tear-edge-top" />

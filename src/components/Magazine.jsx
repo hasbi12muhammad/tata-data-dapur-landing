@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import {
-  BayLeafIllustration, GingerIllustration, TomatoIllustration,
-  PeppercornScatterIllustration, SparkleIllustration,
-} from './illustrations/index'
+import SpiceImg from './SpiceImg'
+import { SparkleIllustration } from './illustrations/index'
+
+const A = '/assets/components/'
 
 export default function Magazine() {
   const sectionRef = useRef(null)
@@ -40,10 +40,8 @@ export default function Magazine() {
       ref={sectionRef}
       style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
     >
-      <div style={{
-        maxWidth: '1200px', margin: '0 auto',
-        display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'center',
-      }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'center' }}>
+
         {/* Left: Terracotta card */}
         <div ref={leftRef}>
           <div style={{
@@ -51,43 +49,32 @@ export default function Magazine() {
             position: 'relative', overflow: 'hidden',
             display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '28px',
           }}>
-            <div style={{
-              position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.05,
-              backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px',
-            }} />
-            <div style={{ position: 'absolute', bottom: '80px', right: '-10px', color: 'rgba(251,246,236,0.15)', zIndex: 1, transform: 'rotate(-15deg)' }}>
-              <BayLeafIllustration style={{ width: 35, height: 70 }} />
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.05, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
+
+            {/* Illustrations inside terracotta card */}
+            <div style={{ position: 'absolute', bottom: '70px', right: '-8px', zIndex: 1 }}>
+              <SpiceImg src={`${A}14.png`} bg="terracotta" width={55} height={80} style={{ transform: 'rotate(-15deg)' }} />
             </div>
-            <div style={{ position: 'absolute', top: '80px', right: '16px', color: 'rgba(251,246,236,0.12)', zIndex: 1, transform: 'rotate(10deg)' }}>
-              <PeppercornScatterIllustration style={{ width: 50, height: 36 }} />
+            <div style={{ position: 'absolute', top: '85px', right: '12px', zIndex: 1 }}>
+              <SpiceImg src={`${A}9.png`} bg="terracotta" width={55} height={38} style={{ transform: 'rotate(5deg)' }} />
             </div>
-            <div style={{ position: 'absolute', bottom: '16px', left: '16px', color: 'rgba(251,246,236,0.1)', zIndex: 1 }}>
-              <GingerIllustration style={{ width: 65, height: 46 }} />
+            <div style={{ position: 'absolute', bottom: '12px', left: '12px', zIndex: 1 }}>
+              <SpiceImg src={`${A}11.png`} bg="terracotta" width={75} height={48} />
             </div>
+
             <div style={{ position: 'absolute', top: '80px', left: '28px', fontFamily: 'Fraunces, Georgia, serif', fontSize: '8rem', color: 'rgba(251,246,236,0.08)', lineHeight: 1, userSelect: 'none', zIndex: 1 }}>"</div>
 
             <div style={{ position: 'relative', zIndex: 2 }}>
-              <span style={{
-                display: 'inline-block', background: 'rgba(251,246,236,0.15)', color: '#FBF6EC',
-                fontFamily: '"DM Mono", monospace', fontSize: '0.62rem',
-                letterSpacing: '0.1em', textTransform: 'uppercase',
-                padding: '6px 12px', borderRadius: '100px', border: '1px solid rgba(251,246,236,0.25)',
-              }}>
+              <span style={{ display: 'inline-block', background: 'rgba(251,246,236,0.15)', color: '#FBF6EC', fontFamily: '"DM Mono", monospace', fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '6px 12px', borderRadius: '100px', border: '1px solid rgba(251,246,236,0.25)' }}>
                 Studi Kasus
               </span>
             </div>
 
             <div style={{ position: 'relative', zIndex: 2 }}>
-              <blockquote style={{
-                fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic',
-                fontSize: '1.12rem', color: '#FBF6EC', lineHeight: 1.55, margin: 0, marginBottom: '16px',
-              }}>
+              <blockquote style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.12rem', color: '#FBF6EC', lineHeight: 1.55, margin: 0, marginBottom: '16px' }}>
                 "Akhirnya saya tahu menu mana yang sebenarnya bikin untung, dan mana yang ternyata cuma capek di dapur."
               </blockquote>
-              <cite style={{
-                fontFamily: '"DM Mono", monospace', fontSize: '0.62rem',
-                color: 'rgba(251,246,236,0.62)', letterSpacing: '0.06em', fontStyle: 'normal',
-              }}>
+              <cite style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.62rem', color: 'rgba(251,246,236,0.62)', letterSpacing: '0.06em', fontStyle: 'normal' }}>
                 — Bu Sari, Warung Sari Rasa
               </cite>
             </div>
@@ -99,31 +86,22 @@ export default function Magazine() {
           <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '20px' }}>
             Kenapa penting
           </div>
-          <h2 style={{
-            fontFamily: 'Fraunces, Georgia, serif',
-            fontSize: 'clamp(2.2rem, 3.5vw, 3.2rem)',
-            color: '#1B1208', fontWeight: 400, marginBottom: '28px', lineHeight: 1.1,
-          }}>
+          <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(2.2rem, 3.5vw, 3.2rem)', color: '#1B1208', fontWeight: 400, marginBottom: '28px', lineHeight: 1.1 }}>
             Dari intuisi, ke <em>data.</em>
           </h2>
-          <p style={{
-            fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.95rem',
-            color: 'rgba(27,18,8,0.68)', lineHeight: 1.78, overflow: 'hidden',
-          }}>
-            <span style={{
-              fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic',
-              fontSize: '4.5rem', color: '#B5532A', float: 'left',
-              lineHeight: 0.85, marginRight: '0.08em', marginBottom: '-0.1em', paddingTop: '0.05em',
-            }}>K</span>
+          <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.95rem', color: 'rgba(27,18,8,0.68)', lineHeight: 1.78, overflow: 'hidden' }}>
+            <span style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '4.5rem', color: '#B5532A', float: 'left', lineHeight: 0.85, marginRight: '0.08em', marginBottom: '-0.1em', paddingTop: '0.05em' }}>K</span>
             ami bangun Tata Data Dapur karena banyak pemilik warung yang hebat dalam memasak, tapi kesulitan melihat angka bisnis mereka dengan jelas. Dengan data yang tepat, setiap keputusan jadi lebih percaya diri.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '24px', marginBottom: '8px' }}>
-            <TomatoIllustration style={{ width: 34, height: 34, color: '#B5532A', opacity: 0.48 }} />
+          {/* Divider with tomato accent */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '24px', marginBottom: '8px' }}>
+            <SpiceImg src={`${A}15.png`} bg="cream" width={38} height={36} />
             <div style={{ flex: 1, height: '1px', background: 'rgba(27,18,8,0.12)' }} />
             <SparkleIllustration size={8} style={{ color: '#C49A3F', opacity: 0.5 }} />
           </div>
 
+          {/* Stats */}
           <div style={{ paddingTop: '28px' }}>
             <div ref={statsRef} style={{ display: 'flex', gap: '40px', alignItems: 'flex-start' }}>
               {[
@@ -132,10 +110,7 @@ export default function Magazine() {
                 { number: '0', suffix: '', label: 'Spreadsheet' },
               ].map(stat => (
                 <div key={stat.label} style={{ flex: 1 }}>
-                  <div className="stat-number" style={{
-                    fontFamily: 'Fraunces, Georgia, serif', fontSize: '2.8rem',
-                    color: '#1B1208', fontWeight: 400, lineHeight: 1, marginBottom: '6px',
-                  }}>
+                  <div className="stat-number" style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '2.8rem', color: '#1B1208', fontWeight: 400, lineHeight: 1, marginBottom: '6px' }}>
                     {stat.number}<em style={{ color: '#B5532A' }}>{stat.suffix}</em>
                   </div>
                   <div style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(27,18,8,0.52)' }}>

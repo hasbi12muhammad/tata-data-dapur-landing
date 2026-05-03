@@ -1,74 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { HerbsIllustration, SparkleIllustration } from './illustrations/index'
+import SpiceImg from './SpiceImg'
+import { SparkleIllustration } from './illustrations/index'
+
+const A = '/assets/components/'
 
 const faqs = [
-  {
-    q: 'Apakah Tata Data Dapur gratis?',
-    a: 'Kami menyediakan masa uji coba gratis 14 hari tanpa memerlukan kartu kredit. Setelah itu, tersedia paket langganan yang sesuai dengan skala bisnis kamu.',
-    defaultOpen: true,
-  },
-  {
-    q: 'Apakah data saya aman?',
-    a: 'Data kamu dienkripsi dan di-backup secara otomatis setiap hari. Kami menggunakan infrastruktur cloud tier enterprise.',
-  },
-  {
-    q: 'Bisnis apa saja yang cocok?',
-    a: 'Tata Data Dapur cocok untuk warung makan, restoran, kafe, katering, bakeri, dan semua jenis usaha kuliner.',
-  },
-  {
-    q: 'Berapa lama waktu setup?',
-    a: 'Kurang dari 30 menit. Kami menyediakan panduan onboarding dan template resep yang bisa langsung digunakan.',
-  },
-  {
-    q: 'Apakah ada dukungan teknis?',
-    a: 'Ya, kami menyediakan dukungan via WhatsApp dan email pada jam kerja.',
-  },
+  { q: 'Apakah Tata Data Dapur gratis?', a: 'Kami menyediakan masa uji coba gratis 14 hari tanpa memerlukan kartu kredit. Setelah itu, tersedia paket langganan yang sesuai dengan skala bisnis kamu.', defaultOpen: true },
+  { q: 'Apakah data saya aman?', a: 'Data kamu dienkripsi dan di-backup secara otomatis setiap hari. Kami menggunakan infrastruktur cloud tier enterprise.' },
+  { q: 'Bisnis apa saja yang cocok?', a: 'Tata Data Dapur cocok untuk warung makan, restoran, kafe, katering, bakeri, dan semua jenis usaha kuliner.' },
+  { q: 'Berapa lama waktu setup?', a: 'Kurang dari 30 menit. Kami menyediakan panduan onboarding dan template resep yang bisa langsung digunakan.' },
+  { q: 'Apakah ada dukungan teknis?', a: 'Ya, kami menyediakan dukungan via WhatsApp dan email pada jam kerja.' },
 ]
 
 function FAQItem({ faq, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen || false)
-
   return (
     <div style={{ borderBottom: '1px dashed rgba(27,18,8,0.18)', paddingTop: '20px', paddingBottom: '20px' }}>
-      <button
-        onClick={() => setOpen(!open)}
-        style={{
-          width: '100%', display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', gap: '16px',
-          background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left',
-        }}
-      >
-        <span style={{
-          fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic',
-          fontSize: '1.05rem', color: '#1B1208', fontWeight: 400, flex: 1,
-        }}>
-          {faq.q}
-        </span>
-        <span style={{
-          width: '30px', height: '30px', borderRadius: '50%',
-          border: `1px solid ${open ? 'rgba(181,83,42,0.4)' : 'rgba(27,18,8,0.2)'}`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-          fontSize: '1.1rem', color: open ? '#B5532A' : '#1B1208',
-          transition: 'transform 0.3s ease, color 0.3s ease, border-color 0.3s ease',
-          transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
-          fontFamily: 'system-ui, sans-serif', lineHeight: 1,
-        }}>
-          +
-        </span>
+      <button onClick={() => setOpen(!open)} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}>
+        <span style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.05rem', color: '#1B1208', fontWeight: 400, flex: 1 }}>{faq.q}</span>
+        <span style={{ width: '30px', height: '30px', borderRadius: '50%', border: `1px solid ${open ? 'rgba(181,83,42,0.4)' : 'rgba(27,18,8,0.2)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '1.1rem', color: open ? '#B5532A' : '#1B1208', transition: 'transform 0.3s ease, color 0.3s ease, border-color 0.3s ease', transform: open ? 'rotate(45deg)' : 'rotate(0deg)', fontFamily: 'system-ui', lineHeight: 1 }}>+</span>
       </button>
-      <div style={{
-        overflow: 'hidden',
-        maxHeight: open ? '300px' : '0',
-        transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      }}>
-        <p style={{
-          fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem',
-          color: 'rgba(27,18,8,0.62)', lineHeight: 1.72, margin: 0, paddingTop: '12px',
-        }}>
-          {faq.a}
-        </p>
+      <div style={{ overflow: 'hidden', maxHeight: open ? '300px' : '0', transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+        <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem', color: 'rgba(27,18,8,0.62)', lineHeight: 1.72, margin: 0, paddingTop: '12px' }}>{faq.a}</p>
       </div>
     </div>
   )
@@ -89,63 +44,35 @@ export default function FAQ() {
   }, [])
 
   return (
-    <section
-      id="faq"
-      ref={sectionRef}
-      style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
-    >
-      <div style={{
-        maxWidth: '1200px', margin: '0 auto',
-        display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'start',
-      }}>
+    <section id="faq" ref={sectionRef} style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'start' }}>
+
         {/* Left */}
         <div className="faq-animate" style={{ paddingTop: '20px', position: 'relative' }}>
-          {/* Decorative herb illustration */}
-          <div style={{
-            position: 'absolute', top: '-10px', right: '-20px',
-            color: '#5A6B3B', opacity: 0.3,
-            transform: 'rotate(10deg)',
-          }}>
-            <HerbsIllustration style={{ width: 40, height: 62 }} />
+          {/* Herb illustration */}
+          <div style={{ position: 'absolute', top: '-15px', right: '-15px', transform: 'rotate(8deg)' }}>
+            <SpiceImg src={`${A}4.png`} bg="cream" width={58} height={58} opacity={0.55} />
+          </div>
+          {/* Basil bottom */}
+          <div style={{ position: 'absolute', bottom: '0px', right: '-10px', transform: 'rotate(-5deg)' }}>
+            <SpiceImg src={`${A}5.png`} bg="cream" width={48} height={48} opacity={0.45} />
           </div>
 
-          <div style={{
-            fontFamily: '"DM Mono", monospace', fontSize: '0.65rem',
-            color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px',
-          }}>
-            — FAQ
-          </div>
-
-          <h2 style={{
-            fontFamily: 'Fraunces, Georgia, serif',
-            fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-            color: '#1B1208', fontWeight: 400, lineHeight: 1.15, marginBottom: '20px',
-          }}>
+          <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: '#B5532A', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>— FAQ</div>
+          <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#1B1208', fontWeight: 400, lineHeight: 1.15, marginBottom: '20px' }}>
             Pertanyaan yang sering <em>ditanya.</em>
           </h2>
-          <p style={{
-            fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem',
-            color: 'rgba(27,18,8,0.52)', lineHeight: 1.7, margin: 0,
-          }}>
+          <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem', color: 'rgba(27,18,8,0.52)', lineHeight: 1.7, margin: 0 }}>
             Ada hal lain yang ingin kamu tanyakan? Hubungi kami langsung.
           </p>
-          <a
-            href="https://wa.me/6281234567890"
-            target="_blank" rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px',
-              fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', fontWeight: 500,
-              color: '#1B1208', textDecoration: 'none',
-              borderBottom: '1px solid rgba(27,18,8,0.25)', paddingBottom: '2px',
-              transition: 'opacity 0.2s ease',
-            }}
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#1B1208', textDecoration: 'none', borderBottom: '1px solid rgba(27,18,8,0.25)', paddingBottom: '2px', transition: 'opacity 0.2s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.62'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Hubungi via WhatsApp →
           </a>
 
-          {/* Sparkle accent */}
           <div style={{ display: 'flex', gap: '8px', marginTop: '40px', alignItems: 'center' }}>
             <SparkleIllustration size={8} style={{ color: '#C49A3F', opacity: 0.6 }} />
             <div style={{ height: '1px', width: '40px', background: 'rgba(27,18,8,0.12)' }} />
@@ -153,11 +80,9 @@ export default function FAQ() {
           </div>
         </div>
 
-        {/* Right: FAQ list */}
+        {/* Right */}
         <div className="faq-animate">
-          {faqs.map((faq, i) => (
-            <FAQItem key={i} faq={faq} defaultOpen={faq.defaultOpen} />
-          ))}
+          {faqs.map((faq, i) => <FAQItem key={i} faq={faq} defaultOpen={faq.defaultOpen} />)}
         </div>
       </div>
     </section>

@@ -51,32 +51,19 @@ export default function Navbar() {
       {/* Logo + Wordmark */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{
-          width: '34px',
-          height: '34px',
-          background: '#1B1208',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
+          width: '34px', height: '34px',
+          background: '#1B1208', borderRadius: '50%',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0, overflow: 'hidden',
         }}>
-          <span style={{
-            fontFamily: 'Fraunces, Georgia, serif',
-            fontStyle: 'italic',
-            fontSize: '0.9rem',
-            color: '#F4EDE0',
-            fontWeight: 400,
-            letterSpacing: '-0.02em',
-          }}>
-            td
-          </span>
+          <img
+            src="/assets/td-logo.png" alt="TD"
+            style={{ width: '26px', height: '26px', objectFit: 'contain', mixBlendMode: 'multiply', filter: 'invert(1) brightness(0.85)' }}
+          />
         </div>
         <span style={{
-          fontFamily: 'Fraunces, Georgia, serif',
-          fontSize: '0.95rem',
-          color: '#1B1208',
-          fontWeight: 400,
-          letterSpacing: '-0.01em',
+          fontFamily: 'Fraunces, Georgia, serif', fontSize: '0.95rem',
+          color: '#1B1208', fontWeight: 400, letterSpacing: '-0.01em',
         }}>
           Tata Data Dapur
         </span>
