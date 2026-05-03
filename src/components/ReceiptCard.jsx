@@ -8,8 +8,8 @@ export default function ReceiptCard() {
     if (!cardRef.current) return
 
     gsap.from(cardRef.current, {
-      y: 30,
-      rotation: -5,
+      y: 40,
+      rotation: 0,
       opacity: 0,
       duration: 1.2,
       ease: 'power3.out',
@@ -27,10 +27,10 @@ export default function ReceiptCard() {
       const deltaY = (e.clientY - centerY) / rect.height
 
       gsap.to(cardRef.current, {
-        rotateY: deltaX * 6,
-        rotateX: -deltaY * 4,
-        x: deltaX * 10,
-        y: deltaY * 8,
+        rotateY: deltaX * 5,
+        rotateX: -deltaY * 3,
+        x: deltaX * 8,
+        y: deltaY * 6,
         duration: 0.8,
         ease: 'power2.out',
       })
@@ -52,24 +52,51 @@ export default function ReceiptCard() {
   }, [])
 
   return (
-    <div
-      ref={cardRef}
-      style={{
-        transform: 'rotate(-1.5deg)',
-        perspective: '1000px',
-        transformStyle: 'preserve-3d',
-        width: '320px',
-        maxWidth: '100%',
-        position: 'relative',
-        userSelect: 'none',
-      }}
-    >
-      <img
-        src="/assets/receipt.png"
-        alt="Laporan harian Warung Bu Sari"
-        style={{ width: '100%', display: 'block', objectFit: 'contain' }}
-        draggable={false}
-      />
+    <div style={{ position: 'relative', width: '380px', maxWidth: '100%', userSelect: 'none' }}>
+
+      {/* Soft shadow layer behind the card */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        transform: 'rotate(5deg) translate(10px, 14px)',
+        background: 'rgba(27,18,8,0.18)',
+        borderRadius: '6px',
+        filter: 'blur(18px)',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }} />
+
+      {/* Receipt card — tilted right */}
+      <div
+        ref={cardRef}
+        style={{
+          transform: 'rotate(4deg)',
+          perspective: '1000px',
+          transformStyle: 'preserve-3d',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        <img
+          src="/assets/receipt.png"
+          alt="Laporan harian Warung Bu Sari"
+          style={{ width: '100%', display: 'block', objectFit: 'contain' }}
+          draggable={false}
+        />
+
+        {/* Stain / noda effect — very subtle brown blobs */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          borderRadius: '4px',
+          background: `
+            radial-gradient(ellipse 90px 55px at 28% 52%, rgba(120,72,30,0.07) 0%, transparent 70%),
+            radial-gradient(ellipse 65px 45px at 72% 28%, rgba(100,58,20,0.055) 0%, transparent 70%),
+            radial-gradient(ellipse 50px 35px at 55% 78%, rgba(110,65,25,0.045) 0%, transparent 70%)
+          `,
+        }} />
+      </div>
     </div>
   )
 }
