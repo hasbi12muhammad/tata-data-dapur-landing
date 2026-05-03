@@ -46,22 +46,22 @@ export default function HowItWorks() {
       {/* Corner PNG illustrations on dark bg */}
       <div style={{ position: 'absolute', bottom: '16px', left: '16px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-5deg)' }}>
-          <SpiceImg src={`${A}7.png`} bg="dark" width={88} height={88} />
+          <SpiceImg src={`${A}7.png`} bg="dark" width={264} height={264} />
         </div>
       </div>
       <div style={{ position: 'absolute', top: '24px', right: '36px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(12deg)' }}>
-          <SpiceImg src={`${A}8.png`} bg="dark" width={95} height={62} />
+          <SpiceImg src={`${A}8.png`} bg="dark" width={285} height={186} />
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: '36px', right: '56px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-8deg)' }}>
-          <SpiceImg src={`${A}1.png`} bg="dark" width={78} height={78} />
+          <SpiceImg src={`${A}1.png`} bg="dark" width={234} height={234} />
         </div>
       </div>
       <div style={{ position: 'absolute', top: '50%', left: '36px', zIndex: 1, transform: 'translateY(-50%)' }}>
         <div style={{ transform: 'rotate(5deg)' }}>
-          <SpiceImg src={`${A}12.png`} bg="dark" width={82} height={50} />
+          <SpiceImg src={`${A}12.png`} bg="dark" width={246} height={150} />
         </div>
       </div>
 

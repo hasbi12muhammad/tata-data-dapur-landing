@@ -52,8 +52,7 @@ export default function Navbar() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{
           width: '34px', height: '34px',
-          background: '#F4EDE0', borderRadius: '50%',
-          border: '1.5px solid rgba(27,18,8,0.15)',
+          background: '#1B1208', borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0, overflow: 'hidden',
         }}>

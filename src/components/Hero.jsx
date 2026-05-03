@@ -117,49 +117,49 @@ export default function Hero() {
           {/* Garlic — large, top left */}
           <div className="illus-item" style={{ position: 'absolute', top: '0px', left: '-30px', zIndex: 2 }}>
             <div style={floatStyle(-8, '4.5s', '0s')}>
-              <SpiceImg src={`${A}1.png`} bg="cream" width={110} height={110} />
+              <SpiceImg src={`${A}1.png`} bg="cream" width={330} height={330} />
             </div>
           </div>
 
           {/* Onions — medium, bottom left */}
           <div className="illus-item" style={{ position: 'absolute', bottom: '30px', left: '-10px', zIndex: 2 }}>
             <div style={floatStyle(-12, '5s', '1.2s')}>
-              <SpiceImg src={`${A}2.png`} bg="cream" width={95} height={85} />
+              <SpiceImg src={`${A}2.png`} bg="cream" width={285} height={255} />
             </div>
           </div>
 
           {/* Chili — tall, right side center */}
           <div className="illus-item" style={{ position: 'absolute', top: '38%', right: '-35px', zIndex: 2, transform: 'translateY(-50%)' }}>
             <div style={floatStyle(15, '3.8s', '0.6s')}>
-              <SpiceImg src={`${A}3.png`} bg="cream" width={95} height={75} />
+              <SpiceImg src={`${A}3.png`} bg="cream" width={285} height={225} />
             </div>
           </div>
 
           {/* Star anise — top right */}
           <div className="illus-item" style={{ position: 'absolute', top: '15px', right: '5px', zIndex: 2 }}>
             <div style={floatStyle(18, '4.2s', '2s')}>
-              <SpiceImg src={`${A}7.png`} bg="cream" width={72} height={72} />
+              <SpiceImg src={`${A}7.png`} bg="cream" width={216} height={216} />
             </div>
           </div>
 
           {/* Bay leaf branch — bottom right */}
           <div className="illus-item" style={{ position: 'absolute', bottom: '40px', right: '-15px', zIndex: 2 }}>
             <div style={floatStyle(-12, '5.5s', '1.5s')}>
-              <SpiceImg src={`${A}6.png`} bg="cream" width={80} height={70} />
+              <SpiceImg src={`${A}6.png`} bg="cream" width={240} height={210} />
             </div>
           </div>
 
           {/* Cinnamon sticks — upper right area */}
           <div className="illus-item" style={{ position: 'absolute', top: '130px', right: '-28px', zIndex: 2 }}>
             <div style={floatStyle(-5, '4.8s', '0.8s')}>
-              <SpiceImg src={`${A}8.png`} bg="cream" width={82} height={54} />
+              <SpiceImg src={`${A}8.png`} bg="cream" width={246} height={162} />
             </div>
           </div>
 
           {/* Peppercorns — subtle bottom scatter */}
           <div className="illus-item" style={{ position: 'absolute', bottom: '10px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
             <div>
-              <SpiceImg src={`${A}10.png`} bg="cream" width={65} height={44} opacity={0.3} />
+              <SpiceImg src={`${A}10.png`} bg="cream" width={195} height={132} opacity={0.3} />
             </div>
           </div>
 

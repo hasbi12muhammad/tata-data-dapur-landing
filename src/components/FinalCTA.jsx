@@ -45,32 +45,32 @@ export default function FinalCTA() {
       {/* PNG illustrations — outer div is GSAP target (opacity only), inner div carries rotation */}
       <div className="cta-illus" style={{ position: 'absolute', top: '24px', left: '150px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-12deg)' }}>
-          <SpiceImg src={`${A}1.png`} bg="terracotta" width={90} height={90} />
+          <SpiceImg src={`${A}1.png`} bg="terracotta" width={270} height={270} />
         </div>
       </div>
       <div className="cta-illus" style={{ position: 'absolute', bottom: '-10px', left: '80px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(8deg)' }}>
-          <SpiceImg src={`${A}20.png`} bg="terracotta" width={100} height={88} />
+          <SpiceImg src={`${A}20.png`} bg="terracotta" width={300} height={264} />
         </div>
       </div>
       <div className="cta-illus" style={{ position: 'absolute', top: '16px', right: '140px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(18deg)' }}>
-          <SpiceImg src={`${A}3.png`} bg="terracotta" width={95} height={75} />
+          <SpiceImg src={`${A}3.png`} bg="terracotta" width={285} height={225} />
         </div>
       </div>
       <div className="cta-illus" style={{ position: 'absolute', bottom: '-10px', right: '70px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-6deg)' }}>
-          <SpiceImg src={`${A}7.png`} bg="terracotta" width={75} height={75} />
+          <SpiceImg src={`${A}7.png`} bg="terracotta" width={225} height={225} />
         </div>
       </div>
       <div className="cta-illus" style={{ position: 'absolute', top: '50%', left: '55px', zIndex: 1, transform: 'translateY(-50%)' }}>
         <div style={{ transform: 'rotate(4deg)' }}>
-          <SpiceImg src={`${A}8.png`} bg="terracotta" width={80} height={52} />
+          <SpiceImg src={`${A}8.png`} bg="terracotta" width={240} height={156} />
         </div>
       </div>
       <div className="cta-illus" style={{ position: 'absolute', top: '50%', right: '50px', zIndex: 1, transform: 'translateY(-50%)' }}>
         <div style={{ transform: 'rotate(-14deg)' }}>
-          <SpiceImg src={`${A}13.png`} bg="terracotta" width={72} height={64} />
+          <SpiceImg src={`${A}13.png`} bg="terracotta" width={216} height={192} />
         </div>
       </div>
       {/* Content — animated as one block so nothing is staggered-invisible */}
