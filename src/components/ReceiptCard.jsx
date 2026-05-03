@@ -72,13 +72,14 @@ export default function ReceiptCard() {
     >
       {/* Washi Tape PNG */}
       <div style={{
-        position: 'absolute', top: '-14px', left: '50%',
+        position: 'absolute', top: '-22px', left: '50%',
         transform: 'translateX(-50%) rotate(-2deg)',
-        zIndex: 10, width: '130px',
+        zIndex: 10, width: '110px',
+        pointerEvents: 'none',
       }}>
         <img
           src="/assets/components/22.png" alt=""
-          style={{ width: '130px', objectFit: 'contain', mixBlendMode: 'multiply', opacity: 0.9, display: 'block' }}
+          style={{ width: '110px', objectFit: 'contain', opacity: 0.88, display: 'block' }}
         />
       </div>
 

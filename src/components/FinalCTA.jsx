@@ -73,12 +73,6 @@ export default function FinalCTA() {
           <SpiceImg src={`${A}13.png`} bg="terracotta" width={72} height={64} />
         </div>
       </div>
-      <div className="cta-illus" style={{ position: 'absolute', bottom: '20px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
-        <div>
-          <SpiceImg src={`${A}21.png`} bg="terracotta" width={60} height={60} opacity={0.2} />
-        </div>
-      </div>
-
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 2 }}>
         <div className="cta-animate" style={{ display: 'inline-block', background: 'rgba(251,246,236,0.12)', border: '1px solid rgba(251,246,236,0.25)', padding: '6px 16px', borderRadius: '100px', marginBottom: '28px', fontFamily: '"DM Mono", monospace', fontSize: '0.62rem', color: 'rgba(251,246,236,0.8)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>

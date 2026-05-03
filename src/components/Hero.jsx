@@ -32,8 +32,8 @@ export default function Hero() {
           y: 40, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
         }, '-=0.3')
         .from(subtextRef.current, { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-        .from(ctasRef.current.children, {
-          y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out',
+        .from(ctasRef.current, {
+          y: 20, opacity: 0, duration: 0.5, ease: 'power3.out',
         }, '-=0.3')
         // Opacity-only — never touches CSS transform, so rotation + float CSS stay intact
         .to(illusRef.current.querySelectorAll('.illus-item'), {
