@@ -63,7 +63,7 @@ export default function HowItWorks() {
       id="cara-kerja"
       ref={sectionRef}
       className="hiw-section"
-      style={{ background: '#1B1208', paddingTop: '72px', paddingBottom: '72px', paddingLeft: '48px', paddingRight: '48px', position: 'relative', overflow: 'hidden' }}
+      style={{ background: '#1B1208', paddingTop: '64px', paddingBottom: '64px', paddingLeft: '48px', paddingRight: '48px', position: 'relative', overflow: 'hidden' }}
     >
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.04, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
 
@@ -90,42 +90,34 @@ export default function HowItWorks() {
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <div className="hiw-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '72px' }}>
-          <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FBF6EC', fontWeight: 400, maxWidth: '500px' }}>
-            Tiga langkah <em>sederhana.</em>
-          </h2>
-          <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.65rem', color: 'rgba(196,154,63,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            — cara kerja
-          </div>
-        </div>
+        {/* Title — centered */}
+        <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: '#FBF6EC', fontWeight: 400, textAlign: 'center', marginBottom: '48px' }}>
+          Tiga langkah <em>sederhana.</em>
+        </h2>
 
-        <div ref={stepsRef} className="hiw-steps" style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+        {/* Steps — borderless, directly on dark bg */}
+        <div ref={stepsRef} className="hiw-steps" style={{ display: 'flex', alignItems: 'flex-start', gap: '0', maxWidth: '900px', margin: '0 auto' }}>
           {steps.map((step, i) => (
             <React.Fragment key={step.num}>
-              <div className="step-item" style={{
-                flex: 1, position: 'relative',
-                background: 'rgba(251,246,236,0.04)',
-                border: '1px solid rgba(251,246,236,0.08)',
-                borderRadius: '14px', padding: '22px 24px',
-              }}>
-                {/* Icon square */}
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', border: '1px solid rgba(196,154,63,0.3)', background: 'rgba(196,154,63,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
+              <div className="step-item" style={{ flex: 1, padding: '0 28px' }}>
+                {/* Icon circle */}
+                <div style={{ width: '42px', height: '42px', borderRadius: '50%', border: '1px solid rgba(196,154,63,0.4)', background: 'rgba(196,154,63,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                   {StepIcons[i]}
                 </div>
-                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.63rem', color: 'rgba(196,154,63,0.65)', letterSpacing: '0.03em', marginBottom: '10px' }}>
+                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.62rem', color: 'rgba(196,154,63,0.6)', letterSpacing: '0.03em', marginBottom: '8px' }}>
                   — Langkah {step.langkah}
                 </div>
-                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.35rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '10px', lineHeight: 1.2 }}>{step.title}</h3>
-                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.48)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
+                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.25rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '10px', lineHeight: 1.2 }}>{step.title}</h3>
+                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.45)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hiw-arrow" style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(196,154,63,0.4)', flexShrink: 0, userSelect: 'none', alignSelf: 'center' }}>→</div>
+                <div className="hiw-arrow" style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.2rem', color: 'rgba(196,154,63,0.35)', flexShrink: 0, userSelect: 'none', paddingTop: '10px' }}>→</div>
               )}
             </React.Fragment>
           ))}
         </div>
 
-        <div style={{ marginTop: '72px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
+        <div style={{ marginTop: '52px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
           <SparkleIllustration size={8} style={{ color: 'rgba(196,154,63,0.5)' }} />
           <a href="#cta" style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9rem', fontWeight: 500, background: '#F4EDE0', color: '#1B1208', padding: '14px 32px', borderRadius: '100px', textDecoration: 'none', boxShadow: '0 4px 20px rgba(244,237,224,0.1)', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(244,237,224,0.2)' }}
