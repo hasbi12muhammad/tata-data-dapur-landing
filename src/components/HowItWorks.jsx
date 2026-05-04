@@ -12,6 +12,31 @@ const steps = [
   { langkah: 'tiga', num: '03', title: 'Ambil Keputusan', desc: 'Data yang tepat untuk keputusan yang lebih menguntungkan.' },
 ]
 
+const StepArrow = () => (
+  <svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    {/* Slightly curved organic shaft */}
+    <path
+      d="M2 10 C14 8.5 28 11.5 38 10"
+      stroke="#C49A3F"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      opacity="0.6"
+    />
+    {/* Open arrowhead */}
+    <path
+      d="M33 5.5 L40 10 L33 14.5"
+      stroke="#C49A3F"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+      opacity="0.6"
+    />
+    {/* Small tail flourish */}
+    <circle cx="3" cy="10" r="1.5" fill="#C49A3F" opacity="0.35" />
+  </svg>
+)
+
 const StepIcons = [
   // Notebook / input
   <svg key="1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -111,7 +136,9 @@ export default function HowItWorks() {
                 <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.45)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hiw-arrow" style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.2rem', color: 'rgba(196,154,63,0.35)', flexShrink: 0, userSelect: 'none', paddingTop: '10px' }}>→</div>
+                <div className="hiw-arrow" style={{ flexShrink: 0, paddingTop: '12px', userSelect: 'none' }}>
+                  <StepArrow />
+                </div>
               )}
             </React.Fragment>
           ))}
