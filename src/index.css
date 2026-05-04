@@ -255,7 +255,8 @@ html.lenis {
   .hiw-section  { padding: 56px 20px !important; }
   .hiw-header   { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; margin-bottom: 36px !important; }
   .hiw-steps    { flex-direction: column !important; }
-  .hiw-arrow    { align-self: flex-start !important; transform: rotate(90deg) !important; margin-left: 30px !important; }
+  .hiw-arrow    { display: none !important; }
+  .step-item    { padding: 0 !important; }
   .hiw-corner-illus { display: none !important; }
 
   /* FAQ */
