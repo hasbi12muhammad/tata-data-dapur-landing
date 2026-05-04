@@ -13,10 +13,10 @@ const steps = [
 ]
 
 const StepArrow = () => (
-  <svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     {/* Slightly curved organic shaft */}
     <path
-      d="M2 10 C14 8.5 28 11.5 38 10"
+      d="M4 20 C28 17 56 23 76 20"
       stroke="#C49A3F"
       strokeWidth="1.1"
       strokeLinecap="round"
@@ -24,7 +24,7 @@ const StepArrow = () => (
     />
     {/* Open arrowhead */}
     <path
-      d="M33 5.5 L40 10 L33 14.5"
+      d="M76 11 L88 20 L76 29"
       stroke="#C49A3F"
       strokeWidth="1.1"
       strokeLinecap="round"
@@ -33,7 +33,7 @@ const StepArrow = () => (
       opacity="0.6"
     />
     {/* Small tail flourish */}
-    <circle cx="3" cy="10" r="1.5" fill="#C49A3F" opacity="0.35" />
+    <circle cx="6" cy="20" r="3" fill="#C49A3F" opacity="0.35" />
   </svg>
 )
 
@@ -121,10 +121,10 @@ export default function HowItWorks() {
         </h2>
 
         {/* Steps — borderless, directly on dark bg */}
-        <div ref={stepsRef} className="hiw-steps" style={{ display: 'flex', alignItems: 'flex-start', gap: '0', maxWidth: '900px', margin: '0 auto' }}>
+        <div ref={stepsRef} className="hiw-steps" style={{ display: 'flex', alignItems: 'flex-start', gap: '0' }}>
           {steps.map((step, i) => (
             <React.Fragment key={step.num}>
-              <div className="step-item" style={{ flex: 1, padding: '0 28px' }}>
+              <div className="step-item" style={{ flex: 1, padding: '0 40px' }}>
                 {/* Icon circle */}
                 <div style={{ width: '42px', height: '42px', borderRadius: '50%', border: '1px solid rgba(196,154,63,0.4)', background: 'rgba(196,154,63,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                   {StepIcons[i]}
