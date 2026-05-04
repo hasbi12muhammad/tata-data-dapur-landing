@@ -2,47 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-const features = [
-  {
-    num: '01',
-    title: 'HPP Otomatis',
-    desc: 'Hitung harga pokok produksi setiap resep secara otomatis. Tidak perlu kalkulator.',
-    dark: false,
-  },
-  {
-    num: '02',
-    title: 'Laporan Profit Harian',
-    desc: 'Lihat performa bisnis kamu setiap hari, real-time.',
-    dark: true,
-    chart: true,
-    span: 8,
-  },
-  {
-    num: '03',
-    title: 'Kelola Bahan Baku',
-    desc: 'Pantau stok bahan baku, harga beli, dan konsumsi harian.',
-    dark: false,
-  },
-  {
-    num: '04',
-    title: 'Manajemen Resep',
-    desc: 'Simpan resep lengkap dengan komposisi bahan dan kalkulasi HPP.',
-    dark: false,
-  },
-  {
-    num: '05',
-    title: 'Akses Dimanapun',
-    desc: 'Tersedia di browser dan mobile. Kerja dari mana saja.',
-    dark: false,
-  },
-  {
-    num: '06',
-    title: 'Data Aman',
-    desc: 'Backup otomatis. Data kamu tidak akan hilang.',
-    dark: false,
-  },
-]
-
 const chartBars = [40, 60, 45, 80, 55, 90, 70]
 
 function BarChart() {
@@ -56,375 +15,164 @@ function BarChart() {
         duration: 0.8,
         stagger: 0.08,
         ease: 'power3.out',
-        scrollTrigger: {
-          trigger: barsRef.current[0],
-          start: 'top 80%',
-        },
+        scrollTrigger: { trigger: barsRef.current[0], start: 'top 80%' },
       })
     })
     return () => ctx.revert()
   }, [])
 
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-end',
-      gap: '8px',
-      height: '80px',
-      marginTop: '24px',
-    }}>
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '72px', marginTop: '16px' }}>
       {chartBars.map((h, i) => (
         <div
           key={i}
           ref={(el) => (barsRef.current[i] = el)}
-          style={{
-            flex: 1,
-            height: `${h}%`,
-            background: '#C49A3F',
-            borderRadius: '4px 4px 0 0',
-            opacity: 0.7 + (i * 0.04),
-          }}
+          style={{ flex: 1, height: `${h}%`, background: '#C49A3F', borderRadius: '3px 3px 0 0', opacity: 0.55 + i * 0.05 }}
         />
       ))}
     </div>
   )
 }
 
+const CalcIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(181,83,42,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="2" width="16" height="20" rx="2"/>
+    <line x1="8" y1="7" x2="16" y2="7"/>
+    <line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/>
+    <line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/>
+    <line x1="8" y1="19" x2="10" y2="19"/><line x1="14" y1="19" x2="16" y2="19"/>
+  </svg>
+)
+
+const BoxIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(181,83,42,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+    <line x1="12" y1="22.08" x2="12" y2="12"/>
+  </svg>
+)
+
 export default function Features() {
   const sectionRef = useRef(null)
-  const row1Ref = useRef(null)
-  const row2Ref = useRef(null)
-  const row3Ref = useRef(null)
+  const cardsRef = useRef(null)
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     const ctx = gsap.context(() => {
-      const animRow = (ref) => {
-        if (!ref.current) return
-        gsap.from(ref.current.children, {
-          y: 40,
-          opacity: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: ref.current,
-            start: 'top 80%',
-          },
+      gsap.from(sectionRef.current.querySelector('h2'), {
+        y: 30, opacity: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
+      })
+      if (cardsRef.current) {
+        gsap.from(cardsRef.current.children, {
+          y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
         })
       }
-      animRow(row1Ref)
-      animRow(row2Ref)
-      animRow(row3Ref)
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
-  const cardBase = {
+  const cream = {
     background: '#FBF6EC',
     border: '1px solid rgba(181,83,42,0.1)',
     borderRadius: '16px',
-    padding: '32px',
-    boxShadow: '0 4px 24px rgba(27,18,8,0.08)',
+    padding: '28px',
+    boxShadow: '0 4px 24px rgba(27,18,8,0.06)',
     position: 'relative',
     overflow: 'hidden',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: '260px',
   }
 
-  const cardDark = {
-    ...cardBase,
+  const dark = {
     background: '#1B1208',
     border: '1px solid rgba(196,154,63,0.15)',
+    borderRadius: '16px',
+    padding: '28px',
+    boxShadow: '0 4px 24px rgba(27,18,8,0.18)',
+    position: 'relative',
+    overflow: 'hidden',
+    flex: 1.55,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: '260px',
   }
 
   return (
     <section
       id="fitur"
       ref={sectionRef}
-      style={{
-        paddingTop: '96px',
-        paddingBottom: '96px',
-        paddingLeft: '48px',
-        paddingRight: '48px',
-      }}
+      style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        {/* Section title */}
         <h2 style={{
           fontFamily: 'Fraunces, Georgia, serif',
-          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-          color: '#1B1208',
-          marginBottom: '56px',
-          fontWeight: 400,
-          maxWidth: '600px',
+          fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+          color: '#1B1208', marginBottom: '44px',
+          fontWeight: 400, textAlign: 'center',
         }}>
-          Semua yang dapur butuhkan,{' '}
-          <em>sudah ada.</em>
+          Semua yang dapur butuhkan, <em>sudah ada.</em>
         </h2>
 
-        {/* Row 1: Card 01 + Card 02 */}
-        <div
-          ref={row1Ref}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: '20px',
-            marginBottom: '20px',
-          }}
-        >
-          {/* Card 01 */}
-          <div style={{ ...cardBase, gridColumn: 'span 4' }}>
-            <div style={{
-              fontFamily: 'Fraunces, Georgia, serif',
-              fontStyle: 'italic',
-              fontSize: '5rem',
-              color: '#B5532A',
-              opacity: 0.18,
-              lineHeight: 1,
-              position: 'absolute',
-              top: '16px',
-              right: '20px',
-              userSelect: 'none',
-            }}>
-              01
-            </div>
-            <div style={{
-              fontFamily: '"DM Mono", monospace',
-              fontSize: '0.65rem',
-              color: '#B5532A',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
-            }}>
-              HPP Otomatis
-            </div>
-            <h3 style={{
-              fontFamily: 'Fraunces, Georgia, serif',
-              fontSize: '1.5rem',
-              color: '#1B1208',
-              marginBottom: '12px',
-              fontWeight: 400,
-            }}>
-              Kalkulasi instan untuk setiap resep
-            </h3>
-            <p style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: '0.88rem',
-              color: 'rgba(27,18,8,0.62)',
-              lineHeight: 1.65,
-              margin: 0,
-            }}>
-              Hitung harga pokok produksi setiap resep secara otomatis. Tidak perlu kalkulator.
-            </p>
-          </div>
+        <div ref={cardsRef} style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
 
-          {/* Card 02 - Dark Featured */}
-          <div style={{ ...cardDark, gridColumn: 'span 8' }}>
-            <div style={{
-              fontFamily: 'Fraunces, Georgia, serif',
-              fontStyle: 'italic',
-              fontSize: '5rem',
-              color: '#C49A3F',
-              opacity: 0.28,
-              lineHeight: 1,
-              position: 'absolute',
-              top: '16px',
-              right: '24px',
-              userSelect: 'none',
-            }}>
-              02
-            </div>
-            <div style={{
-              fontFamily: '"DM Mono", monospace',
-              fontSize: '0.65rem',
-              color: '#C49A3F',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
-            }}>
-              Laporan Profit Harian
-            </div>
-            <h3 style={{
-              fontFamily: 'Fraunces, Georgia, serif',
-              fontSize: '1.8rem',
-              color: '#FBF6EC',
-              marginBottom: '10px',
-              fontWeight: 400,
-              maxWidth: '420px',
-            }}>
-              Performa bisnis kamu, setiap hari
-            </h3>
-            <p style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: '0.88rem',
-              color: 'rgba(251,246,236,0.6)',
-              lineHeight: 1.65,
-              margin: 0,
-              maxWidth: '360px',
-            }}>
-              Lihat performa bisnis kamu setiap hari, real-time.
-            </p>
-            <BarChart />
-            {/* Day labels */}
-            <div style={{
-              display: 'flex',
-              gap: '8px',
-              marginTop: '8px',
-            }}>
-              {['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'].map((d) => (
-                <div key={d} style={{
-                  flex: 1,
-                  fontFamily: '"DM Mono", monospace',
-                  fontSize: '0.55rem',
-                  color: 'rgba(251,246,236,0.3)',
-                  textAlign: 'center',
-                }}>
-                  {d}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Row 2: Card 03 + 04 + 05 */}
-        <div
-          ref={row2Ref}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: '20px',
-            marginBottom: '20px',
-          }}
-        >
-          {[
-            {
-              num: '03',
-              title: 'Kelola Bahan Baku',
-              desc: 'Pantau stok bahan baku, harga beli, dan konsumsi harian.',
-            },
-            {
-              num: '04',
-              title: 'Manajemen Resep',
-              desc: 'Simpan resep lengkap dengan komposisi bahan dan kalkulasi HPP.',
-            },
-            {
-              num: '05',
-              title: 'Akses Dimanapun',
-              desc: 'Tersedia di browser dan mobile. Kerja dari mana saja.',
-            },
-          ].map((card) => (
-            <div key={card.num} style={{ ...cardBase, gridColumn: 'span 4' }}>
-              <div style={{
-                fontFamily: 'Fraunces, Georgia, serif',
-                fontStyle: 'italic',
-                fontSize: '5rem',
-                color: '#B5532A',
-                opacity: 0.18,
-                lineHeight: 1,
-                position: 'absolute',
-                top: '16px',
-                right: '20px',
-                userSelect: 'none',
-              }}>
-                {card.num}
-              </div>
-              <div style={{
-                fontFamily: '"DM Mono", monospace',
-                fontSize: '0.65rem',
-                color: '#B5532A',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginBottom: '12px',
-              }}>
-                {card.title}
-              </div>
-              <p style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: '0.88rem',
-                color: 'rgba(27,18,8,0.62)',
-                lineHeight: 1.65,
-                margin: 0,
-                marginTop: '40px',
-              }}>
-                {card.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Row 3: Card 06 */}
-        <div ref={row3Ref}>
-          <div style={{
-            ...cardBase,
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '40px',
-            alignItems: 'center',
-          }}>
+          {/* 01 — HPP Otomatis */}
+          <div style={cream}>
             <div>
-              <div style={{
-                fontFamily: '"DM Mono", monospace',
-                fontSize: '0.65rem',
-                color: '#B5532A',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginBottom: '12px',
-              }}>
-                Data Aman
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
+                <span style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '2.2rem', color: '#B5532A', opacity: 0.35, lineHeight: 1 }}>01</span>
+                <CalcIcon />
               </div>
-              <h3 style={{
-                fontFamily: 'Fraunces, Georgia, serif',
-                fontSize: '1.8rem',
-                color: '#1B1208',
-                marginBottom: '12px',
-                fontWeight: 400,
-              }}>
-                Backup otomatis, selalu aman
-              </h3>
-              <p style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: '0.9rem',
-                color: 'rgba(27,18,8,0.62)',
-                lineHeight: 1.65,
-                margin: 0,
-              }}>
-                Backup otomatis setiap hari. Data kamu tidak akan hilang, tersimpan di infrastruktur cloud enterprise yang aman.
+              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.6rem', color: '#B5532A', letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: '10px' }}>HPP Otomatis</div>
+              <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.25rem', color: '#1B1208', fontWeight: 400, lineHeight: 1.2, margin: 0, marginBottom: '12px' }}>Kalkulasi instan setiap resep</h3>
+            </div>
+            <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.83rem', color: 'rgba(27,18,8,0.58)', lineHeight: 1.65, margin: 0 }}>
+              Hitung HPP setiap menu secara otomatis dan akurat, tanpa perhitungan manual.
+            </p>
+          </div>
+
+          {/* 02 — Laporan Profit Harian (dark center) */}
+          <div style={dark}>
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+                <span style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '2.2rem', color: '#C49A3F', opacity: 0.45, lineHeight: 1 }}>02</span>
+              </div>
+              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.6rem', color: '#C49A3F', letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: '10px' }}>Laporan Profit Harian</div>
+              <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.45rem', color: '#FBF6EC', fontWeight: 400, lineHeight: 1.2, margin: 0, marginBottom: '10px', maxWidth: '260px' }}>Pantau penjualan, HPP, dan profit</h3>
+              <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.83rem', color: 'rgba(251,246,236,0.5)', lineHeight: 1.65, margin: 0 }}>
+                Visualisasi yang mudah dipahami setiap hari.
               </p>
             </div>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '20px',
-            }}>
-              {['256-bit', 'SSL', 'Daily Backup', 'Cloud'].map((badge) => (
-                <div key={badge} style={{
-                  padding: '10px 16px',
-                  border: '1px solid rgba(90,107,59,0.3)',
-                  borderRadius: '8px',
-                  fontFamily: '"DM Mono", monospace',
-                  fontSize: '0.7rem',
-                  color: '#5A6B3B',
-                  background: 'rgba(90,107,59,0.06)',
-                }}>
-                  {badge}
-                </div>
-              ))}
-            </div>
-            <div style={{
-              fontFamily: 'Fraunces, Georgia, serif',
-              fontStyle: 'italic',
-              fontSize: '5rem',
-              color: '#B5532A',
-              opacity: 0.18,
-              lineHeight: 1,
-              position: 'absolute',
-              top: '16px',
-              right: '20px',
-              userSelect: 'none',
-            }}>
-              06
+            <div>
+              <BarChart />
+              <div style={{ display: 'flex', gap: '6px', marginTop: '6px' }}>
+                {['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'].map(d => (
+                  <div key={d} style={{ flex: 1, fontFamily: '"DM Mono", monospace', fontSize: '0.48rem', color: 'rgba(251,246,236,0.25)', textAlign: 'center' }}>{d}</div>
+                ))}
+              </div>
             </div>
           </div>
+
+          {/* 03 — Kelola Bahan Baku */}
+          <div style={cream}>
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
+                <span style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '2.2rem', color: '#B5532A', opacity: 0.35, lineHeight: 1 }}>03</span>
+                <BoxIcon />
+              </div>
+              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.6rem', color: '#B5532A', letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: '10px' }}>Kelola Bahan Baku</div>
+              <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.25rem', color: '#1B1208', fontWeight: 400, lineHeight: 1.2, margin: 0, marginBottom: '12px' }}>Catat stok, harga beli, dan pemakaian</h3>
+            </div>
+            <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.83rem', color: 'rgba(27,18,8,0.58)', lineHeight: 1.65, margin: 0 }}>
+              Pantau stok bahan baku secara real-time.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>

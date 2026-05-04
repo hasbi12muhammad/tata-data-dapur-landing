@@ -7,9 +7,32 @@ import { SparkleIllustration } from './illustrations/index'
 const A = '/assets/components/'
 
 const steps = [
-  { langkah: 'satu', num: '01', title: 'Catat & Input', desc: 'Masukkan bahan baku, resep, dan harga jual sekali saja.' },
-  { langkah: 'dua', num: '02', title: 'Proses Otomatis', desc: 'Sistem menghitung HPP, profit, dan laporan keuangan untuk kamu.' },
-  { langkah: 'tiga', num: '03', title: 'Ambil Keputusan', desc: 'Lihat data real-time dan putuskan langkah bisnis selanjutnya.' },
+  { langkah: 'satu', num: '01', title: 'Catat & Input', desc: 'Masukkan bahan baku, resep, dan harga jual dengan mudah.' },
+  { langkah: 'dua', num: '02', title: 'Proses Otomatis', desc: 'Sistem menghitung HPP dan profit otomatis real-time.' },
+  { langkah: 'tiga', num: '03', title: 'Ambil Keputusan', desc: 'Data yang tepat untuk keputusan yang lebih menguntungkan.' },
+]
+
+const StepIcons = [
+  // Notebook / input
+  <svg key="1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>,
+  // Bar chart
+  <svg key="2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10"/>
+    <line x1="12" y1="20" x2="12" y2="4"/>
+    <line x1="6" y1="20" x2="6" y2="14"/>
+    <line x1="2" y1="20" x2="22" y2="20"/>
+  </svg>,
+  // Target / bullseye
+  <svg key="3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <circle cx="12" cy="12" r="6"/>
+    <circle cx="12" cy="12" r="2"/>
+  </svg>,
 ]
 
 export default function HowItWorks() {
@@ -39,7 +62,7 @@ export default function HowItWorks() {
     <section
       id="cara-kerja"
       ref={sectionRef}
-      style={{ background: '#1B1208', paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px', position: 'relative', overflow: 'hidden' }}
+      style={{ background: '#1B1208', paddingTop: '72px', paddingBottom: '72px', paddingLeft: '48px', paddingRight: '48px', position: 'relative', overflow: 'hidden' }}
     >
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.04, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
 
@@ -82,22 +105,20 @@ export default function HowItWorks() {
                 flex: 1, position: 'relative',
                 background: 'rgba(251,246,236,0.04)',
                 border: '1px solid rgba(251,246,236,0.08)',
-                borderRadius: '16px', padding: '28px',
+                borderRadius: '14px', padding: '22px 24px',
               }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '20px', fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '6rem', color: 'rgba(251,246,236,0.07)', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>
-                  {step.num}
+                {/* Icon square */}
+                <div style={{ width: '36px', height: '36px', borderRadius: '8px', border: '1px solid rgba(196,154,63,0.3)', background: 'rgba(196,154,63,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
+                  {StepIcons[i]}
                 </div>
-                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.68rem', color: 'rgba(196,154,63,0.72)', letterSpacing: '0.04em', marginBottom: '18px' }}>
+                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.63rem', color: 'rgba(196,154,63,0.65)', letterSpacing: '0.03em', marginBottom: '10px' }}>
                   — Langkah {step.langkah}
                 </div>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', border: '1px solid rgba(196,154,63,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
-                  <span style={{ fontFamily: '"DM Mono", monospace', fontSize: '0.68rem', color: '#C49A3F' }}>{step.num}</span>
-                </div>
-                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.6rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '14px' }}>{step.title}</h3>
-                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.88rem', color: 'rgba(251,246,236,0.52)', lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
+                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.35rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '10px', lineHeight: 1.2 }}>{step.title}</h3>
+                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.48)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.6rem', color: 'rgba(196,154,63,0.45)', marginTop: '70px', flexShrink: 0, userSelect: 'none' }}>→</div>
+                <div style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(196,154,63,0.4)', flexShrink: 0, userSelect: 'none', alignSelf: 'center' }}>→</div>
               )}
             </React.Fragment>
           ))}
