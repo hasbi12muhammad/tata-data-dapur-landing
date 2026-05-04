@@ -107,6 +107,7 @@ export default function Features() {
     <section
       id="fitur"
       ref={sectionRef}
+      className="features-section"
       style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -119,7 +120,7 @@ export default function Features() {
           Semua yang dapur butuhkan, <em>sudah ada.</em>
         </h2>
 
-        <div ref={cardsRef} style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
+        <div ref={cardsRef} className="features-cards" style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
 
           {/* 01 — HPP Otomatis */}
           <div style={cream}>

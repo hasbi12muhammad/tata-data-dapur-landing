@@ -213,3 +213,68 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* ============================================
+   RESPONSIVE — MOBILE FIRST
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .nav-pill {
+    width: calc(100% - 32px) !important;
+    top: 10px !important;
+    padding: 10px 14px !important;
+  }
+  .nav-links { display: none !important; }
+
+  /* Hero */
+  .hero-section {
+    padding: 96px 20px 56px !important;
+    min-height: 0 !important;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .hero-left-illus  { display: none !important; }
+  .hero-gap-filler  { display: none !important; }
+  .hero-right-illus { display: none !important; }
+  .hero-right-col   { min-height: 0 !important; justify-content: flex-start !important; }
+  .receipt-wrapper  { width: 100% !important; max-width: 300px !important; margin: 0 auto !important; }
+
+  /* Features */
+  .features-section { padding: 64px 20px !important; }
+  .features-cards   { flex-direction: column !important; }
+
+  /* Magazine */
+  .magazine-section { padding: 64px 20px !important; }
+  .magazine-grid    { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+  /* HowItWorks */
+  .hiw-section  { padding: 56px 20px !important; }
+  .hiw-header   { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; margin-bottom: 36px !important; }
+  .hiw-steps    { flex-direction: column !important; }
+  .hiw-arrow    { align-self: flex-start !important; transform: rotate(90deg) !important; margin-left: 30px !important; }
+  .hiw-corner-illus { display: none !important; }
+
+  /* FAQ */
+  .faq-section  { padding: 64px 20px !important; }
+  .faq-grid     { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .faq-illus    { display: none !important; }
+
+  /* FinalCTA */
+  .finalcta-section     { padding: 72px 24px !important; }
+  .finalcta-side-illus  { display: none !important; }
+
+  /* Footer */
+  .footer-section       { padding: 48px 20px !important; }
+  .footer-grid          { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .footer-corner-illus  { display: none !important; }
+  .footer-bottom        { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+}
+
+@media (max-width: 480px) {
+  .receipt-wrapper { max-width: 100% !important; }
+  .hero-section    { padding-top: 88px !important; }
+}

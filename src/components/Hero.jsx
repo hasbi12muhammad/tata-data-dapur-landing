@@ -42,6 +42,7 @@ export default function Hero() {
     <section
       id="hero-section"
       ref={sectionRef}
+      className="hero-section"
       style={{
         minHeight: '100vh', paddingTop: '130px', paddingBottom: '80px',
         paddingLeft: '48px', paddingRight: '48px',
@@ -56,21 +57,21 @@ export default function Hero() {
       {/* ── LEFT-SIDE illustrations — section-level absolute, behind grid (zIndex 0) ── */}
 
       {/* Garlic — top far left */}
-      <div className="illus-item" style={{ position: 'absolute', top: '90px', left: '10px', zIndex: 0 }}>
+      <div className="illus-item hero-left-illus" style={{ position: 'absolute', top: '90px', left: '10px', zIndex: 0 }}>
         <div style={floatStyle(-10, '4.5s', '0s')}>
           <SpiceImg src={`${A}1.png`} bg="cream" width={165} height={165} />
         </div>
       </div>
 
       {/* Onions — bottom left */}
-      <div className="illus-item" style={{ position: 'absolute', bottom: '60px', left: '20px', zIndex: 0 }}>
+      <div className="illus-item hero-left-illus" style={{ position: 'absolute', bottom: '60px', left: '20px', zIndex: 0 }}>
         <div style={floatStyle(-8, '5s', '1.2s')}>
           <SpiceImg src={`${A}2.png`} bg="cream" width={145} height={130} />
         </div>
       </div>
 
       {/* Cinnamon — mid-left, vertically centered */}
-      <div className="illus-item" style={{ position: 'absolute', top: '42%', left: '5px', zIndex: 0, transform: 'translateY(-50%)' }}>
+      <div className="illus-item hero-left-illus" style={{ position: 'absolute', top: '42%', left: '5px', zIndex: 0, transform: 'translateY(-50%)' }}>
         <div style={floatStyle(6, '4.8s', '0.8s')}>
           <SpiceImg src={`${A}8.png`} bg="cream" width={125} height={82} />
         </div>
@@ -81,7 +82,8 @@ export default function Hero() {
         maxWidth: '1200px', margin: '0 auto', width: '100%',
         display: 'grid', gridTemplateColumns: '55% 45%',
         gap: '60px', alignItems: 'center', position: 'relative', zIndex: 1,
-      }}>
+      }}
+      className="hero-grid">
         {/* Left — text */}
         <div>
           <div ref={eyebrowRef} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '28px' }}>
@@ -124,7 +126,7 @@ export default function Hero() {
         </div>
 
         {/* Right — receipt + right-side illustrations */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: '580px' }}>
+        <div className="hero-right-col" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: '580px' }}>
 
           {/* Receipt card */}
           <div style={{ position: 'relative', zIndex: 3 }}>
@@ -134,49 +136,49 @@ export default function Hero() {
           {/* ── GAP FILLERS — positioned left of right column, filling the gap ── */}
 
           {/* Tomato — upper gap */}
-          <div className="illus-item" style={{ position: 'absolute', top: '18%', left: '-105px', zIndex: 2 }}>
+          <div className="illus-item hero-gap-filler" style={{ position: 'absolute', top: '18%', left: '-105px', zIndex: 2 }}>
             <div style={floatStyle(-8, '4.3s', '0.4s')}>
               <SpiceImg src={`${A}15.png`} bg="cream" width={88} height={84} />
             </div>
           </div>
 
           {/* Parsley — mid gap */}
-          <div className="illus-item" style={{ position: 'absolute', top: '50%', left: '-115px', zIndex: 2, transform: 'translateY(-50%)' }}>
+          <div className="illus-item hero-gap-filler" style={{ position: 'absolute', top: '50%', left: '-115px', zIndex: 2, transform: 'translateY(-50%)' }}>
             <div style={floatStyle(6, '5.2s', '1.8s')}>
               <SpiceImg src={`${A}4.png`} bg="cream" width={78} height={78} />
             </div>
           </div>
 
           {/* Cloves — lower gap */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '22%', left: '-100px', zIndex: 2 }}>
+          <div className="illus-item hero-gap-filler" style={{ position: 'absolute', bottom: '22%', left: '-100px', zIndex: 2 }}>
             <div style={floatStyle(-12, '4.6s', '0.9s')}>
               <SpiceImg src={`${A}9.png`} bg="cream" width={92} height={65} />
             </div>
           </div>
 
           {/* Chili — right edge center */}
-          <div className="illus-item" style={{ position: 'absolute', top: '35%', right: '-50px', zIndex: 2, transform: 'translateY(-50%)' }}>
+          <div className="illus-item hero-right-illus" style={{ position: 'absolute', top: '35%', right: '-50px', zIndex: 2, transform: 'translateY(-50%)' }}>
             <div style={floatStyle(15, '3.8s', '0.6s')}>
               <SpiceImg src={`${A}3.png`} bg="cream" width={145} height={115} />
             </div>
           </div>
 
           {/* Star anise — top right */}
-          <div className="illus-item" style={{ position: 'absolute', top: '10px', right: '-30px', zIndex: 2 }}>
+          <div className="illus-item hero-right-illus" style={{ position: 'absolute', top: '10px', right: '-30px', zIndex: 2 }}>
             <div style={floatStyle(18, '4.2s', '2s')}>
               <SpiceImg src={`${A}7.png`} bg="cream" width={108} height={108} />
             </div>
           </div>
 
           {/* Bay leaf — bottom right */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '30px', right: '-45px', zIndex: 2 }}>
+          <div className="illus-item hero-right-illus" style={{ position: 'absolute', bottom: '30px', right: '-45px', zIndex: 2 }}>
             <div style={floatStyle(-12, '5.5s', '1.5s')}>
               <SpiceImg src={`${A}6.png`} bg="cream" width={120} height={105} />
             </div>
           </div>
 
           {/* Peppercorns — bottom center, very subtle */}
-          <div className="illus-item" style={{ position: 'absolute', bottom: '0px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
+          <div className="illus-item hero-right-illus" style={{ position: 'absolute', bottom: '0px', left: '50%', zIndex: 1, transform: 'translateX(-50%)' }}>
             <div>
               <SpiceImg src={`${A}10.png`} bg="cream" width={100} height={66} opacity={0.28} />
             </div>

@@ -52,7 +52,7 @@ export default function ReceiptCard() {
   }, [])
 
   return (
-    <div style={{ position: 'relative', width: '380px', maxWidth: '100%', userSelect: 'none' }}>
+    <div className="receipt-wrapper" style={{ position: 'relative', width: '380px', maxWidth: '100%', userSelect: 'none' }}>
 
       {/* Soft shadow layer behind the card */}
       <div style={{

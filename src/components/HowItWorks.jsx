@@ -62,34 +62,35 @@ export default function HowItWorks() {
     <section
       id="cara-kerja"
       ref={sectionRef}
+      className="hiw-section"
       style={{ background: '#1B1208', paddingTop: '72px', paddingBottom: '72px', paddingLeft: '48px', paddingRight: '48px', position: 'relative', overflow: 'hidden' }}
     >
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, opacity: 0.04, backgroundImage: noiseUrl, backgroundRepeat: 'repeat', backgroundSize: '200px 200px' }} />
 
       {/* Corner PNG illustrations — 1.5× original, spread to 4 corners */}
-      <div style={{ position: 'absolute', bottom: '10px', left: '10px', zIndex: 1 }}>
+      <div className="hiw-corner-illus" style={{ position: 'absolute', bottom: '10px', left: '10px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-5deg)' }}>
           <SpiceImg src={`${A}7.png`} bg="dark" width={132} height={132} />
         </div>
       </div>
-      <div style={{ position: 'absolute', top: '16px', right: '20px', zIndex: 1 }}>
+      <div className="hiw-corner-illus" style={{ position: 'absolute', top: '16px', right: '20px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(12deg)' }}>
           <SpiceImg src={`${A}8.png`} bg="dark" width={143} height={93} />
         </div>
       </div>
-      <div style={{ position: 'absolute', bottom: '10px', right: '20px', zIndex: 1 }}>
+      <div className="hiw-corner-illus" style={{ position: 'absolute', bottom: '10px', right: '20px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(-8deg)' }}>
           <SpiceImg src={`${A}1.png`} bg="dark" width={117} height={117} />
         </div>
       </div>
-      <div style={{ position: 'absolute', top: '16px', left: '10px', zIndex: 1 }}>
+      <div className="hiw-corner-illus" style={{ position: 'absolute', top: '16px', left: '10px', zIndex: 1 }}>
         <div style={{ transform: 'rotate(5deg)' }}>
           <SpiceImg src={`${A}12.png`} bg="dark" width={123} height={75} />
         </div>
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '72px' }}>
+        <div className="hiw-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '72px' }}>
           <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FBF6EC', fontWeight: 400, maxWidth: '500px' }}>
             Tiga langkah <em>sederhana.</em>
           </h2>
@@ -98,7 +99,7 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        <div ref={stepsRef} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+        <div ref={stepsRef} className="hiw-steps" style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
           {steps.map((step, i) => (
             <React.Fragment key={step.num}>
               <div className="step-item" style={{
@@ -118,7 +119,7 @@ export default function HowItWorks() {
                 <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.48)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(196,154,63,0.4)', flexShrink: 0, userSelect: 'none', alignSelf: 'center' }}>→</div>
+                <div className="hiw-arrow" style={{ fontFamily: 'Fraunces, Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(196,154,63,0.4)', flexShrink: 0, userSelect: 'none', alignSelf: 'center' }}>→</div>
               )}
             </React.Fragment>
           ))}

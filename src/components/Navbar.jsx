@@ -28,6 +28,7 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
+      className="nav-pill"
       style={{
         position: 'fixed',
         top: '16px',
@@ -70,7 +71,7 @@ export default function Navbar() {
       </div>
 
       {/* Nav links */}
-      <div style={{
+      <div className="nav-links" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '28px',

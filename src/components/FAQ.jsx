@@ -7,11 +7,27 @@ import { SparkleIllustration } from './illustrations/index'
 const A = '/assets/components/'
 
 const faqs = [
-  { q: 'Apakah Tata Data Dapur gratis?', a: 'Kami menyediakan masa uji coba gratis 14 hari tanpa memerlukan kartu kredit. Setelah itu, tersedia paket langganan yang sesuai dengan skala bisnis kamu.', defaultOpen: true },
-  { q: 'Apakah data saya aman?', a: 'Data kamu dienkripsi dan di-backup secara otomatis setiap hari. Kami menggunakan infrastruktur cloud tier enterprise.' },
-  { q: 'Bisnis apa saja yang cocok?', a: 'Tata Data Dapur cocok untuk warung makan, restoran, kafe, katering, bakeri, dan semua jenis usaha kuliner.' },
-  { q: 'Berapa lama waktu setup?', a: 'Kurang dari 30 menit. Kami menyediakan panduan onboarding dan template resep yang bisa langsung digunakan.' },
-  { q: 'Apakah ada dukungan teknis?', a: 'Ya, kami menyediakan dukungan via WhatsApp dan email pada jam kerja.' },
+  {
+    q: 'Apakah Tata Data Dapur gratis?',
+    a: 'Ada masa uji coba gratis 14 hari, tanpa kartu kredit. Setelah itu kamu bisa pilih paket yang sesuai dengan skala bisnis kamu.',
+    defaultOpen: true,
+  },
+  {
+    q: 'Apakah saya harus paham akuntansi untuk menggunakannya?',
+    a: 'Tidak perlu. Tata Data Dapur dirancang untuk pemilik warung dan restoran, bukan akuntan. Cukup input bahan baku, harga beli, dan resep — semua perhitungan HPP dan profit dilakukan otomatis oleh sistem.',
+  },
+  {
+    q: 'Bagaimana cara aplikasi ini menghitung HPP?',
+    a: 'Kamu input bahan baku beserta harga belinya, lalu buat resep dengan komposisi bahan tiap menu. Sistem otomatis menghitung HPP per porsi berdasarkan data tersebut — akurat, tanpa kalkulator.',
+  },
+  {
+    q: 'Bisnis kuliner apa saja yang cocok menggunakan ini?',
+    a: 'Tata Data Dapur cocok untuk warung makan, restoran, kafe, katering, bakeri — intinya semua usaha kuliner yang punya resep dan bahan baku. Kalau kamu masak untuk dijual, aplikasi ini untuk kamu.',
+  },
+  {
+    q: 'Apakah ada bantuan jika saya kesulitan saat setup?',
+    a: 'Ada. Kami tersedia via WhatsApp pada jam kerja. Kamu juga bisa hubungi kami sebelum mendaftar jika ada pertanyaan — kami senang membantu.',
+  },
 ]
 
 function FAQItem({ faq, defaultOpen }) {
@@ -44,17 +60,17 @@ export default function FAQ() {
   }, [])
 
   return (
-    <section id="faq" ref={sectionRef} style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'start' }}>
+    <section id="faq" ref={sectionRef} className="faq-section" style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}>
+      <div className="faq-grid" style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'start' }}>
 
         {/* Left */}
         <div className="faq-animate" style={{ paddingTop: '20px', position: 'relative' }}>
           {/* Herb illustration */}
-          <div style={{ position: 'absolute', top: '-20px', right: '-20px', transform: 'rotate(8deg)' }}>
+          <div className="faq-illus" style={{ position: 'absolute', top: '-20px', right: '-20px', transform: 'rotate(8deg)' }}>
             <SpiceImg src={`${A}4.png`} bg="cream" width={105} height={105} opacity={0.6} />
           </div>
           {/* Basil bottom */}
-          <div style={{ position: 'absolute', bottom: '-5px', right: '-15px', transform: 'rotate(-5deg)' }}>
+          <div className="faq-illus" style={{ position: 'absolute', bottom: '-5px', right: '-15px', transform: 'rotate(-5deg)' }}>
             <SpiceImg src={`${A}5.png`} bg="cream" width={90} height={90} opacity={0.5} />
           </div>
 

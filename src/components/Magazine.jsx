@@ -38,9 +38,10 @@ export default function Magazine() {
   return (
     <section
       ref={sectionRef}
+      className="magazine-section"
       style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '48px', paddingRight: '48px' }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'center' }}>
+      <div className="magazine-grid" style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '60px', alignItems: 'center' }}>
 
         {/* Left: Terracotta card */}
         <div ref={leftRef}>
