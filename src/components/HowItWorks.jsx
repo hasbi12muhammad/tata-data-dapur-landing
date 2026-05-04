@@ -116,7 +116,7 @@ export default function HowItWorks() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
         {/* Title — centered */}
-        <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: '#FBF6EC', fontWeight: 400, textAlign: 'center', marginBottom: '48px' }}>
+        <h2 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: 'clamp(2.7rem, 5.25vw, 4.2rem)', color: '#FBF6EC', fontWeight: 400, textAlign: 'center', marginBottom: '48px' }}>
           Tiga langkah <em>sederhana.</em>
         </h2>
 
@@ -129,11 +129,11 @@ export default function HowItWorks() {
                 <div style={{ width: '42px', height: '42px', borderRadius: '50%', border: '1px solid rgba(196,154,63,0.4)', background: 'rgba(196,154,63,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                   {StepIcons[i]}
                 </div>
-                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.62rem', color: 'rgba(196,154,63,0.6)', letterSpacing: '0.03em', marginBottom: '8px' }}>
+                <div style={{ fontFamily: '"DM Mono", monospace', fontStyle: 'italic', fontSize: '0.93rem', color: 'rgba(196,154,63,0.6)', letterSpacing: '0.03em', marginBottom: '8px' }}>
                   — Langkah {step.langkah}
                 </div>
-                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.25rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '10px', lineHeight: 1.2 }}>{step.title}</h3>
-                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.82rem', color: 'rgba(251,246,236,0.45)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
+                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.875rem', color: '#FBF6EC', fontWeight: 400, marginBottom: '10px', lineHeight: 1.2 }}>{step.title}</h3>
+                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1.23rem', color: 'rgba(251,246,236,0.45)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
                 <div className="hiw-arrow" style={{ flexShrink: 0, paddingTop: '12px', userSelect: 'none' }}>
