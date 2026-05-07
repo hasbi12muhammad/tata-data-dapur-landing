@@ -1,7 +1,17 @@
+/**
+ * AppSlider — clean GSAP crossfade carousel
+ *
+ * Architecture:
+ *  - currentRef (useRef) = source of truth for index, never causes re-render
+ *  - animatingRef (useRef) = lock flag, never causes re-render
+ *  - React state (displayIdx) only updates AFTER animation ends → triggers side-preview refresh
+ *  - GSAP animates the img DOM node's opacity directly (no React re-render during flight)
+ *  → zero glitch, zero conflict
+ */
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import gsap from 'gsap'
 
-const slides = [
+const SLIDES = [
   { src: '/assets/app/dashboard.png',    label: 'Dashboard',    desc: 'Ringkasan bisnis harian' },
   { src: '/assets/app/laporan.png',      label: 'Laporan',      desc: 'Laba rugi lengkap + grafik' },
   { src: '/assets/app/produk.png',       label: 'Produk & HPP', desc: 'Resep + kalkulasi otomatis' },
@@ -10,187 +20,161 @@ const slides = [
   { src: '/assets/app/pembelian.png',    label: 'Pembelian',    desc: 'Histori pembelian bahan' },
   { src: '/assets/app/pengeluaran.png',  label: 'Pengeluaran',  desc: 'Biaya operasional tercatat' },
 ]
-
-const len = slides.length
-
-function mod(n, m) { return ((n % m) + m) % m }
+const N = SLIDES.length
+const wrap = (i) => ((i % N) + N) % N
 
 export default function AppSlider() {
-  const [current, setCurrent] = useState(0)
-  const [dir, setDir] = useState(1)            // 1 = forward, -1 = backward
-  const [animating, setAnimating] = useState(false)
-  const autoRef  = useRef(null)
+  // displayIdx drives React rendering (side previews + dots + caption)
+  const [displayIdx, setDisplayIdx] = useState(0)
 
-  // Refs for the three visible frames
-  const prevRef  = useRef(null)
-  const mainRef  = useRef(null)
-  const nextRef  = useRef(null)
-  const captRef  = useRef(null)
+  // Refs — never trigger re-renders
+  const currentRef   = useRef(0)          // current active index
+  const animatingRef = useRef(false)       // animation lock
+  const autoRef      = useRef(null)        // interval handle
 
-  // ---------- animate transition ----------
-  const animateTo = useCallback((newIdx, direction) => {
-    if (animating) return
-    setAnimating(true)
-    clearInterval(autoRef.current)
+  // DOM refs
+  const imgRef     = useRef(null)   // main <img>
+  const captRef    = useRef(null)   // caption bar
+  const prevImgRef = useRef(null)   // left preview <img>
+  const nextImgRef = useRef(null)   // right preview <img>
 
-    const DIST   = direction > 0 ? '-6%' : '6%'
-    const DIST_IN = direction > 0 ? '6%' : '-6%'
+  // ─── core transition ───────────────────────────────────────────────
+  const transitionTo = useCallback((targetIdx) => {
+    if (animatingRef.current) return
+    if (targetIdx === currentRef.current) return
+
+    animatingRef.current = true
+    const img  = imgRef.current
+    const capt = captRef.current
+    if (!img) { animatingRef.current = false; return }
 
     const tl = gsap.timeline({
       onComplete: () => {
-        setCurrent(newIdx)
-        setAnimating(false)
-        // Reset transforms so next render starts clean
-        gsap.set([prevRef.current, mainRef.current, nextRef.current, captRef.current], { clearProps: 'all' })
+        animatingRef.current = false
       },
     })
 
-    // Main exits
-    tl.to(mainRef.current, {
+    // 1. Fade out current main image + caption
+    tl.to(img, {
       opacity: 0,
-      x: DIST,
-      scale: 0.96,
-      duration: 0.38,
-      ease: 'power2.inOut',
-    }, 0)
-
-    // Caption exits
-    tl.to(captRef.current, {
-      opacity: 0,
-      y: 6,
-      duration: 0.22,
+      scale: 0.97,
+      duration: 0.28,
       ease: 'power2.in',
     }, 0)
+    if (capt) tl.to(capt, { opacity: 0, y: 4, duration: 0.2, ease: 'power2.in' }, 0)
 
-    // Side preview on destination side: grow toward center
-    const sideRef = direction > 0 ? nextRef : prevRef
-    tl.to(sideRef.current, {
-      opacity: 1,
-      scale: 1.04,
-      filter: 'blur(0px)',
-      duration: 0.38,
-      ease: 'power2.inOut',
-    }, 0)
+    // 2. Mid-point: swap src + update state (React re-render happens here — img already invisible)
+    tl.call(() => {
+      currentRef.current = targetIdx
+      img.src = SLIDES[targetIdx].src
+      img.alt = SLIDES[targetIdx].label
+      setDisplayIdx(targetIdx) // triggers side preview + dot + caption update
+    })
 
-    // New main enters
-    tl.fromTo(mainRef.current,
-      { opacity: 0, x: DIST_IN, scale: 0.96 },
-      { opacity: 1, x: '0%', scale: 1, duration: 0.46, ease: 'expo.out' },
-      0.28
+    // 3. Fade in new image + caption
+    tl.fromTo(img,
+      { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, duration: 0.42, ease: 'expo.out' },
+      '+=0.02'
     )
-
-    // Caption enters
-    tl.fromTo(captRef.current,
-      { opacity: 0, y: 8 },
-      { opacity: 1, y: 0, duration: 0.34, ease: 'power3.out' },
-      0.46
+    if (capt) tl.fromTo(capt,
+      { opacity: 0, y: 6 },
+      { opacity: 1, y: 0, duration: 0.32, ease: 'power3.out' },
+      '<0.08'
     )
-  }, [animating])
+  }, [])
 
+  // ─── navigation helpers ────────────────────────────────────────────
   const goNext = useCallback(() => {
-    if (animating) return
-    const n = mod(current + 1, len)
-    setDir(1)
-    animateTo(n, 1)
-  }, [current, animating, animateTo])
+    transitionTo(wrap(currentRef.current + 1))
+  }, [transitionTo])
 
   const goPrev = useCallback(() => {
-    if (animating) return
-    const n = mod(current - 1, len)
-    setDir(-1)
-    animateTo(n, -1)
-  }, [current, animating, animateTo])
+    transitionTo(wrap(currentRef.current - 1))
+  }, [transitionTo])
 
   const goTo = useCallback((idx) => {
-    if (animating || idx === current) return
-    const d = idx > current ? 1 : -1
-    setDir(d)
-    animateTo(idx, d)
-  }, [current, animating, animateTo])
+    transitionTo(wrap(idx))
+  }, [transitionTo])
 
-  // Auto-advance
-  useEffect(() => {
-    autoRef.current = setInterval(goNext, 4000)
-    return () => clearInterval(autoRef.current)
+  // ─── auto-play ────────────────────────────────────────────────────
+  const resetAuto = useCallback(() => {
+    clearInterval(autoRef.current)
+    autoRef.current = setInterval(goNext, 4200)
   }, [goNext])
 
-  const prevIdx = mod(current - 1, len)
-  const nextIdx = mod(current + 1, len)
+  useEffect(() => {
+    resetAuto()
+    return () => clearInterval(autoRef.current)
+  }, [resetAuto])
 
-  // ─────────────────────────────────────────
+  const handleArrow = useCallback((fn) => {
+    fn()
+    resetAuto()
+  }, [resetAuto])
+
+  // ─── derived ──────────────────────────────────────────────────────
+  const prevIdx = wrap(displayIdx - 1)
+  const nextIdx = wrap(displayIdx + 1)
+
+  // ─── render ───────────────────────────────────────────────────────
   return (
     <div style={{ width: '100%', userSelect: 'none' }}>
 
-      {/* ── 3-SLOT TRACK ── */}
+      {/* ── 3-COLUMN TRACK ─────────────────────────────────────── */}
       <div style={{
-        position: 'relative',
         display: 'grid',
-        gridTemplateColumns: '1fr 3fr 1fr',
-        gap: '12px',
+        gridTemplateColumns: '1fr 5fr 1fr',   // 5fr = ~3x wider than before
+        gap: '14px',
         alignItems: 'center',
       }}>
 
-        {/* ── PREV PREVIEW ── */}
-        <div
-          ref={prevRef}
-          onClick={goPrev}
-          style={{
-            cursor: 'pointer',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            opacity: 0.32,
-            filter: 'blur(2.5px)',
-            transform: 'scale(0.92)',
-            transformOrigin: 'right center',
-            transition: 'opacity 0.25s, transform 0.25s',
-            boxShadow: '0 4px 16px rgba(27,18,8,0.12)',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.filter = 'blur(1.5px)' }}
-          onMouseLeave={e => { e.currentTarget.style.opacity = '0.32'; e.currentTarget.style.filter = 'blur(2.5px)' }}
-        >
-          <img
-            src={slides[prevIdx].src}
-            alt={slides[prevIdx].label}
-            style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '16/10' }}
-          />
-        </div>
+        {/* LEFT PREVIEW */}
+        <PreviewPane
+          ref={prevImgRef}
+          src={SLIDES[prevIdx].src}
+          alt={SLIDES[prevIdx].label}
+          onClick={() => handleArrow(goPrev)}
+          origin="right center"
+        />
 
-        {/* ── MAIN SLIDE ── */}
+        {/* MAIN FRAME */}
         <div style={{ position: 'relative' }}>
-          {/* Browser chrome — no URL bar */}
           <div style={{
             background: '#1B1208',
             borderRadius: '14px',
             overflow: 'hidden',
-            boxShadow: '0 28px 72px rgba(27,18,8,0.36), 0 6px 20px rgba(27,18,8,0.2)',
-            border: '1px solid rgba(196,154,63,0.18)',
+            boxShadow: '0 32px 80px rgba(27,18,8,0.38), 0 8px 24px rgba(27,18,8,0.22)',
+            border: '1px solid rgba(196,154,63,0.2)',
           }}>
-            {/* Title bar (traffic lights only) */}
+            {/* Title bar — traffic lights only, no URL */}
             <div style={{
               background: '#2A1A0C',
-              padding: '9px 14px',
+              padding: '9px 16px',
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
               borderBottom: '1px solid rgba(255,255,255,0.06)',
             }}>
               {['#FF6057','#FEBC2E','#28C840'].map((c, i) => (
-                <span key={i} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c, display: 'inline-block', flexShrink: 0 }} />
+                <span key={i} style={{
+                  width: '10px', height: '10px', borderRadius: '50%',
+                  background: c, display: 'inline-block', flexShrink: 0,
+                }} />
               ))}
             </div>
 
-            {/* Screenshot */}
-            <div ref={mainRef} style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative' }}>
+            {/* Screenshot — single stable DOM node, src swapped by GSAP */}
+            <div style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative' }}>
               <img
-                key={current}
-                src={slides[current].src}
-                alt={slides[current].label}
+                ref={imgRef}
+                src={SLIDES[0].src}
+                alt={SLIDES[0].label}
                 style={{ width: '100%', display: 'block', objectFit: 'cover' }}
               />
-              {/* Bottom vignette */}
               <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, height: '48px',
-                background: 'linear-gradient(to top, rgba(27,18,8,0.2), transparent)',
+                position: 'absolute', bottom: 0, left: 0, right: 0, height: '56px',
+                background: 'linear-gradient(to top, rgba(27,18,8,0.22), transparent)',
                 pointerEvents: 'none',
               }} />
             </div>
@@ -198,120 +182,53 @@ export default function AppSlider() {
             {/* Caption */}
             <div ref={captRef} style={{
               background: '#2A1A0C',
-              padding: '11px 18px',
+              padding: '12px 20px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               borderTop: '1px solid rgba(255,255,255,0.06)',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{
-                  fontFamily: 'Plus Jakarta Sans, sans-serif',
-                  fontSize: '13px', fontWeight: 700, color: '#F4EDE0',
-                }}>
-                  {slides[current].label}
+                <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', fontWeight: 700, color: '#F4EDE0' }}>
+                  {SLIDES[displayIdx].label}
                 </span>
-                <span style={{
-                  fontFamily: 'Plus Jakarta Sans, sans-serif',
-                  fontSize: '11px', color: 'rgba(255,255,255,0.35)',
-                }}>
-                  {slides[current].desc}
+                <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.38)' }}>
+                  {SLIDES[displayIdx].desc}
                 </span>
               </div>
-              <span style={{
-                fontFamily: 'DM Mono, monospace',
-                fontSize: '10px', color: 'rgba(255,255,255,0.28)',
-                letterSpacing: '0.05em',
-              }}>
-                {String(current + 1).padStart(2,'0')}/{String(len).padStart(2,'0')}
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.05em' }}>
+                {String(displayIdx + 1).padStart(2,'0')}/{String(N).padStart(2,'0')}
               </span>
             </div>
           </div>
 
-          {/* ── ARROW BUTTONS — overlapping edges ── */}
-          <button
-            onClick={goPrev}
-            aria-label="Sebelumnya"
-            style={{
-              position: 'absolute', left: '-20px', top: '50%',
-              transform: 'translateY(-60%)',
-              width: '40px', height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(27,18,8,0.82)',
-              border: '1px solid rgba(196,154,63,0.25)',
-              backdropFilter: 'blur(8px)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer',
-              zIndex: 10,
-              transition: 'background 0.18s, transform 0.18s',
-              boxShadow: '0 4px 12px rgba(27,18,8,0.3)',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(-60%) scale(1.08)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(27,18,8,0.82)'; e.currentTarget.style.transform = 'translateY(-60%) scale(1)' }}
-          >
-            <ChevronLeft />
-          </button>
+          {/* ARROW — LEFT */}
+          <ArrowBtn side="left" onClick={() => handleArrow(goPrev)} />
 
-          <button
-            onClick={goNext}
-            aria-label="Berikutnya"
-            style={{
-              position: 'absolute', right: '-20px', top: '50%',
-              transform: 'translateY(-60%)',
-              width: '40px', height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(27,18,8,0.82)',
-              border: '1px solid rgba(196,154,63,0.25)',
-              backdropFilter: 'blur(8px)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer',
-              zIndex: 10,
-              transition: 'background 0.18s, transform 0.18s',
-              boxShadow: '0 4px 12px rgba(27,18,8,0.3)',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(-60%) scale(1.08)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(27,18,8,0.82)'; e.currentTarget.style.transform = 'translateY(-60%) scale(1)' }}
-          >
-            <ChevronRight />
-          </button>
+          {/* ARROW — RIGHT */}
+          <ArrowBtn side="right" onClick={() => handleArrow(goNext)} />
         </div>
 
-        {/* ── NEXT PREVIEW ── */}
-        <div
-          ref={nextRef}
-          onClick={goNext}
-          style={{
-            cursor: 'pointer',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            opacity: 0.32,
-            filter: 'blur(2.5px)',
-            transform: 'scale(0.92)',
-            transformOrigin: 'left center',
-            transition: 'opacity 0.25s, transform 0.25s',
-            boxShadow: '0 4px 16px rgba(27,18,8,0.12)',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.filter = 'blur(1.5px)' }}
-          onMouseLeave={e => { e.currentTarget.style.opacity = '0.32'; e.currentTarget.style.filter = 'blur(2.5px)' }}
-        >
-          <img
-            src={slides[nextIdx].src}
-            alt={slides[nextIdx].label}
-            style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '16/10' }}
-          />
-        </div>
+        {/* RIGHT PREVIEW */}
+        <PreviewPane
+          ref={nextImgRef}
+          src={SLIDES[nextIdx].src}
+          alt={SLIDES[nextIdx].label}
+          onClick={() => handleArrow(goNext)}
+          origin="left center"
+        />
       </div>
 
-      {/* ── DOT INDICATORS ── */}
+      {/* DOT INDICATORS */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '18px' }}>
-        {slides.map((_, i) => (
+        {SLIDES.map((_, i) => (
           <button
             key={i}
-            onClick={() => goTo(i)}
+            onClick={() => { goTo(i); resetAuto() }}
             aria-label={`Slide ${i + 1}`}
             style={{
-              width: i === current ? '22px' : '6px',
+              width: i === displayIdx ? '22px' : '6px',
               height: '6px',
               borderRadius: '99px',
-              background: i === current ? '#B5532A' : 'rgba(181,83,42,0.22)',
+              background: i === displayIdx ? '#B5532A' : 'rgba(181,83,42,0.22)',
               border: 'none',
               cursor: 'pointer',
               padding: 0,
@@ -324,19 +241,79 @@ export default function AppSlider() {
   )
 }
 
-// ── Icon components ──
-function ChevronLeft() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4EDE0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  )
-}
+/* ── Sub-components ──────────────────────────────────────────────── */
 
-function ChevronRight() {
+const PreviewPane = React.forwardRef(({ src, alt, onClick, origin }, ref) => (
+  <div
+    onClick={onClick}
+    style={{
+      cursor: 'pointer',
+      borderRadius: '10px',
+      overflow: 'hidden',
+      opacity: 0.28,
+      filter: 'blur(3px)',
+      transform: 'scale(0.88)',
+      transformOrigin: origin,
+      transition: 'opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease',
+      boxShadow: '0 4px 20px rgba(27,18,8,0.15)',
+    }}
+    onMouseEnter={e => {
+      e.currentTarget.style.opacity = '0.52'
+      e.currentTarget.style.filter = 'blur(1px)'
+      e.currentTarget.style.transform = 'scale(0.92)'
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.opacity = '0.28'
+      e.currentTarget.style.filter = 'blur(3px)'
+      e.currentTarget.style.transform = 'scale(0.88)'
+    }}
+  >
+    <img
+      ref={ref}
+      src={src}
+      alt={alt}
+      style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '16/10' }}
+    />
+  </div>
+))
+PreviewPane.displayName = 'PreviewPane'
+
+function ArrowBtn({ side, onClick }) {
+  const isLeft = side === 'left'
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4EDE0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
+    <button
+      onClick={onClick}
+      aria-label={isLeft ? 'Sebelumnya' : 'Berikutnya'}
+      style={{
+        position: 'absolute',
+        [isLeft ? 'left' : 'right']: '-18px',
+        top: '50%',
+        transform: 'translateY(-65%)',
+        width: '38px', height: '38px',
+        borderRadius: '50%',
+        background: 'rgba(27,18,8,0.85)',
+        border: '1px solid rgba(196,154,63,0.28)',
+        backdropFilter: 'blur(8px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        cursor: 'pointer',
+        zIndex: 10,
+        boxShadow: '0 4px 14px rgba(27,18,8,0.35)',
+        transition: 'background 0.18s ease, transform 0.18s ease',
+        outline: 'none',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.background = '#B5532A'
+        e.currentTarget.style.transform = 'translateY(-65%) scale(1.1)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.background = 'rgba(27,18,8,0.85)'
+        e.currentTarget.style.transform = 'translateY(-65%) scale(1)'
+      }}
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+        stroke="#F4EDE0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points={isLeft ? '15 18 9 12 15 6' : '9 18 15 12 9 6'} />
+      </svg>
+    </button>
   )
 }
