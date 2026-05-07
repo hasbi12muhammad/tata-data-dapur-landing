@@ -2,12 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables */
+/* ===== CSS Variables ===== */
 :root {
-  --cream: #F4EDE0;
-  --cream-light: #FBF6EC;
-  --ink: #1B1208;
-  --terracotta: #B5532A;
+  /* New brand palette */
+  --brand: #C8431A;
+  --brand-dark: #9E3212;
+  --brand-light: #FEF3ED;
+  --brand-mid: #F5D0BC;
+  --dark: #1A1208;
+  --dark2: #2E1F10;
+  --text: #2C1A0E;
+  --text2: #6B4A35;
+  --text3: #A0836E;
+  --bg: #FFFCF8;
+  --bg2: #FEF7F1;
+  --border: #EDD9C8;
+  --green: #2D6A2D;
+  --green-bg: #EBF5EB;
+  --radius: 14px;
+  --radius-lg: 22px;
+
+  /* Legacy aliases (used by ReceiptCard & illustrations) */
+  --cream: #FFFCF8;
+  --cream-light: #FEF7F1;
+  --ink: #1A1208;
+  --terracotta: #C8431A;
   --gold: #C49A3F;
   --olive: #5A6B3B;
 }
@@ -22,12 +41,13 @@ html {
 }
 
 body {
-  background-color: #F4EDE0;
-  font-family: 'Inter', system-ui, sans-serif;
-  color: #1B1208;
+  background-color: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 /* Noise Texture Overlay */
@@ -49,22 +69,22 @@ body::after {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4EDE0;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(181, 83, 42, 0.3);
+  background: rgba(200, 67, 26, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(181, 83, 42, 0.5);
+  background: rgba(200, 67, 26, 0.5);
 }
 
 /* Custom Selection */
 ::selection {
-  background-color: rgba(181, 83, 42, 0.25);
-  color: #1B1208;
+  background-color: rgba(200, 67, 26, 0.2);
+  color: var(--dark);
 }
 
 /* Noise Class for Section Overlays */
@@ -91,14 +111,14 @@ body::after {
   border-radius: 4px;
   position: relative;
   box-shadow:
-    0 10px 40px rgba(27, 18, 8, 0.12),
-    0 2px 8px rgba(27, 18, 8, 0.08),
+    0 10px 40px rgba(26, 18, 8, 0.12),
+    0 2px 8px rgba(26, 18, 8, 0.08),
     inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 .tear-edge-top {
   height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14'%3E%3Cpath d='M0 14 L8 0 L16 14Z' fill='%23F4EDE0'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14'%3E%3Cpath d='M0 14 L8 0 L16 14Z' fill='%23FFFCF8'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-size: 16px 14px;
   background-position: top;
@@ -107,7 +127,7 @@ body::after {
 
 .tear-edge-bottom {
   height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14'%3E%3Cpath d='M0 0 L8 14 L16 0Z' fill='%23F4EDE0'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14'%3E%3Cpath d='M0 0 L8 14 L16 0Z' fill='%23FFFCF8'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-size: 16px 14px;
   background-position: bottom;
@@ -128,7 +148,7 @@ body::after {
 
 .receipt-item-dots {
   flex: 1;
-  border-bottom: 1.5px dotted rgba(27, 18, 8, 0.25);
+  border-bottom: 1.5px dotted rgba(26, 18, 8, 0.25);
   margin-bottom: 3px;
   min-width: 20px;
 }
@@ -164,33 +184,29 @@ a, button {
   }
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+@keyframes pulse-btn {
+  0%, 100% { box-shadow: 0 4px 24px rgba(200,67,26,0.28); }
+  50% { box-shadow: 0 4px 32px rgba(200,67,26,0.48); }
+}
+
+@keyframes fill-in {
+  from { width: 0; }
+  to { width: 73%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
 /* Floating Animation Class */
 .float-animation {
   animation: float 4s ease-in-out infinite;
-}
-
-/* FAQ Accordion */
-.faq-answer {
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 0;
-}
-
-.faq-answer.open {
-  max-height: 300px;
-}
-
-/* Drop Cap Paragraph */
-.drop-cap-first::first-letter {
-  font-size: 5rem;
-  font-family: 'Fraunces', Georgia, serif;
-  font-style: italic;
-  color: #B5532A;
-  float: left;
-  line-height: 0.85;
-  margin-right: 0.08em;
-  margin-bottom: -0.1em;
-  padding-top: 0.05em;
 }
 
 /* Smooth scroll behavior for lenis */
@@ -219,18 +235,9 @@ html.lenis {
    ============================================ */
 
 @media (max-width: 768px) {
-
-  /* Navbar */
-  .nav-pill {
-    width: calc(100% - 32px) !important;
-    top: 10px !important;
-    padding: 10px 14px !important;
-  }
-  .nav-links { display: none !important; }
-
   /* Hero */
   .hero-section {
-    padding: 96px 20px 56px !important;
+    padding: 100px 20px 56px !important;
     min-height: 0 !important;
   }
   .hero-grid {
@@ -242,40 +249,9 @@ html.lenis {
   .hero-right-illus { display: none !important; }
   .hero-right-col   { min-height: 0 !important; justify-content: flex-start !important; }
   .receipt-wrapper  { width: 100% !important; max-width: 300px !important; margin: 0 auto !important; }
-
-  /* Features */
-  .features-section { padding: 64px 20px !important; }
-  .features-cards   { flex-direction: column !important; }
-
-  /* Magazine */
-  .magazine-section { padding: 64px 20px !important; }
-  .magazine-grid    { grid-template-columns: 1fr !important; gap: 36px !important; }
-
-  /* HowItWorks */
-  .hiw-section  { padding: 56px 20px !important; }
-  .hiw-header   { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; margin-bottom: 36px !important; }
-  .hiw-steps    { flex-direction: column !important; }
-  .hiw-arrow    { display: none !important; }
-  .step-item    { padding: 0 !important; }
-  .hiw-corner-illus { display: none !important; }
-
-  /* FAQ */
-  .faq-section  { padding: 64px 20px !important; }
-  .faq-grid     { grid-template-columns: 1fr !important; gap: 36px !important; }
-  .faq-illus    { display: none !important; }
-
-  /* FinalCTA */
-  .finalcta-section     { padding: 72px 24px !important; }
-  .finalcta-side-illus  { display: none !important; }
-
-  /* Footer */
-  .footer-section       { padding: 48px 20px !important; }
-  .footer-grid          { grid-template-columns: 1fr !important; gap: 28px !important; }
-  .footer-corner-illus  { display: none !important; }
-  .footer-bottom        { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .value-grid-2col  { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 480px) {
   .receipt-wrapper { max-width: 100% !important; }
-  .hero-section    { padding-top: 88px !important; }
 }

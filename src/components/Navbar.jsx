@@ -8,19 +8,12 @@ export default function Navbar() {
     const handleScroll = () => {
       if (!navRef.current) return
       const scrolled = window.scrollY > 50
-
       gsap.to(navRef.current, {
-        boxShadow: scrolled
-          ? '0 8px 32px rgba(27,18,8,0.12)'
-          : '0 2px 8px rgba(27,18,8,0.04)',
-        backgroundColor: scrolled
-          ? 'rgba(244,237,224,0.95)'
-          : 'rgba(244,237,224,0.8)',
+        boxShadow: scrolled ? '0 1px 16px rgba(26,18,8,0.1)' : 'none',
         duration: 0.3,
         ease: 'power2.out',
       })
     }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -28,99 +21,60 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="nav-pill"
       style={{
         position: 'fixed',
-        top: '16px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: 'calc(100% - 96px)',
-        maxWidth: '740px',
-        zIndex: 1000,
-        background: 'rgba(244,237,224,0.8)',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        background: 'rgba(255,252,248,0.92)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        border: '1px solid rgba(196,154,63,0.2)',
-        borderRadius: '100px',
-        padding: '12px 24px',
+        borderBottom: '1px solid #EDD9C8',
+        padding: '0 24px',
+        height: '64px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        boxShadow: '0 2px 8px rgba(27,18,8,0.04)',
       }}
     >
-      {/* Logo + Wordmark */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{
-          width: '34px', height: '34px',
-          background: '#1B1208', borderRadius: '50%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0, overflow: 'hidden',
-        }}>
-          <img
-            src="/assets/td-logo.png" alt="TD"
-            style={{ width: '22px', height: '22px', objectFit: 'contain' }}
-          />
-        </div>
-        <span style={{
-          fontFamily: 'Fraunces, Georgia, serif', fontSize: '0.95rem',
-          color: '#1B1208', fontWeight: 400, letterSpacing: '-0.01em',
-        }}>
-          Tata Data Dapur
-        </span>
-      </div>
-
-      {/* Nav links */}
-      <div className="nav-links" style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '28px',
+      {/* Logo */}
+      <div style={{
+        fontFamily: 'Fraunces, serif',
+        fontSize: '20px',
+        fontWeight: 700,
+        color: '#C8431A',
+        letterSpacing: '-0.3px',
       }}>
-        {['Fitur', 'Cara Kerja', 'FAQ'].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase().replace(' ', '-')}`}
-            style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: '0.82rem',
-              color: 'rgba(27,18,8,0.7)',
-              textDecoration: 'none',
-              fontWeight: 400,
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#1B1208'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(27,18,8,0.7)'}
-          >
-            {item}
-          </a>
-        ))}
+        Tata Data<span style={{ color: '#1A1208' }}> Dapur</span>
       </div>
 
-      {/* CTA Button */}
+      {/* CTA */}
       <a
-        href="#cta"
+        href="#pricing"
         style={{
-          fontFamily: 'Inter, system-ui, sans-serif',
-          fontSize: '0.82rem',
-          fontWeight: 500,
-          background: '#1B1208',
-          color: '#F4EDE0',
-          padding: '8px 18px',
-          borderRadius: '100px',
+          background: '#C8431A',
+          color: '#fff',
+          border: 'none',
+          padding: '10px 20px',
+          borderRadius: '99px',
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          fontSize: '13px',
+          fontWeight: 700,
+          cursor: 'pointer',
           textDecoration: 'none',
-          transition: 'opacity 0.2s ease, transform 0.2s ease',
-          display: 'inline-block',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          whiteSpace: 'nowrap',
+          transition: 'background 0.2s, transform 0.1s',
         }}
-        onMouseEnter={(e) => {
-          e.target.style.opacity = '0.85'
-          e.target.style.transform = 'scale(1.02)'
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.opacity = '1'
-          e.target.style.transform = 'scale(1)'
-        }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#9E3212' }}
+        onMouseLeave={e => { e.currentTarget.style.background = '#C8431A' }}
+        onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+        onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
       >
-        Mulai Sekarang
+        Beli Sekarang →
       </a>
     </nav>
   )

@@ -1,26 +1,32 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import PainSection from './components/PainSection'
 import MarqueeStrip from './components/MarqueeStrip'
-import Features from './components/Features'
-import Magazine from './components/Magazine'
+import SolutionSection from './components/SolutionSection'
 import HowItWorks from './components/HowItWorks'
-import FAQ from './components/FAQ'
+import ValueStack from './components/ValueStack'
+import Testimonials from './components/Testimonials'
+import Pricing from './components/Pricing'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import StickyCTA from './components/StickyCTA'
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div>
       <Navbar />
       <Hero />
+      <PainSection />
       <MarqueeStrip />
-      <Features />
-      <Magazine />
+      <SolutionSection />
       <HowItWorks />
-      <FAQ />
+      <ValueStack />
+      <Testimonials />
+      <Pricing />
       <FinalCTA />
       <Footer />
+      <StickyCTA />
     </div>
   )
 }
