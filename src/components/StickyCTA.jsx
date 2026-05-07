@@ -34,27 +34,27 @@ export default function StickyCTA() {
       gap: '10px',
     }}>
       <a
-        href="#pricing"
+        href="https://onetap.id/tata-data/tatadata-dapurmu" target="_blank" rel="noopener noreferrer"
         style={{
           flex: 1,
           justifyContent: 'center',
           display: 'flex',
           alignItems: 'center',
           padding: '15px 20px',
-          background: '#C8431A',
+          background: '#B5532A',
           color: '#fff',
           borderRadius: '99px',
           fontFamily: 'Plus Jakarta Sans, sans-serif',
           fontSize: '15px',
           fontWeight: 800,
           textDecoration: 'none',
-          boxShadow: '0 4px 24px rgba(200,67,26,0.3)',
+          boxShadow: '0 4px 24px rgba(181,83,42,0.3)',
           transition: 'background 0.2s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = '#9E3212' }}
-        onMouseLeave={e => { e.currentTarget.style.background = '#C8431A' }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
+        onMouseLeave={e => { e.currentTarget.style.background = '#B5532A' }}
       >
-        Beli Sekarang — Rp 99K →
+        Beli Sekarang — Rp 175.000 →
       </a>
       <a
         href="#how"

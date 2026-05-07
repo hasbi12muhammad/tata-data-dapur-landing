@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
+import SpiceImg from './SpiceImg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+const AV = '/assets/components/'
+const floatV = (r=0, d='4s', delay='0s') => ({ transform: `rotate(${r}deg)`, animation: `float ${d} ease-in-out infinite ${delay}`, '--rotate': `${r}deg` })
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,14 +62,24 @@ export default function ValueStack() {
     <section
       id="value"
       ref={sectionRef}
-      style={{ background: '#1A1208', padding: '88px 24px' }}
+      style={{ background: '#1B1208', padding: '88px 24px', position: 'relative', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* Floating illustrations — low opacity on dark bg */}
+      <div style={{ position: 'absolute', top: '28px', right: '16px', zIndex: 0, opacity: 0.18 }}>
+        <div style={floatV(15, '5s', '0.3s')}><SpiceImg src={`${AV}11.png`} bg="ink" width={120} height={105} /></div>
+      </div>
+      <div style={{ position: 'absolute', bottom: '36px', left: '12px', zIndex: 0, opacity: 0.15 }}>
+        <div style={floatV(-12, '4.8s', '1.2s')}><SpiceImg src={`${AV}16.png`} bg="ink" width={100} height={90} /></div>
+      </div>
+      <div style={{ position: 'absolute', top: '50%', right: '10px', zIndex: 0, opacity: 0.12 }}>
+        <div style={floatV(8, '6.2s', '0.8s')}><SpiceImg src={`${AV}21.png`} bg="ink" width={85} height={85} /></div>
+      </div>
+      <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section tag */}
         <span style={{
           display: 'inline-block',
-          background: 'rgba(200,67,26,0.15)',
-          border: '1px solid rgba(200,67,26,0.3)',
+          background: 'rgba(181,83,42,0.15)',
+          border: '1px solid rgba(181,83,42,0.3)',
           color: '#F5A25A',
           fontSize: '11px', fontWeight: 800,
           letterSpacing: '0.12em', textTransform: 'uppercase',
@@ -104,8 +118,8 @@ export default function ValueStack() {
                 cursor: 'default',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(200,67,26,0.08)'
-                e.currentTarget.style.borderColor = 'rgba(200,67,26,0.2)'
+                e.currentTarget.style.background = 'rgba(181,83,42,0.08)'
+                e.currentTarget.style.borderColor = 'rgba(181,83,42,0.2)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.04)'

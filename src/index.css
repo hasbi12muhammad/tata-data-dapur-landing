@@ -5,28 +5,28 @@
 /* ===== CSS Variables ===== */
 :root {
   /* New brand palette */
-  --brand: #C8431A;
-  --brand-dark: #9E3212;
-  --brand-light: #FEF3ED;
-  --brand-mid: #F5D0BC;
-  --dark: #1A1208;
+  --brand: #B5532A;
+  --brand-dark: #8B3D1A;
+  --cream: #F4EDE0;
+  --cream-light: #FBF6EC;
+  --dark: #1B1208;
   --dark2: #2E1F10;
-  --text: #2C1A0E;
-  --text2: #6B4A35;
-  --text3: #A0836E;
-  --bg: #FFFCF8;
-  --bg2: #FEF7F1;
-  --border: #EDD9C8;
+  --text: #1B1208;
+  --text2: #5A3D25;
+  --text3: #8B7060;
+  --bg: #F4EDE0;
+  --bg2: #FBF6EC;
+  --border: rgba(181,83,42,0.18);
   --green: #2D6A2D;
   --green-bg: #EBF5EB;
   --radius: 14px;
   --radius-lg: 22px;
 
   /* Legacy aliases (used by ReceiptCard & illustrations) */
-  --cream: #FFFCF8;
-  --cream-light: #FEF7F1;
-  --ink: #1A1208;
-  --terracotta: #C8431A;
+  --cream: #F4EDE0;
+  --cream-light: #FBF6EC;
+  --ink: #1B1208;
+  --terracotta: #B5532A;
   --gold: #C49A3F;
   --olive: #5A6B3B;
 }
@@ -190,8 +190,8 @@ a, button {
 }
 
 @keyframes pulse-btn {
-  0%, 100% { box-shadow: 0 4px 24px rgba(200,67,26,0.28); }
-  50% { box-shadow: 0 4px 32px rgba(200,67,26,0.48); }
+  0%, 100% { box-shadow: 0 4px 24px rgba(181,83,42,0.28); }
+  50% { box-shadow: 0 4px 32px rgba(181,83,42,0.48); }
 }
 
 @keyframes fill-in {

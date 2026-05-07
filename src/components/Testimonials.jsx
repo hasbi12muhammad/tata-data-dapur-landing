@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
+import SpiceImg from './SpiceImg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+const AT = '/assets/components/'
+const floatT = (r=0, d='4s', delay='0s') => ({ transform: `rotate(${r}deg)`, animation: `float ${d} ease-in-out infinite ${delay}`, '--rotate': `${r}deg` })
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -52,17 +56,24 @@ export default function Testimonials() {
     <section
       id="trust"
       ref={sectionRef}
-      style={{ background: '#FEF7F1', padding: '88px 24px' }}
+      style={{ background: '#FBF6EC', padding: '88px 24px', position: 'relative', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* Floating illustrations */}
+      <div style={{ position: 'absolute', top: '30px', left: '16px', zIndex: 0, opacity: 0.55 }}>
+        <div style={floatT(-8, '5.5s', '0.4s')}><SpiceImg src={`${AT}17.png`} bg="cream" width={95} height={85} /></div>
+      </div>
+      <div style={{ position: 'absolute', bottom: '44px', right: '18px', zIndex: 0, opacity: 0.5 }}>
+        <div style={floatT(12, '4.7s', '1.1s')}><SpiceImg src={`${AT}19.png`} bg="cream" width={100} height={90} /></div>
+      </div>
+      <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section tag */}
         <span style={{
           display: 'inline-block',
-          background: '#FEF3ED', color: '#C8431A',
+          background: 'rgba(181,83,42,0.06)', color: '#B5532A',
           fontSize: '11px', fontWeight: 800,
           letterSpacing: '0.12em', textTransform: 'uppercase',
           padding: '5px 12px', borderRadius: '99px',
-          border: '1px solid #F5D0BC', marginBottom: '20px',
+          border: '1px solid rgba(181,83,42,0.2)', marginBottom: '20px',
         }}>
           Testimoni
         </span>
@@ -71,12 +82,12 @@ export default function Testimonials() {
           fontFamily: 'Fraunces, serif',
           fontSize: 'clamp(24px, 3vw, 34px)',
           fontWeight: 700, letterSpacing: '-0.6px',
-          color: '#1A1208', marginBottom: '8px', lineHeight: 1.2,
+          color: '#1B1208', marginBottom: '8px', lineHeight: 1.2,
         }}>
           Sudah dipakai pemilik usaha<br />seperti kamu
         </h2>
 
-        <p style={{ fontSize: '15px', color: '#6B4A35', marginBottom: '40px' }}>
+        <p style={{ fontSize: '15px', color: '#5A3D25', marginBottom: '40px' }}>
           Mereka juga pernah bingung. Sekarang tidak lagi.
         </p>
 
@@ -88,7 +99,7 @@ export default function Testimonials() {
               ref={el => cardRefs.current[i] = el}
               style={{
                 background: '#fff',
-                border: '1px solid #EDD9C8',
+                border: '1px solid rgba(181,83,42,0.18)',
                 borderRadius: '14px', padding: '20px 22px',
                 position: 'relative',
               }}
@@ -97,28 +108,28 @@ export default function Testimonials() {
               <div style={{
                 position: 'absolute', top: '10px', right: '18px',
                 fontFamily: 'Fraunces, serif',
-                fontSize: '64px', color: '#F5D0BC',
+                fontSize: '64px', color: 'rgba(181,83,42,0.2)',
                 lineHeight: 1, pointerEvents: 'none',
                 userSelect: 'none',
               }}>"</div>
 
               <div style={{ color: '#F5A25A', fontSize: '14px', marginBottom: '10px', letterSpacing: '2px' }}>★★★★★</div>
-              <p style={{ fontSize: '15px', color: '#2C1A0E', lineHeight: 1.7, marginBottom: '14px', fontStyle: 'italic' }}>
+              <p style={{ fontSize: '15px', color: '#1B1208', lineHeight: 1.7, marginBottom: '14px', fontStyle: 'italic' }}>
                 "{t.quote}"
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div style={{
                   width: '38px', height: '38px', borderRadius: '50%',
-                  background: '#FEF3ED', border: '2px solid #F5D0BC',
+                  background: 'rgba(181,83,42,0.06)', border: '2px solid rgba(181,83,42,0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '14px', fontWeight: 800, color: '#C8431A',
+                  fontSize: '14px', fontWeight: 800, color: '#B5532A',
                   flexShrink: 0,
                 }}>
                   {t.initials}
                 </div>
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#1A1208' }}>{t.name}</div>
-                  <div style={{ fontSize: '12px', color: '#A0836E' }}>{t.biz}</div>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#1B1208' }}>{t.name}</div>
+                  <div style={{ fontSize: '12px', color: '#8B7060' }}>{t.biz}</div>
                 </div>
               </div>
             </div>

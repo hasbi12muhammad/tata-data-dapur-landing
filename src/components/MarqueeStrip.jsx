@@ -23,9 +23,9 @@ export default function MarqueeStrip() {
 
   return (
     <div style={{
-      background: '#FFFCF8',
-      borderTop: '1px solid rgba(200,67,26,0.18)',
-      borderBottom: '1px solid rgba(200,67,26,0.18)',
+      background: '#F4EDE0',
+      borderTop: '1px solid rgba(181,83,42,0.18)',
+      borderBottom: '1px solid rgba(181,83,42,0.18)',
       paddingTop: '13px', paddingBottom: '13px',
       overflow: 'hidden',
     }}>
@@ -37,11 +37,11 @@ export default function MarqueeStrip() {
                 src={item.img} alt=""
                 style={{ width: item.w, height: item.h, objectFit: 'contain', mixBlendMode: 'multiply', opacity: 0.85, display: 'block', flexShrink: 0 }}
               />
-              <span style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1.35rem', color: '#1A1208', letterSpacing: '-0.01em' }}>
+              <span style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1.35rem', color: '#1B1208', letterSpacing: '-0.01em' }}>
                 {item.text}
               </span>
             </span>
-            <span style={{ fontFamily: 'Fraunces, serif', fontSize: '1.1rem', color: '#C8431A', paddingLeft: '14px', opacity: 0.65 }}>✦</span>
+            <span style={{ fontFamily: 'Fraunces, serif', fontSize: '1.1rem', color: '#B5532A', paddingLeft: '14px', opacity: 0.65 }}>✦</span>
           </span>
         ))}
       </div>

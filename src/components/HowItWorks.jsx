@@ -56,7 +56,7 @@ export default function HowItWorks() {
       id="how"
       ref={sectionRef}
       style={{
-        background: '#1A1208',
+        background: '#1B1208',
         padding: '88px 24px',
         position: 'relative',
         overflow: 'hidden',
@@ -81,11 +81,11 @@ export default function HowItWorks() {
         {/* Section tag */}
         <span style={{
           display: 'inline-block',
-          background: '#FEF3ED', color: '#C8431A',
+          background: 'rgba(181,83,42,0.06)', color: '#B5532A',
           fontSize: '11px', fontWeight: 800,
           letterSpacing: '0.12em', textTransform: 'uppercase',
           padding: '5px 12px', borderRadius: '99px',
-          border: '1px solid #F5D0BC', marginBottom: '20px',
+          border: '1px solid rgba(181,83,42,0.2)', marginBottom: '20px',
         }}>
           Cara kerja
         </span>
@@ -100,7 +100,7 @@ export default function HowItWorks() {
           Simpel. Langsung pakai.<br />Tidak perlu training.
         </h2>
 
-        <p style={{ fontSize: '16px', color: '#6B4A35', marginBottom: '44px', maxWidth: '500px' }}>
+        <p style={{ fontSize: '16px', color: '#5A3D25', marginBottom: '44px', maxWidth: '500px' }}>
           Tiga langkah dan bisnis kamu sudah punya sistem yang benar.
         </p>
 
@@ -110,7 +110,7 @@ export default function HowItWorks() {
           <div style={{
             position: 'absolute', left: '27px', top: '56px', bottom: '56px',
             width: '2px',
-            background: 'linear-gradient(to bottom, #F5D0BC, transparent)',
+            background: 'linear-gradient(to bottom, rgba(181,83,42,0.2), transparent)',
           }} />
 
           {steps.map((step, i) => (
@@ -126,10 +126,10 @@ export default function HowItWorks() {
               {/* Circle number */}
               <div style={{
                 width: '56px', height: '56px', minWidth: '56px',
-                background: '#C8431A', borderRadius: '50%',
+                background: '#B5532A', borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '22px', position: 'relative', zIndex: 1,
-                boxShadow: '0 4px 16px rgba(200,67,26,0.3)',
+                boxShadow: '0 4px 16px rgba(181,83,42,0.3)',
                 flexShrink: 0,
               }}>
                 {step.icon}
@@ -141,7 +141,7 @@ export default function HowItWorks() {
                 <div style={{ fontSize: '14px', color: '#6B5A42', lineHeight: 1.6, marginBottom: '8px' }}>{step.desc}</div>
                 <span style={{
                   display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  background: '#FEF3ED', color: '#C8431A',
+                  background: 'rgba(181,83,42,0.06)', color: '#B5532A',
                   fontSize: '12px', fontWeight: 600,
                   padding: '4px 12px', borderRadius: '99px',
                 }}>
@@ -157,16 +157,16 @@ export default function HowItWorks() {
           <a
             href="#pricing"
             style={{
-              background: '#C8431A', color: '#fff',
+              background: '#B5532A', color: '#fff',
               padding: '16px 32px', borderRadius: '99px',
               fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontSize: '15px', fontWeight: 800,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px',
-              boxShadow: '0 4px 24px rgba(200,67,26,0.28)',
+              boxShadow: '0 4px 24px rgba(181,83,42,0.28)',
               transition: 'background 0.2s, transform 0.1s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#9E3212'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#C8431A'; e.currentTarget.style.transform = 'translateY(0)' }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
           >
             Mulai Sekarang →
           </a>

@@ -37,7 +37,7 @@ export default function FinalCTA() {
       id="final-cta"
       ref={sectionRef}
       style={{
-        background: '#1A1208',
+        background: '#1B1208',
         padding: '88px 24px',
         textAlign: 'center',
         position: 'relative',
@@ -78,7 +78,7 @@ export default function FinalCTA() {
           color: '#fff', marginBottom: '16px', lineHeight: 1.2,
         }}>
           Kalau bisnismu penting,<br />
-          <em style={{ color: '#C8431A', fontStyle: 'italic' }}>kamu butuh sistem yang jelas.</em>
+          <em style={{ color: '#B5532A', fontStyle: 'italic' }}>kamu butuh sistem yang jelas.</em>
         </h2>
 
         <p style={{ fontSize: '16px', color: '#8A7060', marginBottom: '36px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 36px' }}>
@@ -90,23 +90,23 @@ export default function FinalCTA() {
           href="#pricing"
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: '#C8431A', color: '#fff',
+            background: '#B5532A', color: '#fff',
             padding: '18px 40px', borderRadius: '99px',
             fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize: '16px', fontWeight: 800,
             textDecoration: 'none',
-            boxShadow: '0 4px 24px rgba(200,67,26,0.35)',
+            boxShadow: '0 4px 24px rgba(181,83,42,0.35)',
             animation: 'pulse-btn 3s infinite',
             transition: 'background 0.2s, transform 0.1s',
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#9E3212'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#C8431A'; e.currentTarget.style.transform = 'translateY(0)' }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
         >
-          Mulai Sekarang — Rp 99K →
+          Mulai Sekarang — Rp 175.000 →
         </a>
 
         <p style={{ fontSize: '13px', color: '#4A3020', marginTop: '20px' }}>
-          Sudah 11 pengguna bergabung · 4 slot tersisa di harga ini
+          Sudah 11 pengguna bergabung · 4 slot tersisa
         </p>
       </div>
     </section>

@@ -30,7 +30,7 @@ export default function Navbar() {
         background: 'rgba(255,252,248,0.92)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #EDD9C8',
+        borderBottom: '1px solid rgba(181,83,42,0.18)',
         padding: '0 24px',
         height: '64px',
         display: 'flex',
@@ -43,17 +43,17 @@ export default function Navbar() {
         fontFamily: 'Fraunces, serif',
         fontSize: '20px',
         fontWeight: 700,
-        color: '#C8431A',
+        color: '#B5532A',
         letterSpacing: '-0.3px',
       }}>
-        Tata Data<span style={{ color: '#1A1208' }}> Dapur</span>
+        Tata Data<span style={{ color: '#1B1208' }}> Dapur</span>
       </div>
 
       {/* CTA */}
       <a
         href="#pricing"
         style={{
-          background: '#C8431A',
+          background: '#B5532A',
           color: '#fff',
           border: 'none',
           padding: '10px 20px',
@@ -69,8 +69,8 @@ export default function Navbar() {
           whiteSpace: 'nowrap',
           transition: 'background 0.2s, transform 0.1s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = '#9E3212' }}
-        onMouseLeave={e => { e.currentTarget.style.background = '#C8431A' }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
+        onMouseLeave={e => { e.currentTarget.style.background = '#B5532A' }}
         onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
         onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
       >

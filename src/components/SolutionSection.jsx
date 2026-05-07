@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
+import SpiceImg from './SpiceImg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+const A = '/assets/components/'
+const floatSt = (r=0, d='4s', delay='0s') => ({ transform: `rotate(${r}deg)`, animation: `float ${d} ease-in-out infinite ${delay}`, '--rotate': `${r}deg` })
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -8,7 +12,7 @@ const solutions = [
   {
     num: '1',
     title: 'HPP otomatis — meski harga bahan baku naik setiap minggu',
-    desc: 'Sistem FIFO menghitung HPP real-time berdasarkan harga beli terakhir. Kamu selalu tahu: produk ini masih untung atau sudah nombok.',
+    desc: 'Sistem otomatis menghitung HPP real-time berdasarkan harga beli terbaru. Kamu selalu tahu: produk ini masih untung atau sudah nombok.',
   },
   {
     num: '2',
@@ -30,7 +34,6 @@ const solutions = [
 const compareRows = [
   { feat: 'Khusus F&B & Bakery', tdd: '✓', other: '✕ Terlalu umum', otherType: 'no' },
   { feat: 'HPP otomatis (harga fluktuatif)', tdd: '✓', other: '✕ Manual', otherType: 'no' },
-  { feat: 'Manajemen stok FIFO', tdd: '✓', other: '✕ Jarang ada', otherType: 'no' },
   { feat: 'Resep + kalkulasi biaya produksi', tdd: '✓', other: '✕ Tidak tersedia', otherType: 'no' },
   { feat: 'Bayar sekali, pakai selamanya', tdd: '✓', other: '✕ Langganan bulanan', otherType: 'no' },
   { feat: 'Export PDF & Excel', tdd: '✓', other: '⚠ Bayar ekstra', otherType: 'maybe' },
@@ -63,16 +66,26 @@ export default function SolutionSection() {
     <section
       id="solution"
       ref={sectionRef}
-      style={{ background: '#FEF7F1', padding: '88px 24px' }}
+      style={{ background: '#FBF6EC', padding: '88px 24px', position: 'relative', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* Floating illustrations */}
+      <div style={{ position: 'absolute', top: '32px', right: '18px', zIndex: 0, opacity: 0.65 }}>
+        <div style={floatSt(12, '5s', '0.5s')}><SpiceImg src={`${A}5.png`} bg="cream" width={110} height={95} /></div>
+      </div>
+      <div style={{ position: 'absolute', bottom: '40px', left: '14px', zIndex: 0, opacity: 0.6 }}>
+        <div style={floatSt(-10, '4.5s', '1s')}><SpiceImg src={`${A}14.png`} bg="cream" width={95} height={85} /></div>
+      </div>
+      <div style={{ position: 'absolute', top: '45%', left: '10px', zIndex: 0, opacity: 0.45 }}>
+        <div style={floatSt(8, '6s', '2s')}><SpiceImg src={`${A}22.png`} bg="cream" width={80} height={80} /></div>
+      </div>
+      <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <span style={{
           display: 'inline-block',
-          background: '#FEF3ED', color: '#C8431A',
+          background: 'rgba(181,83,42,0.06)', color: '#B5532A',
           fontSize: '11px', fontWeight: 800,
           letterSpacing: '0.12em', textTransform: 'uppercase',
           padding: '5px 12px', borderRadius: '99px',
-          border: '1px solid #F5D0BC', marginBottom: '20px',
+          border: '1px solid rgba(181,83,42,0.2)', marginBottom: '20px',
         }}>
           Solusi
         </span>
@@ -81,13 +94,13 @@ export default function SolutionSection() {
           fontFamily: 'Fraunces, serif',
           fontSize: 'clamp(26px, 3.5vw, 38px)',
           fontWeight: 700, letterSpacing: '-0.8px',
-          lineHeight: 1.2, color: '#1A1208',
+          lineHeight: 1.2, color: '#1B1208',
           marginBottom: '12px',
         }}>
           Bukan tambah kerjaan.<br />Justru bikin jauh lebih ringan.
         </h2>
 
-        <p style={{ fontSize: '16px', color: '#6B4A35', marginBottom: '44px', maxWidth: '500px' }}>
+        <p style={{ fontSize: '16px', color: '#5A3D25', marginBottom: '44px', maxWidth: '500px' }}>
           Tata Data Dapur dirancang khusus untuk bisnis F&B dan bakery — bukan aplikasi serba ada yang akhirnya nggak ada yang kepake.
         </p>
 
@@ -100,13 +113,13 @@ export default function SolutionSection() {
               style={{
                 display: 'flex', gap: '18px',
                 background: '#fff',
-                border: '1px solid #EDD9C8',
+                border: '1px solid rgba(181,83,42,0.18)',
                 borderRadius: '14px', padding: '20px 22px',
                 transition: 'box-shadow 0.2s, transform 0.2s',
                 cursor: 'default',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(200,67,26,0.1)'
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(181,83,42,0.1)'
                 e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={e => {
@@ -116,17 +129,17 @@ export default function SolutionSection() {
             >
               <div style={{
                 width: '36px', height: '36px', minWidth: '36px',
-                background: '#FEF3ED', border: '1px solid #F5D0BC',
+                background: 'rgba(181,83,42,0.06)', border: '1px solid rgba(181,83,42,0.2)',
                 borderRadius: '10px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '14px', fontWeight: 800, color: '#C8431A',
+                fontSize: '14px', fontWeight: 800, color: '#B5532A',
                 flexShrink: 0,
               }}>
                 {s.num}
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#1A1208', marginBottom: '4px' }}>{s.title}</div>
-                <div style={{ fontSize: '14px', color: '#6B4A35', lineHeight: 1.6 }}>{s.desc}</div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: '#1B1208', marginBottom: '4px' }}>{s.title}</div>
+                <div style={{ fontSize: '14px', color: '#5A3D25', lineHeight: 1.6 }}>{s.desc}</div>
               </div>
             </div>
           ))}
@@ -137,26 +150,26 @@ export default function SolutionSection() {
           ref={el => cardRefs.current[solutions.length] = el}
           style={{ marginTop: '48px' }}
         >
-          <div style={{ fontSize: '13px', color: '#A0836E', marginBottom: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          <div style={{ fontSize: '13px', color: '#8B7060', marginBottom: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
             Dibanding aplikasi lain
           </div>
-          <div style={{ overflowX: 'auto', borderRadius: '14px', border: '1px solid #EDD9C8' }}>
+          <div style={{ overflowX: 'auto', borderRadius: '14px', border: '1px solid rgba(181,83,42,0.18)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
               <thead>
                 <tr>
-                  <th style={{ textAlign: 'left', padding: '10px 14px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#A0836E', borderBottom: '1px solid #EDD9C8' }}>Fitur</th>
-                  <th style={{ textAlign: 'center', padding: '10px 14px', background: '#C8431A', color: '#fff', fontSize: '11px', fontWeight: 800, letterSpacing: '0.06em', borderBottom: '1px solid #EDD9C8' }}>Tata Data Dapur</th>
-                  <th style={{ textAlign: 'center', padding: '10px 14px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#A0836E', borderBottom: '1px solid #EDD9C8' }}>Aplikasi Lain</th>
+                  <th style={{ textAlign: 'left', padding: '10px 14px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#8B7060', borderBottom: '1px solid rgba(181,83,42,0.18)' }}>Fitur</th>
+                  <th style={{ textAlign: 'center', padding: '10px 14px', background: '#B5532A', color: '#fff', fontSize: '11px', fontWeight: 800, letterSpacing: '0.06em', borderBottom: '1px solid rgba(181,83,42,0.18)' }}>Tata Data Dapur</th>
+                  <th style={{ textAlign: 'center', padding: '10px 14px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#8B7060', borderBottom: '1px solid rgba(181,83,42,0.18)' }}>Aplikasi Lain</th>
                 </tr>
               </thead>
               <tbody>
                 {compareRows.map((row, i) => (
                   <tr key={i}>
-                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid #EDD9C8' : 'none', color: '#2C1A0E', verticalAlign: 'middle' }}>{row.feat}</td>
-                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid #EDD9C8' : 'none', textAlign: 'center', fontWeight: 700, color: '#C8431A', background: '#FEF7F1', fontSize: '16px' }}>{row.tdd}</td>
+                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none', color: '#1B1208', verticalAlign: 'middle' }}>{row.feat}</td>
+                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none', textAlign: 'center', fontWeight: 700, color: '#B5532A', background: '#FBF6EC', fontSize: '16px' }}>{row.tdd}</td>
                     <td style={{
                       padding: '13px 14px',
-                      borderBottom: i < compareRows.length - 1 ? '1px solid #EDD9C8' : 'none',
+                      borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none',
                       textAlign: 'center',
                       color: row.otherType === 'no' ? '#C4A090' : '#D4933A',
                       fontSize: row.otherType === 'maybe' ? '13px' : '16px',

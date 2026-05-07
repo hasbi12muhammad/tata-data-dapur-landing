@@ -68,7 +68,7 @@ export default function PainSection() {
     <section
       id="pain"
       ref={sectionRef}
-      style={{ background: '#1A1208', padding: '88px 24px', position: 'relative', overflow: 'hidden' }}
+      style={{ background: '#1B1208', padding: '88px 24px', position: 'relative', overflow: 'hidden' }}
     >
       {/* Botanical decorations */}
       <div style={{ position: 'absolute', top: '60px', right: '20px', opacity: 0.18, pointerEvents: 'none' }}>
@@ -86,8 +86,8 @@ export default function PainSection() {
         {/* Section tag */}
         <span style={{
           display: 'inline-block',
-          background: 'rgba(200,67,26,0.15)',
-          border: '1px solid rgba(200,67,26,0.3)',
+          background: 'rgba(181,83,42,0.15)',
+          border: '1px solid rgba(181,83,42,0.3)',
           color: '#F5A25A',
           fontSize: '11px', fontWeight: 800,
           letterSpacing: '0.12em', textTransform: 'uppercase',
@@ -104,7 +104,7 @@ export default function PainSection() {
           marginBottom: '40px',
         }}>
           Bisnis jalan terus,<br />
-          tapi rasanya kok <em style={{ color: '#C8431A', fontStyle: 'italic' }}>nggak pernah jelas?</em>
+          tapi rasanya kok <em style={{ color: '#B5532A', fontStyle: 'italic' }}>nggak pernah jelas?</em>
         </h2>
 
         {/* Pain items */}
@@ -122,8 +122,8 @@ export default function PainSection() {
                 cursor: 'default',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(200,67,26,0.08)'
-                e.currentTarget.style.borderColor = 'rgba(200,67,26,0.2)'
+                e.currentTarget.style.background = 'rgba(181,83,42,0.08)'
+                e.currentTarget.style.borderColor = 'rgba(181,83,42,0.2)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
@@ -150,10 +150,10 @@ export default function PainSection() {
         <div
           ref={el => itemRefs.current[pains.length] = el}
           style={{
-            background: 'rgba(200,67,26,0.12)',
-            border: '1px solid rgba(200,67,26,0.25)',
+            background: 'rgba(181,83,42,0.12)',
+            border: '1px solid rgba(181,83,42,0.25)',
             borderRadius: '14px', padding: '20px 22px',
-            fontSize: '15px', color: '#F5D0BC', lineHeight: 1.6,
+            fontSize: '15px', color: 'rgba(181,83,42,0.2)', lineHeight: 1.6,
           }}
         >
           Kalau iya, kamu nggak sendiri.{' '}
