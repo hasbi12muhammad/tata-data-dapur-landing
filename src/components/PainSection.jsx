@@ -13,29 +13,44 @@ const floatStyle = (r = 0, d = '4s', delay = '0s') => ({
   '--rotate': `${r}deg`,
 })
 
+const IC = ({ d, vb = '0 0 24 24' }) => (
+  <svg width="18" height="18" viewBox={vb} fill="none"
+    stroke="#C49A3F" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    {d}
+  </svg>
+)
+
+const icons = [
+  // Box — stok
+  <IC d={<><path d="M21 8V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><line x1="10" y1="12" x2="14" y2="12"/></>} />,
+  // TrendingDown — profit bingung
+  <IC d={<><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></>} />,
+  // FileWarning — catat manual
+  <IC d={<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="16"/><circle cx="12" cy="18.5" r="0.5" fill="#C49A3F"/></>} />,
+  // Tag — harga naik
+  <IC d={<><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></>} />,
+  // CreditCard — langganan
+  <IC d={<><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></>} />,
+]
+
 const pains = [
   {
-    icon: '📦',
     title: 'Stok tiba-tiba habis',
     desc: 'padahal merasa belum lama restock. Dan kamu baru sadar pas pembeli sudah pesan.',
   },
   {
-    icon: '💸',
     title: 'Uang masuk tiap hari, tapi bingung untungnya berapa.',
     desc: 'Kalau ditanya "bulan ini profit berapa?" — kamu jawab apa?',
   },
   {
-    icon: '📒',
     title: 'Masih catat manual di buku atau Excel.',
     desc: 'Kalau buku ketumpahan kopi atau file corrupt, data hilang semua.',
   },
   {
-    icon: '🧮',
     title: 'Harga tepung naik, tapi nggak tahu harus naikkan harga jual berapa.',
     desc: 'Akhirnya tebak-tebakan — dan sering rugi tanpa sadar.',
   },
   {
-    icon: '😤',
     title: 'Sudah coba aplikasi lain, tapi bayar terus tiap bulan',
     desc: 'padahal fiturnya nggak kepake semua — dan harganya terus naik.',
   },
@@ -131,12 +146,14 @@ export default function PainSection() {
               }}
             >
               <div style={{
-                fontSize: '20px', width: '36px', height: '36px', minWidth: '36px',
-                background: 'rgba(255,255,255,0.06)', borderRadius: '10px',
+                width: '36px', height: '36px', minWidth: '36px',
+                background: 'rgba(196,154,63,0.1)',
+                border: '1px solid rgba(196,154,63,0.2)',
+                borderRadius: '10px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
               }}>
-                {pain.icon}
+                {icons[i]}
               </div>
               <p style={{ fontSize: '15px', color: '#D4C0AA', lineHeight: 1.5, paddingTop: '7px', margin: 0 }}>
                 <strong style={{ color: '#F5E6D0' }}>{pain.title}</strong>{' '}

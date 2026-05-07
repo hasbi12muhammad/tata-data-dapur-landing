@@ -213,7 +213,7 @@ export default function Hero() {
       </div>
 
       {/* App Screenshot Slider */}
-      <div ref={sliderRef} style={{ maxWidth: '1100px', margin: '64px auto 0', position: 'relative', zIndex: 1 }}>
+      <div ref={sliderRef} style={{ maxWidth: '1400px', width: '100%', margin: '64px auto 0', position: 'relative', zIndex: 1 }}>
         {/* Small sparkles around slider */}
         <SparkleIllustration size={9} style={{ position: 'absolute', top: '-20px', left: '5%', color: '#C49A3F', opacity: 0.5, zIndex: 2 }} />
         <SparkleIllustration size={7} style={{ position: 'absolute', bottom: '-16px', right: '8%', color: '#B5532A', opacity: 0.4, zIndex: 2 }} />

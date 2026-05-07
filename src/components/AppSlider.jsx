@@ -124,7 +124,7 @@ export default function AppSlider() {
       {/* ── 3-COLUMN TRACK ─────────────────────────────────────── */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 5fr 1fr',   // 5fr = ~3x wider than before
+        gridTemplateColumns: '1fr 7fr 1fr',
         gap: '14px',
         alignItems: 'center',
       }}>
