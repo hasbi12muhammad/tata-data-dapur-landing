@@ -87,7 +87,6 @@ export default function FAQ() {
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Hubungi via WhatsApp
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
 
           <div style={{ display: 'flex', gap: '8px', marginTop: '40px', alignItems: 'center' }}>

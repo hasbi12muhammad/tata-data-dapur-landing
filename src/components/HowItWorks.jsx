@@ -187,7 +187,7 @@ export default function HowItWorks() {
               padding: '16px 32px', borderRadius: '99px',
               fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontSize: '15px', fontWeight: 800,
-              textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px',
+              textDecoration: 'none', display: 'inline-block',
               boxShadow: '0 4px 24px rgba(181,83,42,0.28)',
               transition: 'background 0.2s, transform 0.1s',
             }}
@@ -195,7 +195,6 @@ export default function HowItWorks() {
             onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
           >
             Mulai Sekarang
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
       </div>

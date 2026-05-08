@@ -143,16 +143,32 @@ export default function Pricing() {
             </div>
 
             {/* Price */}
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
-              <span style={{ fontSize: '18px', fontWeight: 700, color: '#5A3D25' }}>Rp</span>
-              <span style={{ fontFamily: 'Fraunces, serif', fontSize: '56px', fontWeight: 700, color: '#1B1208', letterSpacing: '-2px', lineHeight: 1 }}>175.000</span>
-            </div>
-            <div style={{
-              fontSize: '13px', color: '#B5532A', fontWeight: 700,
-              marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '6px',
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Bayar sekali · Pakai selamanya · Tidak ada biaya tambahan
+            <div style={{ marginBottom: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '3px', lineHeight: 1 }}>
+                <span style={{
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
+                  fontSize: '22px', fontWeight: 800,
+                  color: '#B5532A', paddingTop: '12px', letterSpacing: '-0.5px',
+                }}>Rp</span>
+                <span style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: 'clamp(68px, 18vw, 88px)',
+                  fontWeight: 700, color: '#1B1208',
+                  letterSpacing: '-4px', lineHeight: 1,
+                }}>175.000</span>
+              </div>
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '6px',
+                marginTop: '10px',
+                background: 'rgba(181,83,42,0.07)',
+                border: '1px solid rgba(181,83,42,0.18)',
+                borderRadius: '99px', padding: '5px 14px',
+              }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span style={{ fontSize: '12px', fontWeight: 700, color: '#B5532A' }}>
+                  Bayar sekali · Pakai selamanya · Tanpa biaya tambahan
+                </span>
+              </div>
             </div>
 
             <hr style={{ border: 'none', borderTop: '1px solid rgba(181,83,42,0.15)', margin: '20px 0' }} />
@@ -196,7 +212,6 @@ export default function Pricing() {
               onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
               Saya Mau Beli Sekarang — Rp 175.000
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
 
             {/* Trust badges — centered */}
