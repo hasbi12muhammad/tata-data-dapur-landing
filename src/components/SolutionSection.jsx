@@ -17,7 +17,7 @@ const solutions = [
   {
     num: '2',
     title: 'Stok terpantau tanpa hitung manual',
-    desc: 'Setiap transaksi langsung kurangi stok. Ada peringatan otomatis kalau stok mendekati habis. Nggak perlu cek fisik tiap pagi.',
+    desc: 'Setiap transaksi langsung kurangi stok secara otomatis. Kamu bisa cek kondisi stok kapan saja dari HP, tanpa perlu hitung fisik tiap pagi.',
   },
   {
     num: '3',
