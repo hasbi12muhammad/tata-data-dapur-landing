@@ -255,3 +255,32 @@ html.lenis {
 @media (max-width: 480px) {
   .receipt-wrapper { max-width: 100% !important; }
 }
+
+/* ============================================
+   APP SLIDER — MOBILE RESPONSIVE
+   Hero padding = 48px each side.
+   Break out by 32px → 16px gap from screen edge.
+   ============================================ */
+@media (max-width: 768px) {
+  .app-slider-wrap {
+    margin-left: -32px !important;
+    margin-right: -32px !important;
+    width: calc(100% + 64px) !important;
+    max-width: none !important;
+  }
+
+  /* Collapse to single-column, hide blurred side previews */
+  .app-slider-track {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .app-slider-track > *:first-child,
+  .app-slider-track > *:last-child {
+    display: none !important;
+  }
+
+  /* Move arrows inside the frame so they don't clip */
+  .app-slider-arrow-left  { left: 10px !important; }
+  .app-slider-arrow-right { right: 10px !important; }
+}

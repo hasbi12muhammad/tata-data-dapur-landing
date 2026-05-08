@@ -119,10 +119,10 @@ export default function AppSlider() {
 
   // ─── render ───────────────────────────────────────────────────────
   return (
-    <div style={{ width: '100%', userSelect: 'none' }}>
+    <div className="app-slider-root" style={{ width: '100%', userSelect: 'none' }}>
 
       {/* ── 3-COLUMN TRACK ─────────────────────────────────────── */}
-      <div style={{
+      <div className="app-slider-track" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 7fr 1fr',
         gap: '14px',
@@ -284,6 +284,7 @@ function ArrowBtn({ side, onClick }) {
     <button
       onClick={onClick}
       aria-label={isLeft ? 'Sebelumnya' : 'Berikutnya'}
+      className={isLeft ? 'app-slider-arrow-left' : 'app-slider-arrow-right'}
       style={{
         position: 'absolute',
         [isLeft ? 'left' : 'right']: '-18px',
