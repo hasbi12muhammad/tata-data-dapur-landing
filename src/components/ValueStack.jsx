@@ -15,7 +15,7 @@ const values = [
   },
   {
     title: 'Stok selalu terpantau real-time',
-    desc: 'Ada notifikasi sebelum stok habis. Tidak ada lagi kehabisan di tengah rush hour.',
+    desc: 'Setiap transaksi memperbarui stok otomatis. Kamu tahu persis kondisi bahan baku tanpa cek manual.',
   },
   {
     title: 'HPP akurat meski bahan baku naik',
@@ -97,7 +97,7 @@ export default function ValueStack() {
           Bukan sekedar aplikasi.<br />Ini ketenangan pikiran kamu.
         </h2>
 
-        <p style={{ fontSize: '15px', color: '#8A7060', marginBottom: '40px' }}>
+        <p style={{ fontSize: '15px', color: '#C4B098', marginBottom: '40px' }}>
           Setiap fitur dirancang untuk satu tujuan: bikin kamu lebih tenang jalankan bisnis.
         </p>
 
@@ -137,7 +137,7 @@ export default function ValueStack() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5DCA87" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#F5E6D0', marginBottom: '4px', lineHeight: 1.3 }}>{v.title}</div>
-              <div style={{ fontSize: '12px', color: '#6B5A42', lineHeight: 1.5 }}>{v.desc}</div>
+              <div style={{ fontSize: '12px', color: '#A89880', lineHeight: 1.5 }}>{v.desc}</div>
             </div>
           ))}
         </div>

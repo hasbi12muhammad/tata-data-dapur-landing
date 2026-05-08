@@ -81,7 +81,7 @@ export default function FinalCTA() {
           <em style={{ color: '#B5532A', fontStyle: 'italic' }}>kamu butuh sistem yang jelas.</em>
         </h2>
 
-        <p style={{ fontSize: '16px', color: '#8A7060', marginBottom: '36px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 36px' }}>
+        <p style={{ fontSize: '16px', color: '#C4B098', marginBottom: '36px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 36px' }}>
           Setiap hari yang kamu jalankan tanpa data yang jelas adalah hari yang kamu lewatkan untuk tumbuh.<br />
           <strong style={{ color: '#D4C0AA', fontWeight: 700 }}>Mulai hari ini — satu kali bayar, selamanya punya kontrol.</strong>
         </p>
@@ -102,7 +102,8 @@ export default function FinalCTA() {
           onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
         >
-          Mulai Sekarang — Rp 175.000 →
+          Mulai Sekarang — Rp 175.000
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
 
         <p style={{ fontSize: '13px', color: '#4A3020', marginTop: '20px' }}>

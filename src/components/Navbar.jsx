@@ -74,7 +74,8 @@ export default function Navbar() {
         onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
         onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
       >
-        Beli Sekarang →
+        Beli Sekarang
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </nav>
   )

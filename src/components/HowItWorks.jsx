@@ -125,7 +125,7 @@ export default function HowItWorks() {
           Simpel. Langsung pakai.<br />Tidak perlu training.
         </h2>
 
-        <p style={{ fontSize: '16px', color: '#5A3D25', marginBottom: '44px', maxWidth: '500px' }}>
+        <p style={{ fontSize: '16px', color: '#C4B098', marginBottom: '44px', maxWidth: '500px' }}>
           Tiga langkah dan bisnis kamu sudah punya sistem yang benar.
         </p>
 
@@ -163,12 +163,13 @@ export default function HowItWorks() {
               {/* Body */}
               <div style={{ paddingTop: '10px' }}>
                 <div style={{ fontSize: '17px', fontWeight: 700, color: '#F5E6D0', marginBottom: '6px' }}>{step.title}</div>
-                <div style={{ fontSize: '14px', color: '#6B5A42', lineHeight: 1.6, marginBottom: '8px' }}>{step.desc}</div>
+                <div style={{ fontSize: '14px', color: '#A89880', lineHeight: 1.6, marginBottom: '8px' }}>{step.desc}</div>
                 <span style={{
                   display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  background: 'rgba(181,83,42,0.06)', color: '#B5532A',
+                  background: 'rgba(181,83,42,0.14)', color: '#E8845A',
                   fontSize: '12px', fontWeight: 600,
                   padding: '4px 12px', borderRadius: '99px',
+                  border: '1px solid rgba(181,83,42,0.25)',
                 }}>
                   {step.detail}
                 </span>
@@ -193,7 +194,8 @@ export default function HowItWorks() {
             onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
             onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
           >
-            Mulai Sekarang →
+            Mulai Sekarang
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
       </div>

@@ -170,7 +170,7 @@ export default function PainSection() {
             background: 'rgba(181,83,42,0.12)',
             border: '1px solid rgba(181,83,42,0.25)',
             borderRadius: '14px', padding: '20px 22px',
-            fontSize: '15px', color: 'rgba(181,83,42,0.2)', lineHeight: 1.6,
+            fontSize: '15px', color: '#A89880', lineHeight: 1.6,
           }}
         >
           Kalau iya, kamu nggak sendiri.{' '}
