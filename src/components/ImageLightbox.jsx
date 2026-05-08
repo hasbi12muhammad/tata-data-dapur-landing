@@ -249,7 +249,8 @@ export default function ImageLightbox({ slides, startIndex, onClose }) {
         ref={containerRef}
         onClick={e => e.stopPropagation()}
         style={{
-          width: '100%', maxWidth: '480px',
+          width: '100%', maxWidth: 'min(860px, calc(100vw - 48px))',
+          maxHeight: 'calc(100vh - 120px)', overflowY: 'auto',
           borderRadius: '18px', overflow: 'hidden',
           background: '#1B1208',
           boxShadow: '0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,154,63,0.14)',

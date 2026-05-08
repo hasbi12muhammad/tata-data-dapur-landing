@@ -113,15 +113,15 @@ export default function Hero() {
           ref={eyebrowRef}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: 'rgba(181,83,42,0.08)', border: '1px solid rgba(181,83,42,0.2)',
+            background: '#B5532A',
             borderRadius: '99px', padding: '6px 14px',
-            fontSize: '12px', fontWeight: 700, color: '#B5532A',
+            fontSize: '12px', fontWeight: 700, color: '#fff',
             marginBottom: '28px',
           }}
         >
           <span style={{
             width: '7px', height: '7px', borderRadius: '50%',
-            background: '#B5532A', display: 'inline-block', flexShrink: 0,
+            background: 'rgba(255,255,255,0.7)', display: 'inline-block', flexShrink: 0,
             animation: 'pulse-dot 2s infinite',
           }} />
           Cocok untuk kuliner & produksi ringan
