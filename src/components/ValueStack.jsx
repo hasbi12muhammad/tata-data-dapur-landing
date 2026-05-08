@@ -132,10 +132,9 @@ export default function ValueStack() {
                 border: '1px solid rgba(93,202,135,0.25)',
                 borderRadius: '8px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '14px', marginBottom: '10px',
-                color: '#5DCA87',
+                marginBottom: '10px',
               }}>
-                ✓
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5DCA87" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#F5E6D0', marginBottom: '4px', lineHeight: 1.3 }}>{v.title}</div>
               <div style={{ fontSize: '12px', color: '#6B5A42', lineHeight: 1.5 }}>{v.desc}</div>

@@ -20,7 +20,7 @@ export default function Footer() {
         color: '#3D2A18',
         margin: 0,
       }}>
-        © 2025 Tata Data Dapur · Untuk UMKM F&B dan Bakery Indonesia
+        © 2025 Tata Data Dapur · Untuk UMKM Kuliner & Produksi Ringan Indonesia
       </p>
     </footer>
   )

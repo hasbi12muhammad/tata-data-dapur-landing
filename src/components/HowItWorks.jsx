@@ -11,24 +11,49 @@ const floatStyle = (r = 0, d = '4s', delay = '0s') => ({
   '--rotate': `${r}deg`,
 })
 
+const SI = ({ children }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+    stroke="#fff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    {children}
+  </svg>
+)
+
 const steps = [
   {
-    icon: '🏪',
+    icon: (
+      <SI>
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </SI>
+    ),
     title: 'Input produk & resep sekali di awal',
     desc: 'Masukkan daftar menu, harga jual, resep (bahan + takaran), dan stok awal bahan baku. Proses ini hanya dilakukan sekali.',
-    detail: '⏱ Sekitar 15–30 menit setup awal',
+    detail: 'Sekitar 15–30 menit setup awal',
   },
   {
-    icon: '🧾',
+    icon: (
+      <SI>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </SI>
+    ),
     title: 'Catat transaksi harian seperti biasa',
     desc: 'Setiap penjualan dan pembelian dicatat. Stok otomatis berkurang. HPP otomatis terhitung. Kamu tinggal input, sisanya dikerjain sistem.',
-    detail: '⚡ Kurang dari 30 detik per transaksi',
+    detail: 'Kurang dari 30 detik per transaksi',
   },
   {
-    icon: '📊',
+    icon: (
+      <SI>
+        <line x1="18" y1="20" x2="18" y2="10"/>
+        <line x1="12" y1="20" x2="12" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="14"/>
+      </SI>
+    ),
     title: 'Lihat laporan kapan saja dari HP',
     desc: 'Buka aplikasi, pilih periode, dan semua angka sudah ada. Profit, HPP, stok, pengeluaran operasional — tanpa hitung ulang, tanpa ribet.',
-    detail: '📥 Export PDF / Excel satu klik',
+    detail: 'Export PDF / Excel satu klik',
   },
 ]
 
@@ -128,7 +153,7 @@ export default function HowItWorks() {
                 width: '56px', height: '56px', minWidth: '56px',
                 background: '#B5532A', borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '22px', position: 'relative', zIndex: 1,
+                position: 'relative', zIndex: 1,
                 boxShadow: '0 4px 16px rgba(181,83,42,0.3)',
                 flexShrink: 0,
               }}>

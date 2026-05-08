@@ -110,7 +110,7 @@ export default function Pricing() {
             fontSize: '12px', fontWeight: 800,
             letterSpacing: '0.08em', textTransform: 'uppercase',
           }}>
-            🔥 Harga Spesial — Terbatas untuk 15 Pengguna Pertama
+            Harga Spesial — Terbatas untuk 15 Pengguna Pertama
           </div>
 
           {/* Body */}
@@ -122,7 +122,10 @@ export default function Pricing() {
               display: 'flex', alignItems: 'center', gap: '12px',
               marginBottom: '24px',
             }}>
-              <span style={{ fontSize: '22px' }}>⏳</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: '13px', color: '#8B3D1A', lineHeight: 1.5, fontWeight: 800, display: 'block', marginBottom: '2px' }}>
                   11 dari 15 slot sudah terisi
@@ -148,7 +151,8 @@ export default function Pricing() {
               fontSize: '13px', color: '#B5532A', fontWeight: 700,
               marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '6px',
             }}>
-              ✓ &nbsp;Bayar sekali · Pakai selamanya · Tidak ada biaya tambahan
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Bayar sekali · Pakai selamanya · Tidak ada biaya tambahan
             </div>
 
             <hr style={{ border: 'none', borderTop: '1px solid rgba(181,83,42,0.15)', margin: '20px 0' }} />
@@ -162,8 +166,10 @@ export default function Pricing() {
                     background: '#EBF5EB', border: '1px solid #7BC47B',
                     borderRadius: '6px',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '11px', color: '#2D6A2D', marginTop: '1px', flexShrink: 0,
-                  }}>✓</span>
+                    marginTop: '1px', flexShrink: 0,
+                  }}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2D6A2D" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
                   <span>{feat}</span>
                 </div>
               ))}
@@ -194,15 +200,29 @@ export default function Pricing() {
 
             {/* Trust badges — centered */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px', justifyContent: 'center' }}>
-              {['🔒 Tanpa kontrak', '⚡ Langsung bisa pakai', '📞 Support via WhatsApp'].map((badge, i) => (
+              {[
+                {
+                  icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+                  text: 'Tanpa kontrak',
+                },
+                {
+                  icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+                  text: 'Langsung bisa pakai',
+                },
+                {
+                  icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+                  text: 'Support via WhatsApp',
+                },
+              ].map((badge, i) => (
                 <span key={i} style={{
-                  display: 'flex', alignItems: 'center', gap: '5px',
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
                   fontSize: '12px', color: '#5A3D25', fontWeight: 600,
                   padding: '5px 12px',
                   background: '#F4EDE0', border: '1px solid rgba(181,83,42,0.2)',
                   borderRadius: '99px',
                 }}>
-                  {badge}
+                  {badge.icon}
+                  {badge.text}
                 </span>
               ))}
             </div>

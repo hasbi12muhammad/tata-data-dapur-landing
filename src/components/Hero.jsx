@@ -124,7 +124,7 @@ export default function Hero() {
             background: '#B5532A', display: 'inline-block', flexShrink: 0,
             animation: 'pulse-dot 2s infinite',
           }} />
-          Khusus F&B & Bakery UMKM
+          Cocok untuk kuliner & produksi ringan
         </div>
 
         <h1
@@ -195,7 +195,8 @@ export default function Hero() {
             onMouseEnter={e => { e.currentTarget.style.borderColor = '#B5532A'; e.currentTarget.style.color = '#B5532A' }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(181,83,42,0.3)'; e.currentTarget.style.color = '#5A3D25' }}
           >
-            ▶&nbsp; Lihat Cara Kerjanya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Lihat Cara Kerjanya
           </a>
         </div>
 
@@ -204,11 +205,20 @@ export default function Hero() {
           ref={proofRef}
           style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px', color: '#8B7060', flexWrap: 'wrap', justifyContent: 'center' }}
         >
-          <span>✓ Bayar sekali</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Bayar sekali
+          </span>
           <span style={{ width: '4px', height: '4px', background: 'rgba(181,83,42,0.3)', borderRadius: '50%' }} />
-          <span>✓ Setup 15 menit</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Setup 15 menit
+          </span>
           <span style={{ width: '4px', height: '4px', background: 'rgba(181,83,42,0.3)', borderRadius: '50%' }} />
-          <span>✓ Khusus F&B & Bakery</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Cocok untuk kuliner & produksi ringan
+          </span>
         </div>
       </div>
 

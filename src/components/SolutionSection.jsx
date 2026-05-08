@@ -31,12 +31,28 @@ const solutions = [
   },
 ]
 
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+)
+const XIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C4A090" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+)
+const WarnIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4933A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+)
+
 const compareRows = [
-  { feat: 'Khusus F&B & Bakery', tdd: '✓', other: '✕ Terlalu umum', otherType: 'no' },
-  { feat: 'HPP otomatis (harga fluktuatif)', tdd: '✓', other: '✕ Manual', otherType: 'no' },
-  { feat: 'Resep + kalkulasi biaya produksi', tdd: '✓', other: '✕ Tidak tersedia', otherType: 'no' },
-  { feat: 'Bayar sekali, pakai selamanya', tdd: '✓', other: '✕ Langganan bulanan', otherType: 'no' },
-  { feat: 'Export PDF & Excel', tdd: '✓', other: '⚠ Bayar ekstra', otherType: 'maybe' },
+  { feat: 'Cocok untuk kuliner & produksi ringan', tdd: <CheckIcon/>, other: <><XIcon/> <span>Terlalu umum</span></>, otherType: 'no' },
+  { feat: 'HPP otomatis (harga fluktuatif)', tdd: <CheckIcon/>, other: <><XIcon/> <span>Manual</span></>, otherType: 'no' },
+  { feat: 'Resep + kalkulasi biaya produksi', tdd: <CheckIcon/>, other: <><XIcon/> <span>Tidak tersedia</span></>, otherType: 'no' },
+  { feat: 'Bayar sekali, pakai selamanya', tdd: <CheckIcon/>, other: <><XIcon/> <span>Langganan bulanan</span></>, otherType: 'no' },
+  { feat: 'Export PDF & Excel', tdd: <CheckIcon/>, other: <><WarnIcon/> <span>Bayar ekstra</span></>, otherType: 'maybe' },
 ]
 
 export default function SolutionSection() {
@@ -101,7 +117,7 @@ export default function SolutionSection() {
         </h2>
 
         <p style={{ fontSize: '16px', color: '#5A3D25', marginBottom: '44px', maxWidth: '500px' }}>
-          Tata Data Dapur dirancang khusus untuk bisnis F&B dan bakery — bukan aplikasi serba ada yang akhirnya nggak ada yang kepake.
+          Tata Data Dapur dirancang khusus untuk bisnis kuliner dan produksi ringan — bukan aplikasi serba ada yang akhirnya nggak ada yang kepake.
         </p>
 
         {/* Solution cards */}
@@ -166,15 +182,17 @@ export default function SolutionSection() {
                 {compareRows.map((row, i) => (
                   <tr key={i}>
                     <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none', color: '#1B1208', verticalAlign: 'middle' }}>{row.feat}</td>
-                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none', textAlign: 'center', fontWeight: 700, color: '#B5532A', background: '#FBF6EC', fontSize: '16px' }}>{row.tdd}</td>
+                    <td style={{ padding: '13px 14px', borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none', textAlign: 'center', background: '#FBF6EC' }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{row.tdd}</span>
+                    </td>
                     <td style={{
                       padding: '13px 14px',
                       borderBottom: i < compareRows.length - 1 ? '1px solid rgba(181,83,42,0.18)' : 'none',
-                      textAlign: 'center',
-                      color: row.otherType === 'no' ? '#C4A090' : '#D4933A',
-                      fontSize: row.otherType === 'maybe' ? '13px' : '16px',
-                      fontWeight: row.otherType === 'maybe' ? 600 : 'normal',
-                    }}>{row.other}</td>
+                      fontSize: '13px',
+                      fontWeight: 500,
+                    }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', color: row.otherType === 'no' ? '#C4A090' : '#D4933A' }}>{row.other}</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
