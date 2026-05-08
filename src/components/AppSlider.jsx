@@ -10,6 +10,7 @@
  */
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import gsap from 'gsap'
+import ImageLightbox from './ImageLightbox'
 
 const SLIDES = [
   { src: '/assets/app/dashboard.png',    label: 'Dashboard',    desc: 'Ringkasan bisnis harian' },
@@ -26,6 +27,9 @@ const wrap = (i) => ((i % N) + N) % N
 export default function AppSlider() {
   // displayIdx drives React rendering (side previews + dots + caption)
   const [displayIdx, setDisplayIdx] = useState(0)
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Refs — never trigger re-renders
   const currentRef   = useRef(0)          // current active index
@@ -165,13 +169,31 @@ export default function AppSlider() {
             </div>
 
             {/* Screenshot — single stable DOM node, src swapped by GSAP */}
-            <div style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative' }}>
+            <div
+              style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative', cursor: 'zoom-in' }}
+              onClick={() => setLightboxOpen(true)}
+              title="Klik untuk perbesar"
+            >
               <img
                 ref={imgRef}
                 src={SLIDES[0].src}
                 alt={SLIDES[0].label}
                 style={{ width: '100%', display: 'block', objectFit: 'cover' }}
               />
+              {/* Zoom hint badge */}
+              <div style={{
+                position: 'absolute', bottom: '10px', right: '10px',
+                background: 'rgba(27,18,8,0.65)', backdropFilter: 'blur(6px)',
+                borderRadius: '8px', padding: '5px 8px',
+                display: 'flex', alignItems: 'center', gap: '5px',
+                pointerEvents: 'none',
+              }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                </svg>
+                <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Perbesar</span>
+              </div>
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '56px',
                 background: 'linear-gradient(to top, rgba(27,18,8,0.22), transparent)',
@@ -237,6 +259,15 @@ export default function AppSlider() {
           />
         ))}
       </div>
+
+      {/* LIGHTBOX */}
+      {lightboxOpen && (
+        <ImageLightbox
+          slides={SLIDES}
+          startIndex={displayIdx}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </div>
   )
 }
