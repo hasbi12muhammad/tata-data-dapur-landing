@@ -144,31 +144,22 @@ export default function Pricing() {
 
             {/* Price */}
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '3px', lineHeight: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', lineHeight: 1 }}>
                 <span style={{
                   fontFamily: 'Plus Jakarta Sans, sans-serif',
-                  fontSize: '22px', fontWeight: 800,
-                  color: '#B5532A', paddingTop: '12px', letterSpacing: '-0.5px',
+                  fontSize: '16px', fontWeight: 500,
+                  color: '#8B7060', letterSpacing: '0',
                 }}>Rp</span>
                 <span style={{
                   fontFamily: 'Fraunces, serif',
-                  fontSize: 'clamp(68px, 18vw, 88px)',
-                  fontWeight: 700, color: '#1B1208',
-                  letterSpacing: '-4px', lineHeight: 1,
+                  fontSize: 'clamp(44px, 10vw, 60px)',
+                  fontWeight: 400, color: '#1B1208',
+                  letterSpacing: '-2px', lineHeight: 1,
                 }}>175.000</span>
               </div>
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                marginTop: '10px',
-                background: 'rgba(181,83,42,0.07)',
-                border: '1px solid rgba(181,83,42,0.18)',
-                borderRadius: '99px', padding: '5px 14px',
-              }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span style={{ fontSize: '12px', fontWeight: 700, color: '#B5532A' }}>
-                  Bayar sekali · Pakai selamanya · Tanpa biaya tambahan
-                </span>
-              </div>
+              <p style={{ fontSize: '12px', color: '#8B7060', marginTop: '8px', letterSpacing: '0.01em' }}>
+                Bayar sekali · Pakai selamanya · Tanpa biaya tambahan
+              </p>
             </div>
 
             <hr style={{ border: 'none', borderTop: '1px solid rgba(181,83,42,0.15)', margin: '20px 0' }} />
