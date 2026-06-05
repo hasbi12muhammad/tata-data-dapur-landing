@@ -48,7 +48,6 @@ export default function StickyCTA() {
           fontSize: '15px',
           fontWeight: 800,
           textDecoration: 'none',
-          boxShadow: '0 4px 24px rgba(181,83,42,0.3)',
           transition: 'background 0.2s',
         }}
         onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
