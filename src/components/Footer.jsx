@@ -32,7 +32,7 @@ export default function Footer() {
         {[
           { to: '/privacy', label: 'Kebijakan Privasi' },
           { to: '/terms', label: 'Syarat & Ketentuan' },
-          { to: '/refund', label: 'Kebijakan Pengembalian' },
+          { to: '/refund', label: 'Kebijakan Pengembalian Dana' },
         ].map((link, i, arr) => (
           <React.Fragment key={link.to}>
             <Link
