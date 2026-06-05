@@ -11,14 +11,14 @@ export default function Footer() {
       <div style={{
         fontFamily: 'Fraunces, serif',
         fontSize: '18px',
-        color: '#3D2A18',
+        color: '#C8A882',
         marginBottom: '8px',
       }}>
         Tata Data Dapur
       </div>
       <p style={{
         fontSize: '12px',
-        color: '#3D2A18',
+        color: '#8A6E58',
         margin: '0 0 16px',
       }}>
         © 2025 Tata Data Dapur · Untuk UMKM Kuliner & Produksi Ringan Indonesia
@@ -39,17 +39,17 @@ export default function Footer() {
               to={link.to}
               style={{
                 fontSize: '12px',
-                color: '#5A4030',
+                color: '#9E7A60',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#B5532A' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#5A4030' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#9E7A60' }}
             >
               {link.label}
             </Link>
             {i < arr.length - 1 && (
-              <span style={{ fontSize: '12px', color: '#2A1A0E' }}>·</span>
+              <span style={{ fontSize: '12px', color: '#5A4030' }}>·</span>
             )}
           </React.Fragment>
         ))}
