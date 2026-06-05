@@ -26,8 +26,6 @@ const floatStyle = (r = 0, d = '4s', delay = '0s') => ({
 export default function Pricing() {
   const sectionRef = useRef(null)
   const cardRef = useRef(null)
-  const barRef = useRef(null)
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (cardRef.current) {
@@ -115,33 +113,6 @@ export default function Pricing() {
 
           {/* Body */}
           <div style={{ padding: '32px 28px' }}>
-            {/* Urgency bar */}
-            <div style={{
-              background: 'rgba(181,83,42,0.06)', border: '1px solid rgba(181,83,42,0.2)',
-              borderRadius: '14px', padding: '14px 18px',
-              display: 'flex', alignItems: 'center', gap: '12px',
-              marginBottom: '24px',
-            }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B5532A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: '13px', color: '#8B3D1A', lineHeight: 1.5, fontWeight: 800, display: 'block', marginBottom: '2px' }}>
-                  11 dari 15 slot sudah terisi
-                </div>
-                <div style={{ fontSize: '12px', color: '#8B3D1A', lineHeight: 1.5 }}>
-                  Setelah penuh, harga kembali ke normal. Tidak ada pengecualian.
-                </div>
-                <div style={{ height: '6px', background: 'rgba(181,83,42,0.18)', borderRadius: '99px', overflow: 'hidden', marginTop: '8px' }}>
-                  <div
-                    ref={barRef}
-                    style={{ height: '100%', width: '73%', background: '#B5532A', borderRadius: '99px' }}
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Price */}
             <div style={{ marginBottom: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', lineHeight: 1 }}>
@@ -195,7 +166,6 @@ export default function Pricing() {
                 fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontSize: '16px', fontWeight: 800,
                 textDecoration: 'none',
-                boxShadow: '0 4px 24px rgba(181,83,42,0.32)',
                 animation: 'pulse-btn 3s infinite',
                 transition: 'background 0.2s, transform 0.1s',
               }}
