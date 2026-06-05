@@ -34,7 +34,7 @@ export default function RefundPage() {
     <LegalLayout
       title="Kebijakan Pengembalian Dana"
       subtitle="Harap baca kebijakan ini sebelum melakukan pembelian."
-      lastUpdated="Juni 2025"
+      lastUpdated="April 2026"
     >
       {/* Summary box */}
       <div style={S.infoBox}>

@@ -27,7 +27,7 @@ export default function PrivacyPage() {
     <LegalLayout
       title="Kebijakan Privasi"
       subtitle="Kami menghargai privasi kamu dan berkomitmen melindungi data yang kamu percayakan kepada kami."
-      lastUpdated="Juni 2025"
+      lastUpdated="April 2026"
     >
       <p style={S.p}>
         Kebijakan Privasi ini menjelaskan bagaimana <strong style={S.strong}>Tata Data</strong> yang dikelola oleh{' '}

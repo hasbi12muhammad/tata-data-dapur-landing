@@ -21,7 +21,7 @@ export default function Footer() {
         color: '#8A6E58',
         margin: '0 0 16px',
       }}>
-        © 2025 Tata Data Dapur · Untuk UMKM Kuliner & Produksi Ringan Indonesia
+        © 2026 Tata Data Dapur · Untuk UMKM Kuliner & Produksi Ringan Indonesia
       </p>
       <div style={{
         display: 'flex',

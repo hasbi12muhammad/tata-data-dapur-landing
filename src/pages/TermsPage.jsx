@@ -27,7 +27,7 @@ export default function TermsPage() {
     <LegalLayout
       title="Syarat & Ketentuan"
       subtitle="Dengan menggunakan Tata Data Dapur, kamu menyetujui syarat dan ketentuan berikut ini."
-      lastUpdated="Juni 2025"
+      lastUpdated="April 2026"
     >
       <p style={S.p}>
         Syarat & Ketentuan ini mengatur penggunaan aplikasi <strong style={S.strong}>Tata Data Dapur</strong> yang
