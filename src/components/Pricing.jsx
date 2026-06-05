@@ -108,7 +108,7 @@ export default function Pricing() {
             fontSize: '12px', fontWeight: 800,
             letterSpacing: '0.08em', textTransform: 'uppercase',
           }}>
-            Harga Spesial — Terbatas untuk 15 Pengguna Pertama
+            Harga Spesial — Bayar Sekali, Akses Selamanya
           </div>
 
           {/* Body */}
