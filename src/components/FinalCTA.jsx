@@ -104,10 +104,6 @@ export default function FinalCTA() {
         >
           Mulai Sekarang — Rp 175.000
         </a>
-
-        <p style={{ fontSize: '13px', color: '#4A3020', marginTop: '20px' }}>
-          Sudah 11 pengguna bergabung · 4 slot tersisa
-        </p>
       </div>
     </section>
   )
