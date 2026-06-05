@@ -29,7 +29,6 @@ export default function StickyCTA() {
       right: 0,
       zIndex: 99,
       padding: '14px 20px 20px',
-      background: '#0E0A05',
       display: 'flex',
       gap: '10px',
     }}>
