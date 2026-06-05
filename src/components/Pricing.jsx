@@ -159,7 +159,7 @@ export default function Pricing() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: 'flex', justifyContent: 'center',
+                display: 'flex', justifyContent: 'center', textAlign: 'center',
                 width: '100%', padding: '18px',
                 background: '#B5532A', color: '#fff',
                 borderRadius: '99px',
