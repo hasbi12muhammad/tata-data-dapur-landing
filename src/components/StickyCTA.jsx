@@ -29,7 +29,7 @@ export default function StickyCTA() {
       right: 0,
       zIndex: 99,
       padding: '14px 20px 20px',
-      background: 'linear-gradient(to top, rgba(26,18,8,0.98) 80%, transparent)',
+      background: '#0E0A05',
       display: 'flex',
       gap: '10px',
     }}>
