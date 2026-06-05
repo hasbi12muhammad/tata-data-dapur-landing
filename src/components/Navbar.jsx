@@ -39,14 +39,26 @@ export default function Navbar() {
       }}
     >
       {/* Logo */}
-      <div style={{
-        fontFamily: 'Fraunces, serif',
-        fontSize: '20px',
-        fontWeight: 700,
-        color: '#B5532A',
-        letterSpacing: '-0.3px',
-      }}>
-        Tata Data<span style={{ color: '#1B1208' }}> Dapur</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <img
+          src="/assets/td-logo.png"
+          alt="Tata Data"
+          style={{
+            height: '32px',
+            width: '32px',
+            objectFit: 'contain',
+            filter: 'brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(600%) hue-rotate(348deg) brightness(85%)',
+          }}
+        />
+        <div style={{
+          fontFamily: 'Fraunces, serif',
+          fontSize: '20px',
+          fontWeight: 700,
+          color: '#B5532A',
+          letterSpacing: '-0.3px',
+        }}>
+          Tata Data<span style={{ color: '#1B1208' }}> Dapur</span>
+        </div>
       </div>
 
       {/* CTA */}
