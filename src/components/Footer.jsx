@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer style={{
       background: '#120D07',
-      padding: '32px 24px',
+      padding: '32px 24px 96px',
       textAlign: 'center',
     }}>
       <div style={{
