@@ -15,6 +15,8 @@ import StickyCTA from './components/StickyCTA'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import RefundPage from './pages/RefundPage'
+import BlogIndexPage from './pages/BlogIndexPage'
+import BlogPostPage from './pages/BlogPostPage'
 
 function LandingPage() {
   return (
@@ -43,6 +45,8 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/refund" element={<RefundPage />} />
+        <Route path="/blog" element={<BlogIndexPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
     </BrowserRouter>
   )
