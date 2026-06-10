@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import StickyCTA from '../components/StickyCTA'
 import { articles } from '../blog/articles.jsx'
+import { useSeo } from '../hooks/useSeo'
 
 const featured = articles[0]
 const rest = articles.slice(1)
@@ -28,6 +29,11 @@ const tag = (category) => ({
 })
 
 export default function BlogIndexPage() {
+  useSeo({
+    title: 'Blog — Tips Keuangan & HPP Bisnis Kuliner | Tata Data Dapur',
+    description: 'Artikel praktis seputar hitung HPP, kelola stok, dan keuangan bisnis kuliner & bakery. Belajar kelola dapur biar tetap untung.',
+    path: '/blog',
+  })
   return (
     <div style={{ background: '#FFFCF8', minHeight: '100vh' }}>
       <Navbar />

@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import StickyCTA from '../components/StickyCTA'
 import { getArticleBySlug, articles } from '../blog/articles.jsx'
+import { useSeo } from '../hooks/useSeo'
 
 const categoryColor = {
   'HPP & Biaya': '#c9a96e',
@@ -14,6 +15,33 @@ const categoryColor = {
 export default function BlogPostPage() {
   const { slug } = useParams()
   const article = getArticleBySlug(slug)
+
+  useSeo(article && {
+    title: `${article.title} | Tata Data Dapur`,
+    description: article.excerpt,
+    path: `/blog/${article.slug}`,
+    image: article.image,
+    type: 'article',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: article.title,
+      description: article.excerpt,
+      image: article.image,
+      articleSection: article.category,
+      inLanguage: 'id-ID',
+      author: { '@type': 'Organization', name: 'Tata Data Dapur' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Tata Data Dapur',
+        logo: { '@type': 'ImageObject', url: 'https://tatadatadapur.my.id/assets/td-logo.png' },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://tatadatadapur.my.id/blog/${article.slug}`,
+      },
+    },
+  })
 
   if (!article) return <Navigate to="/blog" replace />
 

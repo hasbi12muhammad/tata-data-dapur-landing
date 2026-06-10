@@ -1,5 +1,6 @@
 import React from 'react'
 import LegalLayout from '../components/legal/LegalLayout'
+import { useSeo } from '../hooks/useSeo'
 
 const S = {
   h2: {
@@ -23,6 +24,11 @@ const S = {
 }
 
 export default function TermsPage() {
+  useSeo({
+    title: 'Syarat & Ketentuan | Tata Data Dapur',
+    description: 'Syarat dan ketentuan penggunaan layanan Tata Data Dapur.',
+    path: '/terms',
+  })
   return (
     <LegalLayout
       title="Syarat & Ketentuan"

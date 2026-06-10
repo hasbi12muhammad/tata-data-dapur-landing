@@ -1,5 +1,6 @@
 import React from 'react'
 import LegalLayout from '../components/legal/LegalLayout'
+import { useSeo } from '../hooks/useSeo'
 
 const S = {
   h2: {
@@ -23,6 +24,11 @@ const S = {
 }
 
 export default function PrivacyPage() {
+  useSeo({
+    title: 'Kebijakan Privasi | Tata Data Dapur',
+    description: 'Kebijakan privasi Tata Data Dapur: bagaimana kami mengumpulkan, menggunakan, dan melindungi data Anda.',
+    path: '/privacy',
+  })
   return (
     <LegalLayout
       title="Kebijakan Privasi"

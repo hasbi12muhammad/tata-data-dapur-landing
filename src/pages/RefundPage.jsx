@@ -1,5 +1,6 @@
 import React from 'react'
 import LegalLayout from '../components/legal/LegalLayout'
+import { useSeo } from '../hooks/useSeo'
 
 const S = {
   h2: {
@@ -30,6 +31,11 @@ const S = {
 }
 
 export default function RefundPage() {
+  useSeo({
+    title: 'Kebijakan Pengembalian Dana | Tata Data Dapur',
+    description: 'Kebijakan pengembalian dana (refund) untuk layanan Tata Data Dapur.',
+    path: '/refund',
+  })
   return (
     <LegalLayout
       title="Kebijakan Pengembalian Dana"

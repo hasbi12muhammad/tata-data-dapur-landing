@@ -17,8 +17,14 @@ import TermsPage from './pages/TermsPage'
 import RefundPage from './pages/RefundPage'
 import BlogIndexPage from './pages/BlogIndexPage'
 import BlogPostPage from './pages/BlogPostPage'
+import { useSeo } from './hooks/useSeo'
 
 function LandingPage() {
+  useSeo({
+    title: 'Tata Data Dapur — Biar Dapur Tetap Ngebul, Keuangan Tetap Jelas',
+    description: 'Tata Data Dapur — Aplikasi manajemen bisnis F&B dan bakery. Hitung HPP otomatis, pantau stok FIFO, laporan keuangan lengkap. Bayar sekali, pakai selamanya.',
+    path: '/',
+  })
   return (
     <div>
       <Navbar />

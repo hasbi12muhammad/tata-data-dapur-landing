@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node prerender.js",
+    "build:nossg": "vite build",
+    "prerender": "node prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +21,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "puppeteer": "^24.43.1",
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.8"
   }
