@@ -30,6 +30,7 @@ export default function Footer() {
         flexWrap: 'wrap',
       }}>
         {[
+          { to: '/blog', label: 'Blog' },
           { to: '/privacy', label: 'Kebijakan Privasi' },
           { to: '/terms', label: 'Syarat & Ketentuan' },
           { to: '/refund', label: 'Kebijakan Pengembalian Dana' },
