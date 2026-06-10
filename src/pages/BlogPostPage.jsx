@@ -84,7 +84,7 @@ export default function BlogPostPage() {
             Hitung HPP otomatis, pantau stok, laporan keuangan lengkap — bayar sekali, pakai selamanya.
           </h2>
           <a
-            href="https://app.tatadatadapur.my.id"
+            href="https://wa.me/6287850755050"
             target="_blank"
             rel="noopener noreferrer"
             style={{
