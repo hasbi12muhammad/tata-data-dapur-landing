@@ -180,7 +180,7 @@ function Shot({ label, src, gallery }) {
 
 function FeatureList({ items }) {
   return (
-    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, margin: '16px 0 0', padding: 0 }}>
+    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, margin: '16px 0 24px', padding: 0 }}>
       {items.map((it, i) => (
         <li key={i} style={{
           display: 'flex', gap: 12, fontSize: 14, color: C.inkSoft, alignItems: 'flex-start',
@@ -329,7 +329,7 @@ const TOUR = [
       ] },
       { t: 'shot', c: 'Screenshot form tambah produk — HPP real-time', src: '/help/recipes-modal-desktop.png' },
       { t: 'features', c: [
-        { icon: 'bar-chart', title: 'Batch Yield & Estimasi Waste', body: <>Kalau 1 resep menghasilkan beberapa porsi (misal 1 resep = 12 cupcake), isi <em>batch yield</em>. Kalau ada bahan yang menyusut waktu dimasak, isi <em>estimasi waste</em> dalam persen. Dua-duanya bikin HPP per unit lebih akurat.</> },
+        { icon: 'bar-chart', title: 'Hasil per Batch & Estimasi Waste', body: <>Kalau 1 resep menghasilkan beberapa porsi (misal 1 resep = 12 cupcake), isi <em>Hasil per Batch</em>. Kalau ada bahan yang menyusut waktu dimasak, isi <em>estimasi waste</em> dalam persen. Dua-duanya bikin HPP per unit lebih akurat.</> },
         { icon: 'cake', title: 'Add-on Produk', body: 'Produk bisa ditandai sebagai add-on — artinya bisa dipilih sebagai tambahan pas pelanggan beli produk lain. Contoh: topper kue, lilin ulang tahun, kotak khusus.' },
       ] },
       { t: 'tip', c: <>HPP di produk <strong>otomatis berubah</strong> kalau harga bahan baku berubah gara-gara pembelian baru. Nggak perlu update resep manual.</> },
@@ -493,10 +493,10 @@ const FAQ_GROUPS = [
 - Telur           1pcs × Rp 2.500 = Rp 2.500
                         ──────────────────────
 Total biaya 1 resep               = Rp 8.100`}</pre>
-          Nah, di sinilah <strong>Batch Yield</strong> ambil peran. Coba bandingkan dua skenario:<br /><br />
-          <strong>Tanpa Batch Yield:</strong> App nganggep 1 resep = 1 pcs. Jadi HPP-mu tercatat Rp 8.100/pcs — padahal sekali bikin kamu dapat 6 croissant, bukan 1. HPP-nya jadi kelihatan jauh lebih mahal dari kenyataan, dan profit yang tercatat pun ikut lebih kecil dari yang sebenarnya.<br /><br />
-          <strong>Dengan Batch Yield = 6:</strong> Kamu kasih tahu app kalau "1 resep ini menghasilkan 6 pcs". App langsung bagi otomatis: Rp 8.100 ÷ 6 = Rp 1.350/pcs — inilah HPP asli per produk yang kamu jual.<br /><br />
-          Intinya: isi Batch Yield sesuai jumlah pcs yang keluar dari sekali masak. Kalau 1 resep cuma menghasilkan 1 pcs, biarin kosong aja (default-nya memang 1).
+          Nah, di sinilah <strong>Hasil per Batch</strong> ambil peran. Coba bandingkan dua skenario:<br /><br />
+          <strong>Tanpa Hasil per Batch:</strong> App nganggep 1 resep = 1 pcs. Jadi HPP-mu tercatat Rp 8.100/pcs — padahal sekali bikin kamu dapat 6 croissant, bukan 1. HPP-nya jadi kelihatan jauh lebih mahal dari kenyataan, dan profit yang tercatat pun ikut lebih kecil dari yang sebenarnya.<br /><br />
+          <strong>Dengan Hasil per Batch = 6:</strong> Kamu kasih tahu app kalau "1 resep ini menghasilkan 6 pcs". App langsung bagi otomatis: Rp 8.100 ÷ 6 = Rp 1.350/pcs — inilah HPP asli per produk yang kamu jual.<br /><br />
+          Intinya: isi Hasil per Batch sesuai jumlah pcs yang keluar dari sekali masak. Kalau 1 resep cuma menghasilkan 1 pcs, biarin kosong aja (default-nya memang 1).
         </>,
       },
       {
