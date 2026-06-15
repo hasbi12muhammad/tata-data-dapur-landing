@@ -815,16 +815,17 @@ export default function HelpCenterPage() {
   return (
     <div style={{ background: C.bg, minHeight: '100dvh', fontFamily: BODY, color: C.ink, overflowX: 'hidden' }}>
       <style>{`
-        *, *::before, *::after { box-sizing: border-box; }
-        .tour-layout { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+        .tour-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 40px; align-items: start; }
+        .tour-layout > * { min-width: 0; }
         .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        @media (max-width: 760px) {
-          .tour-layout { grid-template-columns: 1fr; gap: 0; }
+        @media (max-width: 900px) {
+          .tour-layout { grid-template-columns: minmax(0,1fr); gap: 0; }
           .tour-nav { display: none !important; }
+          .video-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; } }
         html { scroll-behavior: smooth; }
-        img { max-width: 100%; height: auto; }
+        img { max-width: 100%; height: auto; display: block; }
+        p, span, h1, h2, h3, h4 { overflow-wrap: break-word; word-break: break-word; }
       `}</style>
 
       {/* top app nav */}
