@@ -92,13 +92,17 @@ function TourImage({ src, alt }) {
 function TourCarousel({ images }) {
   const [idx, setIdx] = React.useState(0)
   const [lightbox, setLightbox] = React.useState(null)
+  const touchX = React.useRef(null)
   const current = images[idx]
+
+  const prev = () => setIdx(i => (i - 1 + images.length) % images.length)
+  const next = () => setIdx(i => (i + 1) % images.length)
 
   React.useEffect(() => {
     const onKey = (e) => {
       if (lightbox !== null) return
-      if (e.key === 'ArrowLeft') setIdx(i => (i - 1 + images.length) % images.length)
-      if (e.key === 'ArrowRight') setIdx(i => (i + 1) % images.length)
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
@@ -106,32 +110,35 @@ function TourCarousel({ images }) {
 
   if (images.length === 1) return <TourImage src={images[0].src} alt={images[0].caption} />
 
+  const onTouchStart = (e) => { touchX.current = e.touches[0].clientX }
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchX.current
+    if (Math.abs(dx) > 40) dx < 0 ? next() : prev()
+    touchX.current = null
+  }
+
   const arrowBtn = {
     position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-    width: 32, height: 32, borderRadius: '50%', border: 'none',
-    background: 'rgba(0,0,0,0.4)', color: '#fff', cursor: 'pointer',
+    width: 36, height: 36, borderRadius: '50%', border: 'none',
+    background: 'rgba(0,0,0,0.45)', color: '#fff', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    opacity: 0, transition: 'opacity 0.2s, background 0.2s', fontSize: 18,
+    fontSize: 20, lineHeight: 1, flexShrink: 0,
   }
 
   return (
     <div style={{ marginTop: 12, borderRadius: 12, border: `1px solid ${C.line}`, overflow: 'hidden', background: C.bg }}>
-      {/* image */}
-      <div
-        style={{ position: 'relative' }}
-        onMouseEnter={e => { e.currentTarget.querySelectorAll('.carousel-arrow').forEach(b => b.style.opacity = '1') }}
-        onMouseLeave={e => { e.currentTarget.querySelectorAll('.carousel-arrow').forEach(b => b.style.opacity = '0') }}
-      >
+      {/* image + arrows */}
+      <div style={{ position: 'relative' }}
+        onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <button type="button" onClick={() => setLightbox(idx)}
           style={{ display: 'block', width: '100%', padding: 0, background: 'none', border: 'none', cursor: 'zoom-in' }}
           aria-label={`Lihat ${current.caption} lebih besar`}>
           <img key={current.src} src={current.src} alt={current.caption} loading="lazy"
-            style={{ width: '100%', height: 'auto', display: 'block' }} />
+            style={{ width: '100%', height: 'auto', display: 'block', maxWidth: '100%' }} />
         </button>
-        <button className="carousel-arrow" type="button" onClick={() => setIdx(i => (i - 1 + images.length) % images.length)}
-          style={{ ...arrowBtn, left: 8 }} aria-label="Sebelumnya">‹</button>
-        <button className="carousel-arrow" type="button" onClick={() => setIdx(i => (i + 1) % images.length)}
-          style={{ ...arrowBtn, right: 8 }} aria-label="Berikutnya">›</button>
+        <button type="button" onClick={prev} style={{ ...arrowBtn, left: 8 }} aria-label="Sebelumnya">‹</button>
+        <button type="button" onClick={next} style={{ ...arrowBtn, right: 8 }} aria-label="Berikutnya">›</button>
       </div>
       {/* caption + dots */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', gap: 12 }}>
@@ -806,22 +813,25 @@ export default function HelpCenterPage() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <div style={{ background: C.bg, minHeight: '100dvh', fontFamily: BODY, color: C.ink }}>
+    <div style={{ background: C.bg, minHeight: '100dvh', fontFamily: BODY, color: C.ink, overflowX: 'hidden' }}>
       <style>{`
+        *, *::before, *::after { box-sizing: border-box; }
         .tour-layout { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
         .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         @media (max-width: 760px) {
-          .tour-layout { grid-template-columns: 1fr; }
+          .tour-layout { grid-template-columns: 1fr; gap: 0; }
           .tour-nav { display: none !important; }
         }
         @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; } }
         html { scroll-behavior: smooth; }
+        img { max-width: 100%; height: auto; }
       `}</style>
 
       {/* top app nav */}
       <nav style={{
         background: C.navBg, padding: '14px 24px', display: 'flex', alignItems: 'center',
         justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 100,
+        width: '100%',
       }}>
         <span style={{ fontFamily: SERIF, fontSize: 18, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em' }}>
           Tata Data <span style={{ color: C.terra }}>Dapur</span>
@@ -857,6 +867,7 @@ export default function HelpCenterPage() {
       <div role="tablist" aria-label="Pusat Bantuan" style={{
         background: C.paper, borderBottom: `1px solid ${C.line}`, padding: '0 24px',
         display: 'flex', position: 'sticky', top: 53, zIndex: 90, overflowX: 'auto',
+        width: '100%',
       }}>
         {TABS.map(t => {
           const active = tab === t.id
