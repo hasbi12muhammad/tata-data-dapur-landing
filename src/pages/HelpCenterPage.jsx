@@ -17,7 +17,80 @@ const NOISE = "data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www
 
 /* ════════════════════════ SHARED PIECES ════════════════════════ */
 
-function Shot({ label }) {
+function Lightbox({ src, alt, onClose }) {
+  const [scale, setScale] = React.useState(1)
+  const [pos, setPos] = React.useState({ x: 0, y: 0 })
+  const dragging = React.useRef(false)
+  const dragOrigin = React.useRef({ mx: 0, my: 0, px: 0, py: 0 })
+
+  React.useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+  }, [onClose])
+
+  const zoom = (d) => setScale(s => Math.min(5, Math.max(0.5, s + d)))
+  const onWheel = (e) => { e.preventDefault(); zoom(-e.deltaY * 0.001) }
+  const onMouseDown = (e) => {
+    if (scale <= 1) return
+    dragging.current = true
+    dragOrigin.current = { mx: e.clientX, my: e.clientY, px: pos.x, py: pos.y }
+    e.preventDefault()
+  }
+  const onMouseMove = (e) => {
+    if (!dragging.current) return
+    setPos({ x: dragOrigin.current.px + e.clientX - dragOrigin.current.mx, y: dragOrigin.current.py + e.clientY - dragOrigin.current.my })
+  }
+  const onMouseUp = () => { dragging.current = false }
+  const reset = () => { setScale(1); setPos({ x: 0, y: 0 }) }
+
+  const btn = { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', background: 'rgba(255,255,255,0.12)', border: 'none', color: '#fff', cursor: 'pointer', fontSize: 16 }
+
+  return (
+    <div onWheel={onWheel} onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div onClick={e => e.stopPropagation()} style={{ position: 'absolute', top: 16, right: 16, display: 'flex', gap: 8 }}>
+        <button style={btn} onClick={() => zoom(0.3)} aria-label="Zoom in">＋</button>
+        <button style={btn} onClick={() => zoom(-0.3)} aria-label="Zoom out">－</button>
+        {scale !== 1 && <button style={btn} onClick={reset} aria-label="Reset">1:1</button>}
+        <button style={btn} onClick={onClose} aria-label="Tutup">✕</button>
+      </div>
+      <p style={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.35)', fontSize: 12, pointerEvents: 'none', whiteSpace: 'nowrap' }}>
+        Scroll untuk zoom · Drag untuk geser · Esc untuk tutup
+      </p>
+      <img
+        src={src} alt={alt} draggable={false}
+        onClick={e => e.stopPropagation()}
+        onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={onMouseUp} onMouseLeave={onMouseUp}
+        style={{
+          maxWidth: '90vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: 8, userSelect: 'none',
+          transform: `scale(${scale}) translate(${pos.x / scale}px, ${pos.y / scale}px)`,
+          cursor: scale > 1 ? 'grab' : 'zoom-in',
+          transition: dragging.current ? 'none' : 'transform 0.15s ease',
+        }}
+      />
+    </div>
+  )
+}
+
+function TourImage({ src, alt }) {
+  const [open, setOpen] = React.useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)} aria-label={`Lihat ${alt} lebih besar`}
+        style={{ display: 'block', width: '100%', padding: 0, background: 'none', border: 'none', cursor: 'zoom-in', marginTop: 12, borderRadius: 12, overflow: 'hidden', border: `1px solid ${C.line}` }}>
+        <img src={src} alt={alt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', transition: 'opacity 0.15s', opacity: 1 }}
+          onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+        />
+      </button>
+      {open && <Lightbox src={src} alt={alt} onClose={() => setOpen(false)} />}
+    </>
+  )
+}
+
+function Shot({ label, src }) {
+  if (src) return <TourImage src={src} alt={label} />
   return (
     <div style={{
       background: C.bg, border: `1.5px dashed ${C.line}`, borderRadius: 10,
@@ -92,7 +165,7 @@ const TOUR = [
     blocks: [
       { t: 'p', c: <>Dashboard halaman pertama yang kamu lihat tiap buka app. Di sini langsung ketahuan kondisi bisnis hari ini — tanpa hitung manual.</> },
       { t: 'p', c: <>Standarnya Dashboard menampilkan data <strong>hari ini</strong>. Tapi kamu bisa pilih tanggal lain buat lihat rekap hari kemarin. Pas banget kalau lupa input dan mau cek semua sudah tercatat.</> },
-      { t: 'shot', c: 'Screenshot Dashboard' },
+      { t: 'shot', c: 'Screenshot Dashboard', src: '/help/dashboard-desktop.png' },
       { t: 'features', c: [
         { emoji: '💰', title: 'Total Penjualan', body: 'Total uang masuk dari semua transaksi di tanggal yang dipilih.' },
         { emoji: '📉', title: 'Total HPP', body: 'Total biaya bahan baku yang terpakai untuk semua produk yang terjual.' },
@@ -106,7 +179,7 @@ const TOUR = [
     id: 'items', icon: 'package', title: 'Bahan Baku', route: 'Setup awal — isi ini dulu sebelum yang lain',
     blocks: [
       { t: 'p', c: <>Bahan Baku adalah daftar semua bahan mentah yang kamu pakai buat produksi. Di sini kamu cukup daftarkan nama dan satuannya — <strong>harga dan stok nggak perlu diisi manual</strong>, dua-duanya terisi sendiri begitu kamu catat pembelian.</> },
-      { t: 'shot', c: 'Screenshot halaman Bahan Baku' },
+      { t: 'shot', c: 'Screenshot halaman Bahan Baku', src: '/help/items-desktop.png' },
       { t: 'features', c: [
         { emoji: '➕', title: 'Tambah Bahan Manual', body: 'Isi nama bahan, pilih satuan (gr, ml, pcs, kg, liter), simpan. Selesai. Harga dan stok kosong dulu, nanti terisi pas pembelian pertama dicatat.' },
         { emoji: '📋', title: 'Import via Template Excel', body: 'Bahannya banyak? Download template, isi di Excel, upload sekaligus. Enak buat setup awal biar nggak input satu-satu.' },
@@ -121,7 +194,7 @@ const TOUR = [
     blocks: [
       { t: 'p', c: <>Tiap kali beli bahan baku — entah di pasar, supplier, atau toko — catat di sini. Pembelian bukan sekadar catatan keluar uang; dia punya dua peran penting:</> },
       { t: 'p', c: <>Pertama, <strong>nambah stok</strong> bahan baku otomatis. Kedua, <strong>memperbarui harga rata-rata</strong> bahan pakai weighted average — jadi HPP resep selalu ikut harga beli terbaru, bukan harga lama.</> },
-      { t: 'shot', c: 'Screenshot halaman Pembelian' },
+      { t: 'shot', c: 'Screenshot halaman Pembelian', src: '/help/purchases-desktop.png' },
       { t: 'features', c: [
         { emoji: '📏', title: 'Beli per Satuan Dasar', body: 'Misal beli Tepung Terigu 5 kg seharga Rp 65.000. Pilih bahan, isi qty (5) dan satuan (kg), isi total harga, simpan.' },
         { emoji: '📦', title: 'Beli per Kemasan', body: 'Belinya per dus atau pack? Isi jumlah kemasan dan isi per kemasan — app yang konversi ke satuan dasar. Misal: 2 dus × 24 botol.' },
@@ -134,7 +207,7 @@ const TOUR = [
     id: 'expenses', icon: 'wallet', title: 'Pengeluaran', route: 'Biaya operasional di luar bahan baku',
     blocks: [
       { t: 'p', c: <>Pengeluaran adalah semua biaya buat menjalankan usaha, tapi <strong>bukan buat beli bahan baku</strong>. Data ini yang dipakai buat menghitung <em>laba bersih</em> di halaman Laporan.</> },
-      { t: 'shot', c: 'Screenshot halaman Pengeluaran' },
+      { t: 'shot', c: 'Screenshot halaman Pengeluaran', src: '/help/expenses-desktop.png' },
       { t: 'features', c: [
         { emoji: '⚡', title: 'Utilitas', body: 'Listrik, air, gas LPG, internet, pulsa.' },
         { emoji: '👷', title: 'Gaji & Tenaga Kerja', body: 'Gaji karyawan harian atau bulanan, upah lembur.' },
@@ -149,13 +222,13 @@ const TOUR = [
     id: 'recipes', icon: 'chefHat', title: 'Produk', route: 'Tempat mendefinisikan semua produk yang kamu jual',
     blocks: [
       { t: 'p', c: <>Di sini kamu mendefinisikan produk yang kamu jual beserta komposisi bahannya. Begitu komposisi diisi, <strong>HPP (Harga Pokok Produksi) terhitung sendiri dan real-time</strong> — tanpa perlu kalkulator.</> },
-      { t: 'shot', c: 'Screenshot halaman Produk' },
+      { t: 'shot', c: 'Screenshot halaman Produk', src: '/help/recipes-desktop.png' },
       { t: 'subhead', c: <strong>Ada dua tipe produk:</strong> },
       { t: 'features', c: [
         { emoji: '✅', title: 'Produk Jadi', body: 'Produk yang langsung dijual ke pelanggan. Contoh: Croissant, Kue Ulang Tahun, Brownies Panggang. HPP-nya dihitung dari bahan baku yang dipakai.' },
         { emoji: '🔄', title: 'Produk Setengah Jadi', body: 'Produk yang diproses dulu sebelum jadi produk akhir, dan bisa jadi bahan di produk lain. Contoh: Strawberry Jam yang dipakai di Strawberry Cake, atau Adonan Dasar Croissant buat berbagai varian croissant. Punya stok sendiri yang diatur lewat menu Produksi.' },
       ] },
-      { t: 'shot', c: 'Screenshot form tambah produk — HPP real-time' },
+      { t: 'shot', c: 'Screenshot form tambah produk — HPP real-time', src: '/help/recipes-desktop.png' },
       { t: 'features', c: [
         { emoji: '📊', title: 'Batch Yield & Estimasi Waste', body: <>Kalau 1 resep menghasilkan beberapa porsi (misal 1 resep = 12 cupcake), isi <em>batch yield</em>. Kalau ada bahan yang menyusut waktu dimasak, isi <em>estimasi waste</em> dalam persen. Dua-duanya bikin HPP per unit lebih akurat.</> },
         { emoji: '🎂', title: 'Add-on Produk', body: 'Produk bisa ditandai sebagai add-on — artinya bisa dipilih sebagai tambahan pas pelanggan beli produk lain. Contoh: topper kue, lilin ulang tahun, kotak khusus.' },
@@ -168,7 +241,7 @@ const TOUR = [
     blocks: [
       { t: 'p', c: <>Produksi dipakai pas kamu bikin produk dalam jumlah tertentu buat disimpan jadi stok — bukan langsung jual. Misal bakery yang tiap pagi bikin 50 pcs roti, atau dapur yang tiap minggu bikin stok selai.</> },
       { t: 'p', c: <>Pas kamu catat produksi, dua hal terjadi sendiri: <strong>stok produk nambah</strong> sesuai batch yang dibuat, dan <strong>stok bahan baku berkurang</strong> sesuai komposisi resep.</> },
-      { t: 'shot', c: 'Screenshot halaman Produksi' },
+      { t: 'shot', c: 'Screenshot halaman Produksi', src: '/help/produksi-desktop.png' },
       { t: 'features', c: [
         { emoji: '🏭', title: 'Produksi Produk Jadi', body: 'Catat berapa batch produk jadi yang kamu buat hari ini. Stok produk naik, stok bahan turun.' },
         { emoji: '🔄', title: 'Produksi Bahan Setengah Jadi', body: 'Misal hari ini bikin 3 batch Strawberry Jam. Stok selai naik, stok stroberi dan gula turun. Selai ini lalu bisa dipakai di produk lain.' },
@@ -181,7 +254,7 @@ const TOUR = [
     id: 'sales', icon: 'receipt', title: 'Penjualan', route: 'Catat tiap transaksi penjualan',
     blocks: [
       { t: 'p', c: <>Tiap ada penjualan, catat di sini. Satu transaksi bisa berisi beberapa produk sekaligus. HPP otomatis diambil dari data resep saat itu — kamu tinggal isi harga jual dan qty.</> },
-      { t: 'shot', c: 'Screenshot halaman Penjualan' },
+      { t: 'shot', c: 'Screenshot halaman Penjualan', src: '/help/sales-desktop.png' },
       { t: 'features', c: [
         { emoji: '💰', title: 'Harga Jual Diingat Otomatis', body: 'Pernah jual produk ini sebelumnya? Harga jualnya muncul sendiri di transaksi berikutnya. Tetap bisa kamu ubah kalau ada kenaikan harga atau alasan lain.' },
         { emoji: '🏷️', title: 'Kategori Penjualan', body: 'Tiap transaksi bisa ditandai kategori: Offline, GoFood, GrabFood, ShopeeFood, dan lainnya. Berguna buat analisis channel penjualan di Laporan.' },
@@ -195,7 +268,7 @@ const TOUR = [
     id: 'reports', icon: 'barChart', title: 'Laporan', route: 'Analisis performa bisnis per periode',
     blocks: [
       { t: 'p', c: <>Laporan tempat kamu lihat gambaran besar bisnis — bukan per hari seperti Dashboard, tapi per minggu, bulan, atau periode yang kamu tentukan sendiri.</> },
-      { t: 'shot', c: 'Screenshot halaman Laporan — periode 30 hari' },
+      { t: 'shot', c: 'Screenshot halaman Laporan — periode 30 hari', src: '/help/reports-desktop.png' },
       { t: 'features', c: [
         { emoji: '📅', title: 'Pilih Periode', body: 'Ada Hari ini, 7 Hari, 30 Hari, Bulan ini, Bulan lalu, dan Custom (pilih sendiri tanggal mulai & selesai).' },
         { emoji: '📈', title: 'Grafik Tren', body: 'Grafik bar nunjukin revenue dan profit per hari. Arahkan kursor ke bar mana pun buat lihat angka detail hari itu.' },
@@ -209,7 +282,7 @@ const TOUR = [
     id: 'settings', icon: 'settings', title: 'Pengaturan', route: 'Icon gear di pojok kanan atas',
     blocks: [
       { t: 'p', c: <>Pengaturan bisa dibuka lewat icon gear di pojok kanan atas. Di sini kamu bisa ubah informasi akun dan kelola data master.</> },
-      { t: 'shot', c: 'Screenshot halaman Pengaturan' },
+      { t: 'shot', c: 'Screenshot halaman Pengaturan', src: '/help/settings-desktop.png' },
       { t: 'features', c: [
         { emoji: '🏪', title: 'Ganti Nama Toko', body: 'Nama yang muncul di header app. Bisa diganti kapan pun.' },
         { emoji: '📧', title: 'Ganti Email', body: 'Email buat login. Setelah kamu simpan, sistem kirim link konfirmasi ke email baru — klik link itu buat menyelesaikan perubahan.' },
@@ -223,7 +296,7 @@ const TOUR = [
 function TourBlock({ b }) {
   switch (b.t) {
     case 'p': return <P>{b.c}</P>
-    case 'shot': return <Shot label={b.c} />
+    case 'shot': return <Shot label={b.c} src={b.src} />
     case 'subhead': return <p style={{ fontSize: 15, color: C.inkSoft, margin: '16px 0 0' }}>{b.c}</p>
     case 'features': return <FeatureList items={b.c} />
     case 'tip': return <Callout variant="tip">{b.c}</Callout>
