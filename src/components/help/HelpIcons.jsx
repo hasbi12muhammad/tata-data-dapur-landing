@@ -113,6 +113,182 @@ const PATHS = {
     </>
   ),
 
+  // ── Feature icons ──
+  banknote: (
+    <>
+      <rect x="3" y="6" width="18" height="12" rx="2" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M3 10h2" />
+      <path d="M19 10h2" />
+      <path d="M3 14h2" />
+      <path d="M19 14h2" />
+    </>
+  ),
+  'trending-down': (
+    <>
+      <path d="M3 7l6 6l4-4l8 8" />
+      <path d="M21 21h-6v-6" />
+    </>
+  ),
+  'shopping-cart': (
+    <>
+      <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+      <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+      <path d="M1 1h2.5l2.5 12h10l2-7h-14.5" />
+    </>
+  ),
+  'check-circle': (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9 12l2 2l4-4" />
+    </>
+  ),
+  'circle-plus': (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9 12h6" />
+      <path d="M12 9v6" />
+    </>
+  ),
+  'clipboard-list': (
+    <>
+      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+      <rect x="9" y="3" width="6" height="4" rx="2" />
+      <path d="M9 12h6" />
+      <path d="M9 16h4" />
+    </>
+  ),
+  'line-chart': (
+    <>
+      <path d="M4 19l6-6l4 4l6-8" />
+      <path d="M4 20h16" />
+    </>
+  ),
+  cake: (
+    <>
+      <path d="M3 18h18" />
+      <rect x="3" y="13" width="18" height="5" rx="1" />
+      <path d="M8 13v-3a4 4 0 0 1 8 0v3" />
+      <path d="M12 4v3" />
+      <path d="M10 7h4" />
+    </>
+  ),
+  ruler: (
+    <>
+      <path d="M5 4l14 14" />
+      <rect x="2" y="2" width="8" height="20" rx="1" transform="rotate(-45 10 10)" />
+      <path d="M7 7l1 1" />
+      <path d="M10 10l1 1" />
+      <path d="M13 13l1 1" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="4" y="5" width="16" height="16" rx="2" />
+      <path d="M16 3v4" />
+      <path d="M8 3v4" />
+      <path d="M4 11h16" />
+      <path d="M8 15h2" />
+      <path d="M12 15h2" />
+      <path d="M8 19h2" />
+      <path d="M12 19h2" />
+    </>
+  ),
+  'hard-hat': (
+    <>
+      <path d="M10 20h4" />
+      <path d="M5 20h-1a2 2 0 0 1 -2 -2v-1" />
+      <path d="M19 20h1a2 2 0 0 0 2 -2v-1" />
+      <path d="M2 14v-3a10 10 0 0 1 20 0v3" />
+      <path d="M2 14h20" />
+    </>
+  ),
+  flame: (
+    <path d="M12 12c2-2.96 0-7-1-8 0 3.038-1.773 4.741-3 6-1.226 1.26-2 3.24-2 5a6 6 0 1 0 12 0c0-1.532-1.056-3.94-2-5-1.786 3-2.791 3-4 2z" />
+  ),
+  zap: (
+    <path d="M13 3l-9 10h8l-2 8l9-10h-8l2-8z" />
+  ),
+  wrench: (
+    <>
+      <path d="M7 10h3v3l-1.5 1.5a6 6 0 1 0 3-3l-1.5 1.5h-3v-3z" />
+    </>
+  ),
+  repeat: (
+    <>
+      <path d="M4 12v-3a3 3 0 0 1 3-3h13" />
+      <path d="M18 9l2-2l-2-2" />
+      <path d="M20 12v3a3 3 0 0 1 -3 3h-13" />
+      <path d="M6 15l-2 2l2 2" />
+    </>
+  ),
+  'bar-chart': (
+    <>
+      <path d="M3 12h2v9h-2z" />
+      <path d="M8 7h2v14h-2z" />
+      <path d="M13 3h2v18h-2z" />
+      <path d="M18 9h2v12h-2z" />
+    </>
+  ),
+  pencil: (
+    <>
+      <path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+    </>
+  ),
+  tag: (
+    <>
+      <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M3 5a2 2 0 0 1 2 -2h3a2 2 0 0 1 2 2l7 7a2 2 0 0 1 0 2.83l-2.83 2.83a2 2 0 0 1 -2.83 0l-7 -7a2 2 0 0 1 -2 -2v-3z" />
+    </>
+  ),
+  'trending-up': (
+    <>
+      <path d="M3 17l6-6l4 4l8-8" />
+      <path d="M14 7h7v7" />
+    </>
+  ),
+  trophy: (
+    <>
+      <path d="M8 21l8 0" />
+      <path d="M12 17l0 4" />
+      <path d="M7 4l10 0" />
+      <path d="M17 4v8a5 5 0 0 1 -10 0v-8" />
+      <path d="M5 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+      <path d="M19 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+      <path d="M7 11l5 5l5-5" />
+      <path d="M12 4v12" />
+    </>
+  ),
+  store: (
+    <>
+      <path d="M3 21l18 0" />
+      <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2-4h14l2 4" />
+      <path d="M5 21l0-10.15" />
+      <path d="M19 21l0-10.15" />
+      <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 7l9 6l9-6" />
+    </>
+  ),
+  key: (
+    <>
+      <circle cx="8" cy="15" r="4" />
+      <path d="M10.85 12.15l8.15-8.15" />
+      <path d="M18 5l2 2" />
+      <path d="M15 8l2 2" />
+    </>
+  ),
+
   // ── Utility icons ──
   image: (
     <>
