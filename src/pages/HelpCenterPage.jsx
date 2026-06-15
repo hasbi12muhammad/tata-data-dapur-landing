@@ -343,7 +343,8 @@ const TOUR = [
       { t: 'shot', c: 'Screenshot halaman Produksi', src: '/help/produksi-desktop.png',
         gallery: [
           { src: '/help/produksi-desktop.png', caption: 'Halaman Produksi — log produksi stok' },
-          { src: '/help/produksi-modal-desktop.png', caption: 'Form Tambah Produksi — pilih produk, jumlah batch' },
+          { src: '/help/produksi-modal-desktop.png', caption: 'Form Catat Produksi — tab Produk Jadi' },
+          { src: '/help/produksi-modal-ingredient-desktop.png', caption: 'Tab Setengah Jadi — dropdown berubah jadi pilih Bahan Setengah Jadi' },
         ],
       },
       { t: 'features', c: [
