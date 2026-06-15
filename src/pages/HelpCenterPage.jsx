@@ -279,7 +279,8 @@ const TOUR = [
       { t: 'shot', c: 'Screenshot halaman Pembelian', src: '/help/purchases-desktop.png',
         gallery: [
           { src: '/help/purchases-desktop.png', caption: 'Halaman Pembelian — riwayat pembelian bahan' },
-          { src: '/help/purchases-modal-desktop.png', caption: 'Form Tambah Pembelian — beli per satuan atau per kemasan' },
+          { src: '/help/purchases-modal-desktop.png', caption: 'Form Tambah Pembelian — beli per satuan dasar' },
+          { src: '/help/purchases-modal-pkg-desktop.png', caption: 'Beli per kemasan — centang untuk tampilkan field Jenis kemasan, Jumlah, dan Isi per kemasan' },
         ],
       },
       { t: 'features', c: [
@@ -317,7 +318,8 @@ const TOUR = [
       { t: 'shot', c: 'Screenshot halaman Produk', src: '/help/recipes-desktop.png',
         gallery: [
           { src: '/help/recipes-desktop.png', caption: 'Halaman Produk — daftar semua produk + HPP' },
-          { src: '/help/recipes-modal-desktop.png', caption: 'Form Produk Baru — komposisi bahan & HPP real-time' },
+          { src: '/help/recipes-modal-desktop.png', caption: 'Form Produk Baru — Produk Jadi (langsung dijual)' },
+          { src: '/help/recipes-modal-ingredient-desktop.png', caption: 'Produk Setengah Jadi — centang untuk tampilkan pilihan Unit stok' },
         ],
       },
       { t: 'subhead', c: <strong>Ada dua tipe produk:</strong> },
