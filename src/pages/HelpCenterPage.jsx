@@ -693,21 +693,21 @@ const VIDEO_SECTIONS = [
   {
     title: 'Ikut tur fitur aplikasi kami ✨',
     cards: [
-      { title: 'Panduan Login & Ganti Password', meta: 'Setup Awal · 2 menit', duration: '2:45', badge: 'Mulai di sini', ready: true },
-      { title: 'Tur Singkat Semua Menu App', meta: 'Orientasi · 3-4 menit', ready: false },
+      { title: 'Panduan Login & Ganti Password', meta: 'Setup Awal · 1 menit', duration: '0:53', badge: 'Mulai di sini', ready: true, src: '/videos/login-tutorial.mp4' },
+      { title: 'Tur Singkat Semua Menu App', meta: 'Orientasi · 1-2 menit', duration: '1:18', ready: true, src: '/videos/tour-tutorial.mp4' },
     ],
   },
   {
     title: 'Bagaimana cara...?',
     cards: [
-      { title: 'Membuat HPP otomatis untuk produkmu?', meta: 'Produk & Resep · 4-5 menit', ready: false },
-      { title: 'Mencatat stok dan memantaunya?', meta: 'Bahan Baku & Pembelian · 4-5 menit', ready: false },
-      { title: 'Mencatat penjualan dan pembelian hari ini?', meta: 'Operasional Harian · 3-4 menit', ready: false },
-      { title: 'Gaji karyawan, gas, dan utilitas masuk ke mana?', meta: 'Pengeluaran · 2-3 menit', ready: false },
-      { title: 'Apa bedanya Produk Jadi dan Setengah Jadi?', meta: 'Produk · 3-4 menit', ready: false },
-      { title: 'Fitur Produksi itu untuk apa?', meta: 'Produksi · 4-5 menit', ready: false },
-      { title: 'Membaca laporan dan export ke Excel?', meta: 'Laporan · 3-4 menit', ready: false },
-      { title: 'Fitur Sub-Recipe: dari Strawberry Jam ke Strawberry Cake', meta: 'Fitur Lanjutan · 4-5 menit', ready: false },
+      { title: 'Membuat HPP otomatis untuk produkmu?', meta: 'Produk & Resep · 2 menit', duration: '2:02', ready: true, src: '/videos/hpp-tutorial.mp4' },
+      { title: 'Mencatat stok dan memantaunya?', meta: 'Bahan Baku & Pembelian · 2 menit', duration: '2:18', ready: true, src: '/videos/stock-tutorial.mp4' },
+      { title: 'Mencatat penjualan dan pembelian hari ini?', meta: 'Operasional Harian · 1 menit', duration: '1:11', ready: true, src: '/videos/sales-tutorial.mp4' },
+      { title: 'Gaji karyawan, gas, dan utilitas masuk ke mana?', meta: 'Pengeluaran · 1 menit', duration: '1:02', ready: true, src: '/videos/expenses-tutorial.mp4' },
+      { title: 'Apa bedanya Produk Jadi dan Setengah Jadi?', meta: 'Produk · 1 menit', duration: '1:07', ready: true, src: '/videos/produk-tutorial.mp4' },
+      { title: 'Fitur Produksi itu untuk apa?', meta: 'Produksi · 2 menit', duration: '1:41', ready: true, src: '/videos/produksi-tutorial.mp4' },
+      { title: 'Membaca laporan dan export ke Excel?', meta: 'Laporan · 1 menit', duration: '1:08', ready: true, src: '/videos/reports-tutorial.mp4' },
+      { title: 'Fitur Sub-Recipe: dari Strawberry Jam ke Strawberry Cake', meta: 'Fitur Lanjutan · 1 menit', duration: '1:09', ready: true, src: '/videos/subreq-tutorial.mp4' },
     ],
   },
 ]
@@ -715,6 +715,7 @@ const VIDEO_SECTIONS = [
 function VideoCard({ card }) {
   const ready = card.ready
   const [hover, setHover] = useState(false)
+  const [playing, setPlaying] = useState(false)
   return (
     <div
       onMouseEnter={() => setHover(true)}
@@ -722,49 +723,62 @@ function VideoCard({ card }) {
       style={{
         background: ready ? C.paper : 'transparent',
         border: ready ? `1px solid ${C.line}` : `1.5px dashed ${C.line}`,
-        borderRadius: 12, overflow: 'hidden', cursor: ready ? 'pointer' : 'default',
+        borderRadius: 12, overflow: 'hidden', cursor: ready && !playing ? 'pointer' : 'default',
         opacity: ready ? 1 : 0.62,
-        transform: ready && hover ? 'translateY(-3px)' : 'none',
-        boxShadow: ready && hover ? '0 12px 32px rgba(27,18,8,0.1)' : 'none',
+        transform: ready && hover && !playing ? 'translateY(-3px)' : 'none',
+        boxShadow: ready && hover && !playing ? '0 12px 32px rgba(27,18,8,0.1)' : 'none',
         transition: 'transform 0.2s, box-shadow 0.2s',
       }}
     >
-      <div style={{
-        aspectRatio: '16 / 9', background: C.navBg, display: 'flex', alignItems: 'center',
-        justifyContent: 'center', position: 'relative', overflow: 'hidden', opacity: ready ? 1 : 0.5,
-      }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url("${NOISE}")`, pointerEvents: 'none' }} />
-        {ready && card.badge && (
-          <span style={{
-            position: 'absolute', top: 10, left: 10, background: C.gold, color: C.navBg,
-            fontFamily: MONO, fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
-            padding: '3px 8px', borderRadius: 100, fontWeight: 500, zIndex: 1,
-          }}>{card.badge}</span>
-        )}
-        {!ready && (
-          <span style={{
-            position: 'absolute', top: 10, left: 10, background: 'rgba(255,255,255,0.1)',
-            color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)',
-            fontFamily: MONO, fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
-            padding: '3px 8px', borderRadius: 100, zIndex: 1,
-          }}>Segera hadir</span>
-        )}
-        <div style={{
-          width: 52, height: 52, borderRadius: '50%',
-          background: ready && hover ? C.terra : 'rgba(255,255,255,0.15)',
-          border: `2px solid ${ready && hover ? C.terra : 'rgba(255,255,255,0.4)'}`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff',
-          position: 'relative', transition: 'all 0.2s', paddingLeft: 4,
-        }}>
-          <Icon name="play" size={18} color="#fff" />
+      {playing && card.src ? (
+        <video
+          src={card.src}
+          controls
+          autoPlay
+          style={{ width: '100%', display: 'block', background: '#000' }}
+          onEnded={() => setPlaying(false)}
+        />
+      ) : (
+        <div
+          onClick={() => ready && card.src && setPlaying(true)}
+          style={{
+            aspectRatio: '16 / 9', background: C.navBg, display: 'flex', alignItems: 'center',
+            justifyContent: 'center', position: 'relative', overflow: 'hidden', opacity: ready ? 1 : 0.5,
+          }}
+        >
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: `url("${NOISE}")`, pointerEvents: 'none' }} />
+          {ready && card.badge && (
+            <span style={{
+              position: 'absolute', top: 10, left: 10, background: C.gold, color: C.navBg,
+              fontFamily: MONO, fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
+              padding: '3px 8px', borderRadius: 100, fontWeight: 500, zIndex: 1,
+            }}>{card.badge}</span>
+          )}
+          {!ready && (
+            <span style={{
+              position: 'absolute', top: 10, left: 10, background: 'rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)',
+              fontFamily: MONO, fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
+              padding: '3px 8px', borderRadius: 100, zIndex: 1,
+            }}>Segera hadir</span>
+          )}
+          <div style={{
+            width: 52, height: 52, borderRadius: '50%',
+            background: ready && hover ? C.terra : 'rgba(255,255,255,0.15)',
+            border: `2px solid ${ready && hover ? C.terra : 'rgba(255,255,255,0.4)'}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff',
+            position: 'relative', transition: 'all 0.2s', paddingLeft: 4,
+          }}>
+            <Icon name="play" size={18} color="#fff" />
+          </div>
+          {card.duration && (
+            <span style={{
+              position: 'absolute', bottom: 10, right: 10, background: 'rgba(0,0,0,0.6)', color: '#fff',
+              fontFamily: MONO, fontSize: 11, padding: '2px 7px', borderRadius: 4,
+            }}>{card.duration}</span>
+          )}
         </div>
-        {card.duration && (
-          <span style={{
-            position: 'absolute', bottom: 10, right: 10, background: 'rgba(0,0,0,0.6)', color: '#fff',
-            fontFamily: MONO, fontSize: 11, padding: '2px 7px', borderRadius: 4,
-          }}>{card.duration}</span>
-        )}
-      </div>
+      )}
       <div style={{ padding: '14px 16px' }}>
         <h4 style={{ fontWeight: 500, fontSize: 14, margin: '0 0 4px', color: C.ink, lineHeight: 1.4 }}>{card.title}</h4>
         <div style={{ fontFamily: MONO, fontSize: 11, color: C.muted, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{card.meta}</div>
