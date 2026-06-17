@@ -12,6 +12,16 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import gsap from 'gsap'
 import ImageLightbox from './ImageLightbox'
 
+function useIsMobile() {
+  const [mobile, setMobile] = useState(() => window.innerWidth < 768)
+  useEffect(() => {
+    const fn = () => setMobile(window.innerWidth < 768)
+    window.addEventListener('resize', fn)
+    return () => window.removeEventListener('resize', fn)
+  }, [])
+  return mobile
+}
+
 const SLIDES = [
   { src: '/assets/app/dashboard.png',    label: 'Dashboard',    desc: 'Ringkasan bisnis harian' },
   { src: '/assets/app/laporan.png',      label: 'Laporan',      desc: 'Laba rugi lengkap + grafik' },
@@ -25,6 +35,8 @@ const N = SLIDES.length
 const wrap = (i) => ((i % N) + N) % N
 
 export default function AppSlider() {
+  const isMobile = useIsMobile()
+
   // displayIdx drives React rendering (side previews + dots + caption)
   const [displayIdx, setDisplayIdx] = useState(0)
 
@@ -32,15 +44,16 @@ export default function AppSlider() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Refs — never trigger re-renders
-  const currentRef   = useRef(0)          // current active index
-  const animatingRef = useRef(false)       // animation lock
-  const autoRef      = useRef(null)        // interval handle
+  const currentRef   = useRef(0)
+  const animatingRef = useRef(false)
+  const autoRef      = useRef(null)
 
   // DOM refs
-  const imgRef     = useRef(null)   // main <img>
-  const captRef    = useRef(null)   // caption bar
-  const prevImgRef = useRef(null)   // left preview <img>
-  const nextImgRef = useRef(null)   // right preview <img>
+  const sliderRootRef = useRef(null)
+  const imgRef     = useRef(null)
+  const captRef    = useRef(null)
+  const prevImgRef = useRef(null)
+  const nextImgRef = useRef(null)
 
   // ─── core transition ───────────────────────────────────────────────
   const transitionTo = useCallback((targetIdx) => {
@@ -117,13 +130,31 @@ export default function AppSlider() {
     resetAuto()
   }, [resetAuto])
 
+  // ─── touch swipe on mobile ─────────────────────────────────────────
+  useEffect(() => {
+    const el = sliderRootRef.current
+    if (!el) return
+    let startX = 0
+    const onStart = (e) => { startX = e.touches[0].clientX }
+    const onEnd = (e) => {
+      const dx = e.changedTouches[0].clientX - startX
+      if (Math.abs(dx) > 48) handleArrow(dx < 0 ? goNext : goPrev)
+    }
+    el.addEventListener('touchstart', onStart, { passive: true })
+    el.addEventListener('touchend', onEnd, { passive: true })
+    return () => {
+      el.removeEventListener('touchstart', onStart)
+      el.removeEventListener('touchend', onEnd)
+    }
+  }, [handleArrow, goNext, goPrev])
+
   // ─── derived ──────────────────────────────────────────────────────
   const prevIdx = wrap(displayIdx - 1)
   const nextIdx = wrap(displayIdx + 1)
 
   // ─── render ───────────────────────────────────────────────────────
   return (
-    <div className="app-slider-root" style={{ width: '100%', userSelect: 'none' }}>
+    <div ref={sliderRootRef} className="app-slider-root" style={{ width: '100%', userSelect: 'none' }}>
 
       {/* ── 3-COLUMN TRACK ─────────────────────────────────────── */}
       <div className="app-slider-track" style={{
@@ -170,9 +201,9 @@ export default function AppSlider() {
 
             {/* Screenshot — single stable DOM node, src swapped by GSAP */}
             <div
-              style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative', cursor: 'zoom-in' }}
-              onClick={() => setLightboxOpen(true)}
-              title="Klik untuk perbesar"
+              style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative', cursor: isMobile ? 'default' : 'zoom-in' }}
+              onClick={() => !isMobile && setLightboxOpen(true)}
+              title={isMobile ? undefined : 'Klik untuk perbesar'}
             >
               <img
                 ref={imgRef}
@@ -180,7 +211,8 @@ export default function AppSlider() {
                 alt={SLIDES[0].label}
                 style={{ width: '100%', display: 'block', objectFit: 'cover' }}
               />
-              {/* Zoom hint badge */}
+              {/* Zoom hint badge — desktop only */}
+              {!isMobile && (
               <div style={{
                 position: 'absolute', bottom: '10px', right: '10px',
                 background: 'rgba(27,18,8,0.65)', backdropFilter: 'blur(6px)',
@@ -194,6 +226,7 @@ export default function AppSlider() {
                 </svg>
                 <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Perbesar</span>
               </div>
+              )}
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '56px',
                 background: 'linear-gradient(to top, rgba(27,18,8,0.22), transparent)',
