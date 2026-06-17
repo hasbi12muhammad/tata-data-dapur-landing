@@ -117,7 +117,7 @@ export default function SolutionSection() {
         </h2>
 
         <p style={{ fontSize: '16px', color: '#5A3D25', marginBottom: '44px', maxWidth: '500px' }}>
-          Tata Data Dapur dirancang khusus untuk bisnis kuliner dan produksi ringan — bukan aplikasi serba ada yang akhirnya nggak ada yang kepake.
+          Tata Data Dapur dirancang khusus untuk bisnis kuliner dan produksi ringan, bukan aplikasi serba ada yang akhirnya nggak ada yang kepake.
         </p>
 
         {/* Solution cards */}

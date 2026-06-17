@@ -81,13 +81,13 @@ export default function Pricing() {
           fontWeight: 700, letterSpacing: '-0.8px',
           color: '#1B1208', marginBottom: '8px', lineHeight: 1.2,
         }}>
-          Cukup <em style={{ color: '#B5532A', fontStyle: 'italic' }}>sekali bayar.</em><br />
-          Tanpa langganan. Selamanya.
+          Cukup <em style={{ color: '#B5532A', fontStyle: 'italic' }}>sekali bayar,</em><br />
+          tanpa langganan, selamanya.
         </h2>
 
         <p style={{ fontSize: '15px', color: '#5A3D25', marginBottom: '36px', maxWidth: '500px' }}>
-          Kamu tidak perlu terus membayar untuk sistem yang seharusnya sudah milikmu.
-          Satu kali investasi — dan Tata Data Dapur menjadi bagian permanen dari bisnismu.
+          Kamu tidak perlu terus membayar untuk sesuatu yang seharusnya sudah milikmu.
+          Bayar sekali hari ini, Tata Data Dapur jadi milikmu selamanya.
         </p>
 
         {/* Pricing card */}
@@ -108,7 +108,7 @@ export default function Pricing() {
             fontSize: '12px', fontWeight: 800,
             letterSpacing: '0.08em', textTransform: 'uppercase',
           }}>
-            Harga Spesial — Bayar Sekali, Akses Selamanya
+            Harga Spesial: Bayar Sekali, Akses Selamanya
           </div>
 
           {/* Body */}
@@ -172,7 +172,7 @@ export default function Pricing() {
               onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
               onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              Saya Mau Beli Sekarang — Rp 175.000
+              Saya Mau Beli Sekarang · Rp 175.000
             </a>
 
             {/* Trust badges — centered */}

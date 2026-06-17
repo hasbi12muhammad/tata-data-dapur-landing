@@ -82,8 +82,8 @@ export default function FinalCTA() {
         </h2>
 
         <p style={{ fontSize: '16px', color: '#C4B098', marginBottom: '36px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 36px' }}>
-          Setiap hari yang kamu jalankan tanpa data yang jelas adalah hari yang kamu lewatkan untuk tumbuh.<br />
-          <strong style={{ color: '#D4C0AA', fontWeight: 700 }}>Mulai hari ini — satu kali bayar, selamanya punya kontrol.</strong>
+          Setiap hari tanpa data yang jelas, kamu jalankan bisnis pakai tebak-tebakan.<br />
+          <strong style={{ color: '#D4C0AA', fontWeight: 700 }}>Mulai hari ini. Satu kali bayar, selamanya punya kontrol.</strong>
         </p>
 
         <a
@@ -102,7 +102,7 @@ export default function FinalCTA() {
           onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A'; e.currentTarget.style.transform = 'translateY(-1px)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#B5532A'; e.currentTarget.style.transform = 'translateY(0)' }}
         >
-          Mulai Sekarang — Rp 175.000
+          Mulai Sekarang · Rp 175.000
         </a>
       </div>
     </section>

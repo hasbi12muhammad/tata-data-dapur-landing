@@ -151,10 +151,10 @@ export default function Hero() {
             lineHeight: 1.7, marginBottom: '40px', maxWidth: '520px', margin: '0 auto 40px',
           }}
         >
-          Tata Data Dapur bantu kamu lihat kondisi bisnis dengan jelas —
+          Tata Data Dapur bantu kamu lihat kondisi bisnis dengan jelas:
           stok, transaksi, HPP, dan laporan keuangan.{' '}
           <strong style={{ color: '#1B1208', fontWeight: 700 }}>
-            Tanpa ribet. Tanpa biaya bulanan.
+            Nggak ribet, nggak ada biaya bulanan.
           </strong>
         </p>
 

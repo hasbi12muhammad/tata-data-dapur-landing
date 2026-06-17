@@ -40,7 +40,7 @@ const pains = [
   },
   {
     title: 'Uang masuk tiap hari, tapi bingung untungnya berapa.',
-    desc: 'Kalau ditanya "bulan ini profit berapa?" — kamu jawab apa?',
+    desc: 'Kalau ditanya "bulan ini profit berapa?", kamu jawab apa?',
   },
   {
     title: 'Masih catat manual di buku atau Excel.',
@@ -48,11 +48,11 @@ const pains = [
   },
   {
     title: 'Harga tepung naik, tapi nggak tahu harus naikkan harga jual berapa.',
-    desc: 'Akhirnya tebak-tebakan — dan sering rugi tanpa sadar.',
+    desc: 'Akhirnya tebak-tebakan, dan sering rugi tanpa sadar.',
   },
   {
     title: 'Sudah coba aplikasi lain, tapi bayar terus tiap bulan',
-    desc: 'padahal fiturnya nggak kepake semua — dan harganya terus naik.',
+    desc: 'padahal fiturnya nggak kepake semua, dan harganya terus naik.',
   },
 ]
 
@@ -175,9 +175,9 @@ export default function PainSection() {
         >
           Kalau iya, kamu nggak sendiri.{' '}
           <strong style={{ color: '#fff', fontWeight: 700 }}>
-            Banyak bisnis kuliner jalan tiap hari — tapi tidak benar-benar terkontrol.
+            Banyak bisnis kuliner jalan tiap hari tapi tidak benar-benar terkontrol.
           </strong>{' '}
-          Bukan karena kamu kurang kerja keras. Tapi karena belum punya sistem yang tepat.
+          Bukan karena kamu kurang kerja keras, tapi karena belum punya sistem yang tepat.
         </div>
       </div>
     </section>

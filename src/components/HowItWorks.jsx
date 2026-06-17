@@ -122,7 +122,7 @@ export default function HowItWorks() {
           lineHeight: 1.2, color: '#fff',
           marginBottom: '12px',
         }}>
-          Simpel. Langsung pakai.<br />Tidak perlu training.
+          Simpel, langsung pakai,<br />nggak perlu training.
         </h2>
 
         <p style={{ fontSize: '16px', color: '#C4B098', marginBottom: '44px', maxWidth: '500px' }}>

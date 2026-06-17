@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: 'Apakah ada bantuan jika saya kesulitan saat setup?',
-    a: 'Ada. Kami tersedia via WhatsApp pada jam kerja. Kamu juga bisa hubungi kami sebelum mendaftar jika ada pertanyaan — kami senang membantu.',
+    a: 'Ada. Kami tersedia via WhatsApp pada jam kerja. Kamu juga bisa hubungi sebelum mendaftar kalau ada yang mau ditanyakan.',
   },
 ]
 
