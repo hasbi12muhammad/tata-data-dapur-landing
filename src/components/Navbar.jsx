@@ -50,7 +50,7 @@ export default function Navbar() {
             filter: 'brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(600%) hue-rotate(348deg) brightness(85%)',
           }}
         />
-        <div className="hidden sm:block" style={{
+        <div style={{
           fontFamily: 'Fraunces, serif',
           fontSize: '20px',
           fontWeight: 700,
@@ -97,7 +97,7 @@ export default function Navbar() {
             background: '#B5532A',
             color: '#fff',
             border: 'none',
-            padding: '10px 20px',
+            padding: '10px 14px',
             borderRadius: '99px',
             fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize: '13px',
@@ -115,7 +115,11 @@ export default function Navbar() {
           onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
         >
-          Beli Sekarang
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span className="hidden sm:inline">Beli Sekarang</span>
         </a>
       </div>
     </nav>
