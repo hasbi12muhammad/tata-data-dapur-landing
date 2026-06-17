@@ -9,7 +9,7 @@ const A = '/assets/components/'
 const faqs = [
   {
     q: 'Apakah Tata Data Dapur gratis?',
-    a: 'Ada masa uji coba gratis 14 hari, tanpa kartu kredit. Setelah itu kamu bisa pilih paket yang sesuai dengan skala bisnis kamu.',
+    a: 'Ada trial gratis 3 hari. Hubungi kami dulu via WhatsApp dan kami siapkan akses trial untuk kamu coba langsung.',
     defaultOpen: true,
   },
   {
