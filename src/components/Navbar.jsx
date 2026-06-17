@@ -50,7 +50,7 @@ export default function Navbar() {
             filter: 'brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(600%) hue-rotate(348deg) brightness(85%)',
           }}
         />
-        <div style={{
+        <div className="hidden sm:block" style={{
           fontFamily: 'Fraunces, serif',
           fontSize: '20px',
           fontWeight: 700,
