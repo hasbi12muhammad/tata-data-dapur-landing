@@ -77,9 +77,6 @@ const S = {
     borderRadius: '16px',
     padding: '20px',
     marginBottom: '32px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   productName: {
     fontWeight: 700,
@@ -89,11 +86,12 @@ const S = {
   productDesc: {
     fontSize: '12px',
     color: '#7A5C3A',
-    marginTop: '2px',
+    marginTop: '4px',
+    lineHeight: 1.6,
   },
   productPrice: {
     fontFamily: 'Fraunces, serif',
-    fontSize: '22px',
+    fontSize: '26px',
     fontWeight: 700,
     color: '#B5532A',
     whiteSpace: 'nowrap',
@@ -303,11 +301,19 @@ export default function BeliPage() {
 
           {/* Product summary */}
           <div style={S.productBox}>
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
               <div style={S.productName}>Tata Data Dapur</div>
-              <div style={S.productDesc}>Akses penuh · Bayar sekali · Pakai selamanya</div>
+              <span style={{
+                fontSize: '11px', fontWeight: 700, color: '#B5532A',
+                background: 'rgba(181,83,42,0.08)', padding: '3px 8px',
+                borderRadius: '99px', whiteSpace: 'nowrap', marginLeft: '8px',
+              }}>Lifetime</span>
             </div>
-            <div style={S.productPrice}>Rp 175.000</div>
+            <div style={S.productDesc}>Akses penuh · Bayar sekali · Pakai selamanya</div>
+            <div style={{ marginTop: '14px', display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+              <div style={S.productPrice}>Rp 175.000</div>
+              <span style={{ fontSize: '12px', color: '#8B7060' }}>sekali bayar</span>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} noValidate>
