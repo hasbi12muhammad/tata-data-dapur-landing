@@ -8,21 +8,21 @@ const A = '/assets/components/'
 
 const faqs = [
   {
-    q: 'Apakah Tata Data Dapur gratis?',
-    a: 'Ada trial gratis 3 hari. Hubungi kami dulu via WhatsApp dan kami siapkan akses trial untuk kamu coba langsung.',
+    q: 'Bisa dicoba dulu sebelum beli?',
+    a: 'Bisa. Ada trial gratis 3 hari, tapi harus hubungi kami dulu via WhatsApp supaya kami siapkan aksesnya. Kalau sudah yakin, baru beli.',
     defaultOpen: true,
   },
   {
     q: 'Apakah saya harus paham akuntansi untuk menggunakannya?',
-    a: 'Tidak perlu. Tata Data Dapur dirancang untuk pemilik warung dan restoran, bukan akuntan. Cukup input bahan baku, harga beli, dan resep — semua perhitungan HPP dan profit dilakukan otomatis oleh sistem.',
+    a: 'Tidak perlu. Tata Data Dapur dibuat untuk pemilik warung dan restoran, bukan akuntan. Cukup input bahan baku, harga beli, dan resep, semua perhitungan HPP dan profit dikerjakan otomatis.',
   },
   {
     q: 'Bagaimana cara aplikasi ini menghitung HPP?',
-    a: 'Kamu input bahan baku beserta harga belinya, lalu buat resep dengan komposisi bahan tiap menu. Sistem otomatis menghitung HPP per porsi berdasarkan data tersebut — akurat, tanpa kalkulator.',
+    a: 'Kamu input bahan baku beserta harga belinya, lalu buat resep dengan komposisi bahan tiap menu. Sistem langsung hitung HPP per porsi dari situ, tanpa kalkulator.',
   },
   {
     q: 'Bisnis kuliner apa saja yang cocok menggunakan ini?',
-    a: 'Tata Data Dapur cocok untuk warung makan, restoran, kafe, katering, bakeri — intinya semua usaha kuliner yang punya resep dan bahan baku. Kalau kamu masak untuk dijual, aplikasi ini untuk kamu.',
+    a: 'Warung makan, restoran, kafe, katering, bakeri. Intinya semua usaha kuliner yang punya resep dan bahan baku. Kalau kamu masak untuk dijual, aplikasi ini untuk kamu.',
   },
   {
     q: 'Apakah ada bantuan jika saya kesulitan saat setup?',

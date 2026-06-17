@@ -8,6 +8,7 @@ import SolutionSection from './components/SolutionSection'
 import HowItWorks from './components/HowItWorks'
 import ValueStack from './components/ValueStack'
 import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
 import Pricing from './components/Pricing'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
@@ -37,6 +38,7 @@ function LandingPage() {
       <HowItWorks />
       <ValueStack />
       <Testimonials />
+      <FAQ />
       <Pricing />
       <FinalCTA />
       <Footer />
