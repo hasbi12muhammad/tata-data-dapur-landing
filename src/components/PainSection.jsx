@@ -155,7 +155,7 @@ export default function PainSection() {
               }}>
                 {icons[i]}
               </div>
-              <p style={{ fontSize: '15px', color: '#D4C0AA', lineHeight: 1.5, paddingTop: '7px', margin: 0 }}>
+              <p style={{ fontSize: '15px', color: '#D4C0AA', lineHeight: 1.5, paddingTop: '2px', margin: 0 }}>
                 <strong style={{ color: '#F5E6D0' }}>{pain.title}</strong>{' '}
                 {pain.desc}
               </p>
