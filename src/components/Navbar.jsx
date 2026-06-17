@@ -61,33 +61,62 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* CTA */}
-      <a
-        href="#pricing"
-        style={{
-          background: '#B5532A',
-          color: '#fff',
-          border: 'none',
-          padding: '10px 20px',
-          borderRadius: '99px',
-          fontFamily: 'Plus Jakarta Sans, sans-serif',
-          fontSize: '13px',
-          fontWeight: 700,
-          cursor: 'pointer',
-          textDecoration: 'none',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '6px',
-          whiteSpace: 'nowrap',
-          transition: 'background 0.2s, transform 0.1s',
-        }}
-        onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
-        onMouseLeave={e => { e.currentTarget.style.background = '#B5532A' }}
-        onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
-        onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
-      >
-        Beli Sekarang
-      </a>
+      {/* CTA group */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <a
+          href="https://app.tatadatadapur.my.id"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: '#5A3D25',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            textDecoration: 'none',
+            padding: '10px 16px',
+            borderRadius: '99px',
+            border: '1.5px solid rgba(181,83,42,0.25)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px',
+            whiteSpace: 'nowrap',
+            transition: 'border-color 0.2s, color 0.2s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = '#B5532A'; e.currentTarget.style.color = '#B5532A' }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(181,83,42,0.25)'; e.currentTarget.style.color = '#5A3D25' }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          Masuk ke App
+        </a>
+        <a
+          href="#pricing"
+          style={{
+            background: '#B5532A',
+            color: '#fff',
+            border: 'none',
+            padding: '10px 20px',
+            borderRadius: '99px',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
+            fontSize: '13px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            whiteSpace: 'nowrap',
+            transition: 'background 0.2s, transform 0.1s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#B5532A' }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'scale(0.97)' }}
+          onMouseUp={e => { e.currentTarget.style.transform = 'scale(1)' }}
+        >
+          Beli Sekarang
+        </a>
+      </div>
     </nav>
   )
 }
