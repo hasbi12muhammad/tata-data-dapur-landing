@@ -202,8 +202,8 @@ export default function AppSlider() {
             {/* Screenshot — single stable DOM node, src swapped by GSAP */}
             <div
               style={{ lineHeight: 0, background: '#F4EDE0', position: 'relative', cursor: isMobile ? 'default' : 'zoom-in' }}
-              onClick={() => !isMobile && setLightboxOpen(true)}
-              title={isMobile ? undefined : 'Klik untuk perbesar'}
+              onClick={() => setLightboxOpen(true)}
+              title="Klik untuk perbesar"
             >
               <img
                 ref={imgRef}
@@ -211,8 +211,8 @@ export default function AppSlider() {
                 alt={SLIDES[0].label}
                 style={{ width: '100%', display: 'block', objectFit: 'cover' }}
               />
-              {/* Zoom hint badge — desktop only */}
-              {!isMobile && (
+              {/* Zoom hint badge */}
+              {(
               <div style={{
                 position: 'absolute', bottom: '10px', right: '10px',
                 background: 'rgba(27,18,8,0.65)', backdropFilter: 'blur(6px)',

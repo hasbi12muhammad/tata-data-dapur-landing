@@ -13,6 +13,8 @@ import React, { useEffect, useRef, useState, useCallback, useLayoutEffect } from
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 
+const isMobile = () => window.innerWidth < 768
+
 export default function ImageLightbox({ slides, startIndex, onClose }) {
   const [activeIdx, setActiveIdx] = useState(startIndex)
   const [showReset, setShowReset] = useState(false)
@@ -194,18 +196,20 @@ export default function ImageLightbox({ slides, startIndex, onClose }) {
   // ── render ───────────────────────────────────────────────────────────
   const slide = slides[activeIdx]
 
+  const mobile = isMobile()
+
   return createPortal(
     <div
       ref={overlayRef}
       onClick={close}
       style={{
         position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'rgba(8,5,2,0.93)',
+        background: 'rgba(8,5,2,0.96)',
         backdropFilter: 'blur(18px)',
         WebkitBackdropFilter: 'blur(18px)',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        padding: '0 16px',
+        padding: mobile ? 0 : '0 16px',
       }}
     >
       {/* ── top bar ── */}
@@ -249,24 +253,27 @@ export default function ImageLightbox({ slides, startIndex, onClose }) {
         ref={containerRef}
         onClick={e => e.stopPropagation()}
         style={{
-          width: '100%', maxWidth: 'min(860px, calc(100vw - 48px))',
-          maxHeight: 'calc(100vh - 120px)', overflowY: 'auto',
-          borderRadius: '18px', overflow: 'hidden',
+          width: '100%',
+          maxWidth: mobile ? '100%' : 'min(860px, calc(100vw - 48px))',
+          borderRadius: mobile ? 0 : '18px',
+          overflow: 'hidden',
           background: '#1B1208',
-          boxShadow: '0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,154,63,0.14)',
+          boxShadow: mobile ? 'none' : '0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,154,63,0.14)',
           willChange: 'transform, opacity',
         }}
       >
-        {/* Traffic lights */}
-        <div style={{
-          background: '#2A1A0C', padding: '9px 14px',
-          display: 'flex', alignItems: 'center', gap: '6px',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-        }}>
-          {['#FF6057', '#FEBC2E', '#28C840'].map((c, i) => (
-            <span key={i} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c, display: 'inline-block' }} />
-          ))}
-        </div>
+        {/* Traffic lights — desktop only */}
+        {!mobile && (
+          <div style={{
+            background: '#2A1A0C', padding: '9px 14px',
+            display: 'flex', alignItems: 'center', gap: '6px',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
+          }}>
+            {['#FF6057', '#FEBC2E', '#28C840'].map((c, i) => (
+              <span key={i} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c, display: 'inline-block' }} />
+            ))}
+          </div>
+        )}
 
         {/* Image — ref for zoom transform */}
         <div style={{ overflow: 'hidden', lineHeight: 0, background: '#F4EDE0', cursor: 'zoom-in' }}>
@@ -288,7 +295,7 @@ export default function ImageLightbox({ slides, startIndex, onClose }) {
           background: '#2A1A0C', padding: '12px 16px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          minHeight: '52px',
+          minHeight: '48px',
         }}>
           <div>
             <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', fontWeight: 700, color: '#F4EDE0' }}>
@@ -306,7 +313,6 @@ export default function ImageLightbox({ slides, startIndex, onClose }) {
                 color: '#E8845A', background: 'rgba(181,83,42,0.1)',
                 border: '1px solid rgba(181,83,42,0.25)', borderRadius: '99px',
                 padding: '4px 12px', cursor: 'pointer', outline: 'none',
-                transition: 'background 0.18s',
               }}
             >
               Reset zoom
