@@ -56,6 +56,7 @@ export default function Navbar() {
           fontWeight: 700,
           color: '#B5532A',
           letterSpacing: '-0.3px',
+          whiteSpace: 'nowrap',
         }}>
           Tata Data<span style={{ color: '#1B1208' }}> Dapur</span>
         </div>
