@@ -68,13 +68,16 @@ export default function LegalLayout({ title, subtitle, lastUpdated, children }) 
         </div>
 
         {/* Content */}
-        <div style={{
-          maxWidth: '680px', margin: '0 auto',
-          padding: '32px 24px 80px',
-          fontFamily: 'Plus Jakarta Sans, sans-serif',
-          fontSize: '15px', lineHeight: 1.75,
-          color: '#1B1208',
-        }}>
+        <div
+          className="legal-content"
+          style={{
+            maxWidth: '680px', margin: '0 auto',
+            padding: '32px 24px 80px',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
+            fontSize: '15px', lineHeight: 1.75,
+            color: '#1B1208',
+          }}
+        >
           {children}
         </div>
       </div>

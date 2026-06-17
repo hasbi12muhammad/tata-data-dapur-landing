@@ -284,3 +284,19 @@ html.lenis {
   .app-slider-arrow-left  { left: 10px !important; }
   .app-slider-arrow-right { right: 10px !important; }
 }
+
+/* Legal pages — list styles */
+.legal-content ul {
+  list-style-type: disc;
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+.legal-content ol {
+  list-style-type: decimal;
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+.legal-content li {
+  margin-bottom: 6px;
+  color: #3D2510;
+}
