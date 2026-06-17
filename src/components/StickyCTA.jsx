@@ -57,7 +57,7 @@ export default function StickyCTA() {
         onMouseEnter={e => { e.currentTarget.style.background = '#8B3D1A' }}
         onMouseLeave={e => { e.currentTarget.style.background = '#B5532A' }}
       >
-        Beli Sekarang — Rp 175.000
+        Beli Sekarang · Rp 175.000
       </a>
       <a
         href="https://wa.me/6287850755050"
