@@ -203,6 +203,17 @@ export default function Pricing() {
                 </span>
               ))}
             </div>
+
+            {/* Undecided escape hatch */}
+            <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '13px', color: '#8B7060' }}>
+              Belum yakin?{' '}
+              <a
+                href="/help"
+                style={{ color: '#B5532A', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+              >
+                Lihat dulu tampilan aplikasinya →
+              </a>
+            </p>
           </div>
         </div>
       </div>
