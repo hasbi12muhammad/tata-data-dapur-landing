@@ -86,10 +86,10 @@ export default function Navbar() {
           onMouseEnter={e => { e.currentTarget.style.borderColor = '#B5532A'; e.currentTarget.style.color = '#B5532A' }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(181,83,42,0.25)'; e.currentTarget.style.color = '#5A3D25' }}
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
           </svg>
-          Masuk ke App
+          <span className="hidden sm:inline">Masuk ke App</span>
         </a>
         <a
           href="#pricing"

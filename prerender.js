@@ -27,6 +27,7 @@ const routes = [
   '/privacy',
   '/terms',
   '/refund',
+  '/beli',
   ...slugs.map((s) => `/blog/${s}`),
 ]
 

@@ -18,6 +18,7 @@ import RefundPage from './pages/RefundPage'
 import BlogIndexPage from './pages/BlogIndexPage'
 import BlogPostPage from './pages/BlogPostPage'
 import HelpCenterPage from './pages/HelpCenterPage'
+import BeliPage from './pages/BeliPage'
 import { useSeo } from './hooks/useSeo'
 
 function LandingPage() {
@@ -55,6 +56,7 @@ export default function App() {
         <Route path="/blog" element={<BlogIndexPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/help" element={<HelpCenterPage />} />
+        <Route path="/beli" element={<BeliPage />} />
       </Routes>
     </BrowserRouter>
   )
