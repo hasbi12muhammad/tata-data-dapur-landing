@@ -114,7 +114,7 @@ export default function TermsPage() {
         Pertanyaan terkait Syarat & Ketentuan:
       </p>
       <ul style={S.ul}>
-        <li style={S.li}>Email: <a href="mailto:hasbi12.muhammad@gmail.com" style={{ color: '#B5532A' }}>hasbi12.muhammad@gmail.com</a></li>
+        <li style={S.li}>Email: <a href="mailto:info@tatadatadapur.my.id" style={{ color: '#B5532A' }}>info@tatadatadapur.my.id</a></li>
         <li style={S.li}>WhatsApp: tersedia via tombol di halaman utama</li>
       </ul>
     </LegalLayout>
