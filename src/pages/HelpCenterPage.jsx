@@ -592,6 +592,43 @@ Servis alat / tak terduga → Kategori: Perawatan & Lainnya`}</Example>
     ],
   },
   {
+    title: 'Install App (PWA)',
+    items: [
+      {
+        q: 'Apa itu Install App? Apa bedanya buka di browser biasa?',
+        a: <>
+          Tata Data Dapur bisa diinstall langsung di HP atau laptop kamu — tanpa perlu ke Play Store atau App Store. Teknologi ini namanya <strong>PWA (Progressive Web App)</strong>.<br /><br />
+          Kalau sudah diinstall, app akan:
+          <ul style={{ margin: '10px 0 10px 20px', paddingLeft: 0, lineHeight: 1.8 }}>
+            <li>Tampil fullscreen — tanpa address bar browser</li>
+            <li>Punya ikon di layar utama HP / taskbar laptop</li>
+            <li>Buka lebih cepat karena sebagian aset sudah di-cache</li>
+            <li>Tetap bisa dibuka meski koneksi lagi lambat (halaman terakhir terbuka dari cache)</li>
+          </ul>
+        </>,
+      },
+      {
+        q: 'Gimana cara install aplikasi di HP atau laptop?',
+        a: <>
+          <strong>Di Android (Chrome):</strong><br />
+          Buka app di browser Chrome → ketuk ikon tiga titik (⋮) di pojok kanan atas → pilih <em>"Tambahkan ke layar utama"</em> atau <em>"Install aplikasi"</em> → konfirmasi.<br /><br />
+          <strong>Di laptop / desktop (Chrome atau Edge):</strong><br />
+          Lihat tombol <strong>Install App</strong> di header app — klik, konfirmasi, selesai. Tombol ini muncul otomatis saat browser mendeteksi app belum diinstall.<br /><br />
+          <strong>Di iPhone / iPad (Safari):</strong><br />
+          Buka di Safari → ketuk tombol <em>Share</em> (kotak dengan panah ke atas) → pilih <em>"Add to Home Screen"</em> → konfirmasi.<br /><br />
+          Setelah install, app akan muncul di layar utama / taskbar seperti aplikasi biasa.
+        </>,
+      },
+      {
+        q: 'Apakah butuh internet terus-menerus setelah install?',
+        a: <>
+          Butuh internet untuk sinkronisasi data terbaru. Tapi kalau koneksi lagi putus, kamu masih bisa membuka dan melihat data yang sudah ter-cache — nggak langsung blank.<br /><br />
+          Untuk mencatat data baru (penjualan, pembelian, dll), tetap butuh koneksi aktif karena semua data disimpan di cloud supaya sinkron antar perangkat.
+        </>,
+      },
+    ],
+  },
+  {
     title: 'Penjualan & Laporan',
     items: [
       {
