@@ -39,7 +39,7 @@ export default function StickyCTA() {
         pointerEvents: 'all',
       }}>
       <a
-        href="https://onetap.id/tata-data/tatadata-dapurmu" target="_blank" rel="noopener noreferrer"
+        href="/beli"
         style={{
           display: 'flex',
           alignItems: 'center',

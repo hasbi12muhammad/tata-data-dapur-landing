@@ -87,7 +87,7 @@ export default function FinalCTA() {
         </p>
 
         <a
-          href="#pricing"
+          href="/beli"
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             background: '#B5532A', color: '#fff',

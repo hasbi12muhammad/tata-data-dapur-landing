@@ -163,9 +163,7 @@ export default function Hero() {
           style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'center', marginBottom: '32px' }}
         >
           <a
-            href="https://onetap.id/tata-data/tatadata-dapurmu"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/beli"
             style={{
               background: '#B5532A', color: '#fff', border: 'none',
               padding: '16px 32px', borderRadius: '99px',

@@ -155,9 +155,7 @@ export default function Pricing() {
 
             {/* CTA button */}
             <a
-              href="https://onetap.id/tata-data/tatadata-dapurmu"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/beli"
               style={{
                 display: 'flex', justifyContent: 'center', textAlign: 'center',
                 width: '100%', padding: '18px',
