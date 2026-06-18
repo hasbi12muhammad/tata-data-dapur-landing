@@ -3,7 +3,7 @@ import { useSeo } from '../hooks/useSeo'
 
 const SUPABASE_URL = 'https://tqhfnaerzttcfceoygxw.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxaGZuYWVyenR0Y2ZjZW95Z3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNzAzMzEsImV4cCI6MjA5MTc0NjMzMX0.ODfdCsO8w1H6CF1b-SERbfp0dstnQV-HSIlEjG5pC4w'
-const AMOUNT = 1000
+const AMOUNT = 175000
 const PAKASIR_SLUG = 'tata-data-dapur'
 const REDIRECT_URL = 'https://app.tatadatadapur.my.id/welcome'
 
@@ -197,7 +197,7 @@ const S = {
 export default function BeliPage() {
   useSeo({
     title: 'Beli Tata Data Dapur — Bayar Sekali, Pakai Selamanya',
-    description: 'Beli akses Tata Data Dapur. Hitung HPP, pantau stok, laporan keuangan. Bayar sekali Rp 1.000.',
+    description: 'Beli akses Tata Data Dapur. Hitung HPP, pantau stok, laporan keuangan. Bayar sekali Rp 175.000.',
     path: '/beli',
   })
 
@@ -311,7 +311,7 @@ export default function BeliPage() {
             </div>
             <div style={S.productDesc}>Akses penuh · Bayar sekali · Pakai selamanya</div>
             <div style={{ marginTop: '14px', display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-              <div style={S.productPrice}>Rp 1.000</div>
+              <div style={S.productPrice}>Rp 175.000</div>
               <span style={{ fontSize: '12px', color: '#8B7060' }}>sekali bayar</span>
             </div>
           </div>
