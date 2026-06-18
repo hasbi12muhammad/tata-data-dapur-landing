@@ -12,6 +12,7 @@ import Pricing from './components/Pricing'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import StickyCTA from './components/StickyCTA'
+import WAButton from './components/WAButton'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import RefundPage from './pages/RefundPage'
@@ -41,6 +42,7 @@ function LandingPage() {
       <FinalCTA />
       <Footer />
       <StickyCTA />
+      <WAButton />
     </div>
   )
 }
