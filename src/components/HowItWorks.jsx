@@ -93,12 +93,12 @@ export default function HowItWorks() {
       {/* Corner illustrations */}
       <div className="hiw-corner-illus" style={{ position: 'absolute', bottom: '10px', left: '10px', zIndex: 1 }}>
         <div style={floatStyle(-5, '5s', '0.5s')}>
-          <SpiceImg src={`${A}7.png`} bg="dark" width={120} height={120} />
+          <SpiceImg src={`${A}7.webp`} bg="dark" width={120} height={120} />
         </div>
       </div>
       <div className="hiw-corner-illus" style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1 }}>
         <div style={floatStyle(10, '4.5s', '1s')}>
-          <SpiceImg src={`${A}8.png`} bg="dark" width={130} height={85} />
+          <SpiceImg src={`${A}8.webp`} bg="dark" width={130} height={85} />
         </div>
       </div>
 

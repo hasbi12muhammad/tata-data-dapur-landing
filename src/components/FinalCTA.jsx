@@ -50,22 +50,22 @@ export default function FinalCTA() {
       {/* Corner botanical illustrations */}
       <div className="cta-illus finalcta-side-illus" style={{ position: 'absolute', top: '20px', left: '40px', zIndex: 1 }}>
         <div style={floatStyle(-12, '5s', '0.3s')}>
-          <SpiceImg src={`${A}1.png`} bg="dark" width={110} height={110} />
+          <SpiceImg src={`${A}1.webp`} bg="dark" width={110} height={110} />
         </div>
       </div>
       <div className="cta-illus finalcta-side-illus" style={{ position: 'absolute', bottom: '10px', left: '10px', zIndex: 1 }}>
         <div style={floatStyle(8, '4.5s', '1s')}>
-          <SpiceImg src={`${A}20.png`} bg="dark" width={120} height={105} />
+          <SpiceImg src={`${A}20.webp`} bg="dark" width={120} height={105} />
         </div>
       </div>
       <div className="cta-illus finalcta-side-illus" style={{ position: 'absolute', top: '20px', right: '40px', zIndex: 1 }}>
         <div style={floatStyle(18, '4.8s', '0.5s')}>
-          <SpiceImg src={`${A}3.png`} bg="dark" width={115} height={92} />
+          <SpiceImg src={`${A}3.webp`} bg="dark" width={115} height={92} />
         </div>
       </div>
       <div className="cta-illus finalcta-side-illus" style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: 1 }}>
         <div style={floatStyle(-6, '5.2s', '1.5s')}>
-          <SpiceImg src={`${A}7.png`} bg="dark" width={90} height={90} />
+          <SpiceImg src={`${A}7.webp`} bg="dark" width={90} height={90} />
         </div>
       </div>
 

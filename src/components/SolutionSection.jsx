@@ -86,13 +86,13 @@ export default function SolutionSection() {
     >
       {/* Floating illustrations */}
       <div style={{ position: 'absolute', top: '32px', right: '18px', zIndex: 0, opacity: 0.65 }}>
-        <div style={floatSt(12, '5s', '0.5s')}><SpiceImg src={`${A}5.png`} bg="cream" width={110} height={95} /></div>
+        <div style={floatSt(12, '5s', '0.5s')}><SpiceImg src={`${A}5.webp`} bg="cream" width={110} height={95} /></div>
       </div>
       <div style={{ position: 'absolute', bottom: '40px', left: '14px', zIndex: 0, opacity: 0.6 }}>
-        <div style={floatSt(-10, '4.5s', '1s')}><SpiceImg src={`${A}14.png`} bg="cream" width={95} height={85} /></div>
+        <div style={floatSt(-10, '4.5s', '1s')}><SpiceImg src={`${A}14.webp`} bg="cream" width={95} height={85} /></div>
       </div>
       <div style={{ position: 'absolute', top: '45%', left: '10px', zIndex: 0, opacity: 0.45 }}>
-        <div style={floatSt(8, '6s', '2s')}><SpiceImg src={`${A}22.png`} bg="cream" width={80} height={80} /></div>
+        <div style={floatSt(8, '6s', '2s')}><SpiceImg src={`${A}22.webp`} bg="cream" width={80} height={80} /></div>
       </div>
       <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <span style={{

@@ -88,12 +88,12 @@ export default function PainSection() {
       {/* Botanical decorations */}
       <div style={{ position: 'absolute', top: '60px', right: '20px', opacity: 0.18, pointerEvents: 'none' }}>
         <div style={floatStyle(12, '5s', '0.5s')}>
-          <SpiceImg src={`${A}5.png`} bg="dark" width={110} height={110} />
+          <SpiceImg src={`${A}5.webp`} bg="dark" width={110} height={110} />
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: '80px', left: '16px', opacity: 0.14, pointerEvents: 'none' }}>
         <div style={floatStyle(-8, '4.5s', '1.2s')}>
-          <SpiceImg src={`${A}11.png`} bg="dark" width={90} height={90} />
+          <SpiceImg src={`${A}11.webp`} bg="dark" width={90} height={90} />
         </div>
       </div>
 

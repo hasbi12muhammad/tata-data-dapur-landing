@@ -48,17 +48,17 @@ export default function Pricing() {
       {/* Floating illustrations */}
       <div style={{ position: 'absolute', top: '40px', left: '20px', zIndex: 0, opacity: 0.7 }}>
         <div style={floatStyle(-12, '5s', '0.3s')}>
-          <SpiceImg src={`${A}13.png`} bg="cream" width={100} height={90} />
+          <SpiceImg src={`${A}13.webp`} bg="cream" width={100} height={90} />
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: '60px', right: '24px', zIndex: 0, opacity: 0.65 }}>
         <div style={floatStyle(10, '4.5s', '1.5s')}>
-          <SpiceImg src={`${A}20.png`} bg="cream" width={90} height={90} />
+          <SpiceImg src={`${A}20.webp`} bg="cream" width={90} height={90} />
         </div>
       </div>
       <div style={{ position: 'absolute', top: '35%', right: '16px', zIndex: 0, opacity: 0.5 }}>
         <div style={floatStyle(-8, '6s', '0.8s')}>
-          <SpiceImg src={`${A}24.png`} bg="cream" width={75} height={75} />
+          <SpiceImg src={`${A}24.webp`} bg="cream" width={75} height={75} />
         </div>
       </div>
 

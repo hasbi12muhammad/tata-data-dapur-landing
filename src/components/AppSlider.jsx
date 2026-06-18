@@ -23,13 +23,13 @@ function useIsMobile() {
 }
 
 const SLIDES = [
-  { src: '/assets/app/dashboard.png',    label: 'Dashboard',    desc: 'Ringkasan bisnis harian' },
-  { src: '/assets/app/laporan.png',      label: 'Laporan',      desc: 'Laba rugi lengkap + grafik' },
-  { src: '/assets/app/produk.png',       label: 'Produk & HPP', desc: 'Resep + kalkulasi otomatis' },
-  { src: '/assets/app/penjualan.png',    label: 'Penjualan',    desc: 'Riwayat transaksi & margin' },
-  { src: '/assets/app/bahan-baku.png',   label: 'Bahan Baku',   desc: 'Stok & harga rata-rata' },
-  { src: '/assets/app/pembelian.png',    label: 'Pembelian',    desc: 'Histori pembelian bahan' },
-  { src: '/assets/app/pengeluaran.png',  label: 'Pengeluaran',  desc: 'Biaya operasional tercatat' },
+  { src: '/assets/app/dashboard.webp',    label: 'Dashboard',    desc: 'Ringkasan bisnis harian' },
+  { src: '/assets/app/laporan.webp',      label: 'Laporan',      desc: 'Laba rugi lengkap + grafik' },
+  { src: '/assets/app/produk.webp',       label: 'Produk & HPP', desc: 'Resep + kalkulasi otomatis' },
+  { src: '/assets/app/penjualan.webp',    label: 'Penjualan',    desc: 'Riwayat transaksi & margin' },
+  { src: '/assets/app/bahan-baku.webp',   label: 'Bahan Baku',   desc: 'Stok & harga rata-rata' },
+  { src: '/assets/app/pembelian.webp',    label: 'Pembelian',    desc: 'Histori pembelian bahan' },
+  { src: '/assets/app/pengeluaran.webp',  label: 'Pengeluaran',  desc: 'Biaya operasional tercatat' },
 ]
 const N = SLIDES.length
 const wrap = (i) => ((i % N) + N) % N

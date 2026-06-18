@@ -4,10 +4,10 @@ import gsap from 'gsap'
 const A = '/assets/components/'
 
 const marqueeItems = [
-  { text: 'Hitung HPP otomatis',       img: `${A}7.png`,  w: 22, h: 22 },
-  { text: 'Pantau stok real-time',      img: `${A}3.png`,  w: 26, h: 20 },
-  { text: 'Bayar sekali selamanya',     img: `${A}1.png`,  w: 22, h: 22 },
-  { text: 'Cocok untuk kuliner & produksi ringan', img: `${A}8.png`,  w: 30, h: 20 },
+  { text: 'Hitung HPP otomatis',       img: `${A}7.webp`,  w: 22, h: 22 },
+  { text: 'Pantau stok real-time',      img: `${A}3.webp`,  w: 26, h: 20 },
+  { text: 'Bayar sekali selamanya',     img: `${A}1.webp`,  w: 22, h: 22 },
+  { text: 'Cocok untuk kuliner & produksi ringan', img: `${A}8.webp`,  w: 30, h: 20 },
 ]
 
 export default function MarqueeStrip() {

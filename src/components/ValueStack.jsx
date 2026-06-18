@@ -66,13 +66,13 @@ export default function ValueStack() {
     >
       {/* Floating illustrations — low opacity on dark bg */}
       <div style={{ position: 'absolute', top: '28px', right: '16px', zIndex: 0, opacity: 0.18 }}>
-        <div style={floatV(15, '5s', '0.3s')}><SpiceImg src={`${AV}11.png`} bg="ink" width={120} height={105} /></div>
+        <div style={floatV(15, '5s', '0.3s')}><SpiceImg src={`${AV}11.webp`} bg="ink" width={120} height={105} /></div>
       </div>
       <div style={{ position: 'absolute', bottom: '36px', left: '12px', zIndex: 0, opacity: 0.15 }}>
-        <div style={floatV(-12, '4.8s', '1.2s')}><SpiceImg src={`${AV}16.png`} bg="ink" width={100} height={90} /></div>
+        <div style={floatV(-12, '4.8s', '1.2s')}><SpiceImg src={`${AV}16.webp`} bg="ink" width={100} height={90} /></div>
       </div>
       <div style={{ position: 'absolute', top: '50%', right: '10px', zIndex: 0, opacity: 0.12 }}>
-        <div style={floatV(8, '6.2s', '0.8s')}><SpiceImg src={`${AV}21.png`} bg="ink" width={85} height={85} /></div>
+        <div style={floatV(8, '6.2s', '0.8s')}><SpiceImg src={`${AV}21.webp`} bg="ink" width={85} height={85} /></div>
       </div>
       <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section tag */}

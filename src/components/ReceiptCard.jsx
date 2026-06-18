@@ -78,7 +78,7 @@ export default function ReceiptCard() {
         }}
       >
         <img
-          src="/assets/receipt.png"
+          src="/assets/receipt.webp"
           alt="Laporan harian Warung Bu Sari"
           style={{ width: '100%', display: 'block', objectFit: 'contain' }}
           draggable={false}

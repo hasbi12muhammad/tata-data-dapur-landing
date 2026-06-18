@@ -72,34 +72,34 @@ export default function Hero() {
       {/* LEFT-SIDE floating illustrations */}
       <div className="illus-item" style={{ position: 'absolute', top: '90px', left: '10px', zIndex: 0 }}>
         <div style={floatStyle(-10, '4.5s', '0s')}>
-          <SpiceImg src={`${A}1.png`} bg="cream" width={165} height={165} />
+          <SpiceImg src={`${A}1.webp`} bg="cream" width={165} height={165} />
         </div>
       </div>
       <div className="illus-item" style={{ position: 'absolute', bottom: '60px', left: '20px', zIndex: 0 }}>
         <div style={floatStyle(-8, '5s', '1.2s')}>
-          <SpiceImg src={`${A}2.png`} bg="cream" width={145} height={130} />
+          <SpiceImg src={`${A}2.webp`} bg="cream" width={145} height={130} />
         </div>
       </div>
       <div className="illus-item" style={{ position: 'absolute', top: '42%', left: '5px', zIndex: 0, transform: 'translateY(-50%)' }}>
         <div style={floatStyle(6, '4.8s', '0.8s')}>
-          <SpiceImg src={`${A}8.png`} bg="cream" width={125} height={82} />
+          <SpiceImg src={`${A}8.webp`} bg="cream" width={125} height={82} />
         </div>
       </div>
 
       {/* RIGHT-SIDE floating illustrations */}
       <div className="illus-item" style={{ position: 'absolute', top: '100px', right: '12px', zIndex: 0 }}>
         <div style={floatStyle(15, '4.2s', '0.5s')}>
-          <SpiceImg src={`${A}3.png`} bg="cream" width={130} height={105} />
+          <SpiceImg src={`${A}3.webp`} bg="cream" width={130} height={105} />
         </div>
       </div>
       <div className="illus-item" style={{ position: 'absolute', top: '38%', right: '8px', zIndex: 0 }}>
         <div style={floatStyle(18, '5.2s', '1.8s')}>
-          <SpiceImg src={`${A}7.png`} bg="cream" width={100} height={100} />
+          <SpiceImg src={`${A}7.webp`} bg="cream" width={100} height={100} />
         </div>
       </div>
       <div className="illus-item" style={{ position: 'absolute', bottom: '80px', right: '15px', zIndex: 0 }}>
         <div style={floatStyle(-12, '5.5s', '1.5s')}>
-          <SpiceImg src={`${A}6.png`} bg="cream" width={115} height={100} />
+          <SpiceImg src={`${A}6.webp`} bg="cream" width={115} height={100} />
         </div>
       </div>
 

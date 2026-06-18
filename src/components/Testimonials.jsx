@@ -60,10 +60,10 @@ export default function Testimonials() {
     >
       {/* Floating illustrations */}
       <div style={{ position: 'absolute', top: '30px', left: '16px', zIndex: 0, opacity: 0.55 }}>
-        <div style={floatT(-8, '5.5s', '0.4s')}><SpiceImg src={`${AT}17.png`} bg="cream" width={95} height={85} /></div>
+        <div style={floatT(-8, '5.5s', '0.4s')}><SpiceImg src={`${AT}17.webp`} bg="cream" width={95} height={85} /></div>
       </div>
       <div style={{ position: 'absolute', bottom: '44px', right: '18px', zIndex: 0, opacity: 0.5 }}>
-        <div style={floatT(12, '4.7s', '1.1s')}><SpiceImg src={`${AT}19.png`} bg="cream" width={100} height={90} /></div>
+        <div style={floatT(12, '4.7s', '1.1s')}><SpiceImg src={`${AT}19.webp`} bg="cream" width={100} height={90} /></div>
       </div>
       <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section tag */}

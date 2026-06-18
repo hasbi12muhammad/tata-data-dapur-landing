@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "code-review-graph": {
+      "command": "uvx",
+      "args": ["code-review-graph", "serve"],
+      "cwd": "/home/hasbi/Proyek/Tata-Data-Dapur-Land-Page",
+      "type": "stdio"
+    }
+  }
+}

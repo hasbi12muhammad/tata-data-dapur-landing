@@ -54,13 +54,13 @@ export default function Magazine() {
 
             {/* Illustrations inside terracotta card */}
             <div style={{ position: 'absolute', bottom: '60px', right: '-10px', zIndex: 1, transform: 'rotate(-15deg)' }}>
-              <SpiceImg src={`${A}14.png`} bg="terracotta" width={108} height={150} />
+              <SpiceImg src={`${A}14.webp`} bg="terracotta" width={108} height={150} />
             </div>
             <div style={{ position: 'absolute', top: '80px', right: '8px', zIndex: 1, transform: 'rotate(8deg)' }}>
-              <SpiceImg src={`${A}9.png`} bg="terracotta" width={98} height={69} />
+              <SpiceImg src={`${A}9.webp`} bg="terracotta" width={98} height={69} />
             </div>
             <div style={{ position: 'absolute', bottom: '10px', left: '8px', zIndex: 1, transform: 'rotate(-4deg)' }}>
-              <SpiceImg src={`${A}11.png`} bg="terracotta" width={135} height={87} />
+              <SpiceImg src={`${A}11.webp`} bg="terracotta" width={135} height={87} />
             </div>
 
             <div style={{ position: 'absolute', top: '80px', left: '28px', fontFamily: 'Fraunces, Georgia, serif', fontSize: '8rem', color: 'rgba(251,246,236,0.08)', lineHeight: 1, userSelect: 'none', zIndex: 1 }}>"</div>
@@ -97,7 +97,7 @@ export default function Magazine() {
 
           {/* Divider with tomato accent */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '24px', marginBottom: '8px' }}>
-            <SpiceImg src={`${A}15.png`} bg="cream" width={57} height={54} />
+            <SpiceImg src={`${A}15.webp`} bg="cream" width={57} height={54} />
             <div style={{ flex: 1, height: '1px', background: 'rgba(27,18,8,0.12)' }} />
             <SparkleIllustration size={8} style={{ color: '#C49A3F', opacity: 0.5 }} />
           </div>
