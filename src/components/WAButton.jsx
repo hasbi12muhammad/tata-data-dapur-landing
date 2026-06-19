@@ -1,28 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 export default function WAButton() {
-  const [barVisible, setBarVisible] = useState(false)
   const [entered, setEntered] = useState(false)
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768)
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768)
-    window.addEventListener('resize', onResize)
-
     const t = setTimeout(() => setEntered(true), 400)
-
-    const hero = document.getElementById('hero')
-    if (!hero) return () => { clearTimeout(t); window.removeEventListener('resize', onResize) }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setBarVisible(!entry.isIntersecting),
-      { threshold: 0.1 }
-    )
-    observer.observe(hero)
-    return () => { clearTimeout(t); window.removeEventListener('resize', onResize); observer.disconnect() }
+    return () => clearTimeout(t)
   }, [])
-
-  if (isMobile) return null
 
   return (
     <a
@@ -32,8 +16,8 @@ export default function WAButton() {
       title="Chat WhatsApp"
       style={{
         position: 'fixed',
-        bottom: barVisible ? '72px' : '24px',
-        right: '24px',
+        bottom: '24px',
+        right: '20px',
         zIndex: 99,
         width: '48px',
         height: '48px',
@@ -48,12 +32,7 @@ export default function WAButton() {
         boxShadow: '0 4px 20px rgba(0,0,0,0.22)',
         transform: entered ? 'scale(1)' : 'scale(0.6)',
         opacity: entered ? 1 : 0,
-        transition: [
-          'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
-          'opacity 0.3s ease',
-          'bottom 0.35s cubic-bezier(0.4,0,0.2,1)',
-          'background 0.2s',
-        ].join(', '),
+        transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease, background 0.2s',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.background = 'rgba(18, 88, 42, 0.98)'

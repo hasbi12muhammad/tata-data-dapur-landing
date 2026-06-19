@@ -11,7 +11,6 @@ import FAQ from './components/FAQ'
 import Pricing from './components/Pricing'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
-import StickyCTA from './components/StickyCTA'
 import WAButton from './components/WAButton'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
@@ -41,7 +40,6 @@ function LandingPage() {
       <Pricing />
       <FinalCTA />
       <Footer />
-      <StickyCTA />
       <WAButton />
     </div>
   )
