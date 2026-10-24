@@ -4,7 +4,7 @@ import { useSeo } from '../hooks/useSeo'
 const SUPABASE_URL = 'https://tqhfnaerzttcfceoygxw.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxaGZuYWVyenR0Y2ZjZW95Z3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNzAzMzEsImV4cCI6MjA5MTc0NjMzMX0.ODfdCsO8w1H6CF1b-SERbfp0dstnQV-HSIlEjG5pC4w'
 const AMOUNT = 175000
-const PAKASIR_SLUG = 'tata-data-dapur'
+const BORDERPAY_SLUG = 'tata-data-dapur'
 const REDIRECT_URL = 'https://app.tatadatadapur.my.id/welcome'
 
 function generateOrderId() {
@@ -263,8 +263,8 @@ export default function BeliPage() {
         throw new Error(body || 'Gagal menyimpan pesanan')
       }
       window.location.href =
-        `https://app.pakasir.com/pay/${PAKASIR_SLUG}/${AMOUNT}` +
-        `?order_id=${orderId}&redirect=${encodeURIComponent(REDIRECT_URL)}`
+        `https://borderpay.id/paylink/${BORDERPAY_SLUG}/${AMOUNT}` +
+        `?order_id=${orderId}&return_url=${encodeURIComponent(REDIRECT_URL)}`
     } catch (err) {
       setSubmitErr(err.message || 'Terjadi kesalahan. Coba lagi.')
       setLoading(false)
@@ -295,7 +295,7 @@ export default function BeliPage() {
         <div style={S.card}>
           <h1 style={S.title}>Lengkapi Data Pembelian</h1>
           <p style={S.subtitle}>
-            Isi data di bawah, lalu kamu akan diarahkan ke halaman pembayaran Pakasir.
+            Isi data di bawah, lalu kamu akan diarahkan ke halaman pembayaran BorderPay.
             Kredensial login akan dikirim ke email setelah pembayaran berhasil.
           </p>
 
@@ -403,7 +403,7 @@ export default function BeliPage() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8B7060" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
-            Pembayaran aman melalui Pakasir
+            Pembayaran aman melalui BorderPay
           </div>
         </div>
       </main>
