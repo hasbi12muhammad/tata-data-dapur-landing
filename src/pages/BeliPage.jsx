@@ -4,8 +4,8 @@ import { useSeo } from '../hooks/useSeo'
 const SUPABASE_URL = 'https://tqhfnaerzttcfceoygxw.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxaGZuYWVyenR0Y2ZjZW95Z3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNzAzMzEsImV4cCI6MjA5MTc0NjMzMX0.ODfdCsO8w1H6CF1b-SERbfp0dstnQV-HSIlEjG5pC4w'
 const AMOUNT = 175000
-const BORDERPAY_SLUG = 'tata-data-dapur'
-const REDIRECT_URL = 'https://app.tatadatadapur.my.id/welcome'
+// Checkout BorderPay dibuat server-side (API key + return_url ke /welcome)
+const CHECKOUT_API = 'https://app.tatadatadapur.my.id/api/borderpay/checkout'
 
 function generateOrderId() {
   const r4 = Math.floor(Math.random() * 9000 + 1000)
@@ -262,9 +262,16 @@ export default function BeliPage() {
         const body = await res.text()
         throw new Error(body || 'Gagal menyimpan pesanan')
       }
-      window.location.href =
-        `https://borderpay.id/paylink/${BORDERPAY_SLUG}/${AMOUNT}` +
-        `?order_id=${orderId}&return_url=${encodeURIComponent(REDIRECT_URL)}`
+      // ?test=1 di URL halaman = sandbox (hanya aktif kalau server BORDERPAY_ALLOW_TEST=1)
+      const test = new URLSearchParams(window.location.search).get('test') === '1'
+      const co = await fetch(CHECKOUT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_id: orderId, test }),
+      })
+      const { url } = await co.json().catch(() => ({}))
+      if (!co.ok || !url) throw new Error('Gagal membuat pembayaran. Coba lagi.')
+      window.location.href = url
     } catch (err) {
       setSubmitErr(err.message || 'Terjadi kesalahan. Coba lagi.')
       setLoading(false)
