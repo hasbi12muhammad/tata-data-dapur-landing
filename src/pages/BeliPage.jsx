@@ -269,7 +269,8 @@ export default function BeliPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ order_id: orderId, test }),
       })
-      const { url } = await co.json().catch(() => ({}))
+      const { url, error } = await co.json().catch(() => ({}))
+      if (error === 'test mode disabled') throw new Error('Mode test sedang nonaktif.')
       if (!co.ok || !url) throw new Error('Gagal membuat pembayaran. Coba lagi.')
       window.location.href = url
     } catch (err) {
